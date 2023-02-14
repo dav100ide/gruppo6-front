@@ -1,0 +1,12 @@
+/*-------------------
+    IMPORT bootstrap
+-------------------*/
+@import '/node_modules/bootstrap/scss/bootstrap';
+/*-------------------
+    IMPORT PARTIALS
+-------------------*/
+@import './partials/variables.scss';
+@import './partials/reset.scss';
+@import './partials/mixins.scss';
+@import './partials/typography.scss';
+@import './partials/layout.scss';
