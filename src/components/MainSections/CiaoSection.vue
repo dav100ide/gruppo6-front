@@ -1,7 +1,5 @@
 <template>
-   <section>
-      <img src="../../assets/dubai-park.jpg" alt="" />
-   </section>
+   <section>ciao section</section>
 </template>
 
 <script>
