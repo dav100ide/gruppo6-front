@@ -1,9 +1,15 @@
-<template>
-   <header>header</header>
-</template>
-
 <script>
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<template>
+   <header>header</header>
+</template>
+
+
+
+<style lang="scss" scoped>
+
+
+
+</style>
