@@ -15,13 +15,21 @@
         <li class="px-4 footer-nav">contact-us</li>
         <li class="px-4 footer-nav">partnership</li>
       </ul>
+      <div class="img-footer text-center">
+        <img
+          src="./IMG LOCALI/BOOLEAN 76 PROGETTO FINALE-Recuperato.png"
+          alt="logo"
+        />
+      </div>
     </footer>
   </section>
 </template>
-<style>
+
+<style lang="scss" scoped>
 footer {
   color: white;
   background-color: black;
+  height: 100vh;
 }
 footer li:hover {
   color: white;
@@ -30,5 +38,9 @@ footer li:hover {
 }
 .footer-nav {
   list-style: none;
+}
+
+.img-footer img {
+  width: 300px;
 }
 </style>
