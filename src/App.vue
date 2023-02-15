@@ -14,7 +14,7 @@ export default {
 
 <template>
    <!-- <HomePage /> -->
-   <LandingPage />
+   <!-- <LandingPage /> -->
    <ArtistPage />
 </template>
 
