@@ -22,7 +22,7 @@
             },
             showSearchBar(){
                 let scroll = window.scrollY;
-                if(scroll>400){
+                if(scroll>600){
                     this.activeSearch=1;
                     document.getElementById('search-head').disabled = false;
                 
@@ -55,14 +55,14 @@
                 </form>
                 
             </div>
-            <div class="head-nav">
+            <div class="head-nav d-none d-md-block">
                 <ul>
                     <li>Home</li>
                     <li>Esplora</li>
                     <li>Categorie</li>
                     <li>Artisti</li>
                     <li>About us</li>
-                    <li><i class="fa-solid fa-bars"></i></li>
+                    <li>profilo</li>
 
                 </ul>
             </div>
@@ -147,13 +147,15 @@
             }
         }
         .head-nav{
-            font-size: 1rem;
+            font-size: 0.9rem;
+            
             ul{
                display: flex; 
                margin-bottom: 0px;
+               justify-content: space-between;
                li{
                 list-style: none;
-                margin-right: 25px;
+                
                 cursor: pointer;
                }
             }
@@ -162,7 +164,6 @@
     .image-carusel{
         margin-top: 50px;
         height: 600px;
-        background-color: yellow;
         position: relative;
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         .home-search{
@@ -221,6 +222,8 @@
             transition: 200ms ease-in;
             img{
                 width: 100%;
+                height: 100%;
+                object-fit: cover;
 
             }
         }
@@ -237,4 +240,17 @@
        opacity: 1;
        transition: 200ms ease-out;
     }
+    .head-nav{
+        width:34%;
+    }
+
+    @media screen and (max-width:1200px){
+        .head{
+            padding:0px 10px;
+        }
+        .head-nav{
+            width: 45%;
+        }
+    }
+
 </style>
