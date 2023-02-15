@@ -157,10 +157,14 @@ export default {
          h1 {
             font-size: 7.5rem;
             font-weight: bold;
+            line-height: 1;
          }
          @media (width < 768px) {
             display: block;
             height: inherit;
+            h1 {
+               font-size: 4rem;
+            }
          }
       }
       .artist-tecniques ul {
