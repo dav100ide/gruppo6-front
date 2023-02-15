@@ -154,6 +154,7 @@
                li{
                 list-style: none;
                 margin-right: 25px;
+                cursor: pointer;
                }
             }
         }
