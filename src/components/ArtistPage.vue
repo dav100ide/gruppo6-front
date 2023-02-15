@@ -35,7 +35,6 @@
                <div class="text-column__bottom">
                   <div class="artist-text">
                      <strong>Ciao, sono</strong>
-                     <br />
                      <h1>{{ artist.fullName }}</h1>
                      <div class="artist-tecniques">
                         <ul>
@@ -146,7 +145,7 @@ export default {
       }
       .artist-text {
          @include flex-center;
-         height: 100vh;
+         height: 100%;
          flex-direction: column;
          align-items: flex-start;
 
@@ -156,7 +155,7 @@ export default {
             font-weight: normal;
          }
          h1 {
-            font-size: 5rem;
+            font-size: 7.5rem;
             font-weight: bold;
          }
          @media (width < 768px) {
