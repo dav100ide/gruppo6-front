@@ -8,7 +8,7 @@
             <div class="col-12 col-md-6 | text-column">
                <!-- colonna scritte parte superiore -->
                <div class="text-column__top">
-                  <h3 class="mb-0 mb-md-3">Nome Artista</h3>
+                  <h3 class="mb-0 mb-md-3">{{ artist.artist_nickname }}</h3>
                   <!-- desktop nav -->
                   <nav class="d-none d-md-block">
                      <ul>
@@ -32,6 +32,25 @@
                   <!-- /hamburger mobile -->
                </div>
                <!-- /colonna scritte parte superiore -->
+               <!-- colonna scritte parte inferiore -->
+               <div class="text-column__bottom">
+                  <div class="artist-text">
+                     <strong>Ciao, sono</strong>
+                     <br />
+                     <h1>{{ artist.fullName }}</h1>
+                     <div class="artist-tecniques">
+                        <ul>
+                           <li>
+                              <a href="#">Pittore</a>
+                           </li>
+                           <li>
+                              <a href="#">Fotografo</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <!-- /colonna scritte parte inferiore -->
                <!-- offcanvas: hambuger menu -->
                <nav id="hamburger-menu" :class="{ active: menuOpen }">
                   <ul>
@@ -57,19 +76,20 @@ export default {
    data() {
       return {
          menuOpen: false,
-         artists: [
-            {
-               artist_nickname: 'Lil Uzi Vert',
-               introduction_text:
-                  'Ciao sono Lil Uzi, lorem aspjdhaiop d opiwjapdja jpdjwpoajd pajpwdo jjd wp',
-               profile_photo: 'https://picsum.photos/200/300',
-               slug: 'lil-uzi-vert',
-               address: 'Via Cremona 52',
-               telephone: '335 5001874',
-               rating: 5,
-               reviews: ['review 1', 'review 2', 'review 3'],
-            },
-         ],
+
+         // json scritti a mano
+         user: {
+            //tabella user
+         },
+         artist: {
+            fullName: 'Marco Rossi',
+            artist_nickname: 'Lil Uzi Vert',
+            introduction_text:
+               'Ciao sono Lil Uzi, lorem aspjdhaiop d opiwjapdja jpdjwpoajd pajpwdo jjd wp',
+            profile_photo: 'https://picsum.photos/200/300',
+            slug: 'lil-uzi-vert',
+         },
+
          navLinks: [
             {
                href: '#',
@@ -94,6 +114,9 @@ export default {
    background-color: var(--primary-color-500);
    .text-column {
       color: var(--neutral-color-200);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
 
       h3 {
          color: var(--secondary-color);
@@ -103,12 +126,45 @@ export default {
       }
 
       @media (width < 768px) {
+         min-height: auto;
+         padding-block: 5rem;
          &__top {
             display: flex;
             align-items: center;
             #hamburger {
                margin-left: auto;
             }
+         }
+      }
+
+      &__bottom {
+         flex-grow: 1;
+      }
+      .artist-text {
+         @include flex-center;
+         height: 100vh;
+         flex-direction: column;
+         align-items: flex-start;
+
+         strong {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            font-weight: normal;
+         }
+         h1 {
+            font-size: 5rem;
+            font-weight: bold;
+         }
+         @media (width < 768px) {
+            height: inherit;
+         }
+      }
+      .artist-tecniques ul {
+         @include horizontal-list;
+         li:not(:last-child)::after {
+            display: inline-block;
+            content: '/';
+            margin-inline: 0.5rem;
          }
       }
    }
