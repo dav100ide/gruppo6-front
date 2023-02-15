@@ -24,14 +24,13 @@
 
 
 <style scoped lang="scss">
-    
     header{
         
-        height: 100vh;
+        height:100vh;
     }
     main{
         
-        height: 100vh;
+        height:100vh;
     }
 
 </style>

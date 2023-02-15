@@ -2,7 +2,8 @@
     export default{
         data(){
             return{
-                activeSlide:2
+                activeSlide:2,
+                activeSearch:0
 
             }
         },
@@ -18,10 +19,23 @@
                     this.activeSlide+=1;
                 }
 
+            },
+            showSearchBar(){
+                let scroll = window.scrollY;
+                if(scroll>400){
+                    this.activeSearch=1;
+                    document.getElementById('search-head').disabled = false;
+                
+                }else{
+                    this.activeSearch=0;
+                    document.getElementById('search-head').disabled = true;
+                }
             }
         },
         created(){
             this.startInterval()
+
+            window.addEventListener("scroll",this.showSearchBar);
         }
     }
 </script>
@@ -33,7 +47,13 @@
                 <img src="./HomePageAssets/logowhite.png" alt="">
             </div>
             <div class="head-title">
-                |a place where you belong
+                | a place where you belong
+            </div>
+            <div class="head-search" :class="(this.activeSearch==1 ? 'appear':'')">
+                <form action="" >
+                    <input type="text" placeholder="cerca.." id="search-head" >
+                </form>
+                
             </div>
             <div class="head-nav">
                 <ul>
@@ -61,7 +81,10 @@
                 <h2>Lasciati Ispirare</h2>
                 <h3>Scopri i nostri artisti</h3>
                 <div>
-                    <input type="text" placeholder="cosa stai cercando..">
+                    <form action="">
+                        <input type="text" placeholder="cosa stai cercando..">
+                    </form>
+                    
                 </div>
                 <div class="register">
                     <h5>o entra a far Parte della community</h5>
@@ -108,7 +131,20 @@
             align-items: center;
             font-size: 0.8rem;
             height: 100%;
+            margin-right: 10%;
+        }
+        .head-search{
+            width: 20%;
             flex-grow: 1;
+            input{
+                width: 300px;
+                border: none;
+                border-radius: 5px;
+                padding: 0px 20px;
+                &:focus{
+                    outline: none;
+                }
+            }
         }
         .head-nav{
             font-size: 1rem;
@@ -132,7 +168,7 @@
             border-radius: 5px;
             background-color: rgba(0, 0, 0, 0.347);
             padding: 20px;
-            top: calc(35% - 50px);
+            top: calc(30% - 50px);
             left:8%;
             width: 35%;
             position: absolute;
@@ -191,5 +227,13 @@
             opacity: 1;
             transition: 200ms ease-in-out;
         }
+    }
+    .head-search{
+        opacity: 0;
+        transition: 200ms ease-in;
+    }
+    .appear{
+       opacity: 1;
+       transition: 200ms ease-out;
     }
 </style>
