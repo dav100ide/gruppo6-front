@@ -1,7 +1,7 @@
 <template>
    <header>header in condivisione</header>
    <!-- artist page -->
-   <div class="artist-page">
+   <div class="artist-page | pb-3 pb-lg-0">
       <div class="container-fluid">
          <div class="row">
             <!-- colonna scritte -->
@@ -58,7 +58,7 @@ export default {
 
       @media (width < 992px) {
          min-height: auto;
-         padding-block: 5rem;
+         padding-block: 4rem;
       }
    }
 }
