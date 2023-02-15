@@ -1,21 +1,17 @@
 <script>
-import AppHeader from './components/AppHeader.vue';
-import AppMain from './components/AppMain.vue';
-import AppFooter from './components/AppFooter.vue';
-
+import ArtistPage from './components/ArtistPage.vue';
+import HomePage from './components/HomePage.vue';
 export default {
    components: {
-      AppHeader,
-      AppMain,
-      AppFooter,
+      ArtistPage,
+      HomePage,
    },
 };
 </script>
 
 <template>
-   <AppHeader />
-   <AppMain />
-   <AppFooter />
+   <!-- <HomePage /> -->
+   <ArtistPage />
 </template>
 
 <style lang="scss">
