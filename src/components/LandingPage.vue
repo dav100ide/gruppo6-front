@@ -7,25 +7,38 @@ export default {};
 <!-- parte grafica -->
 
 <template>
-  <section class="landing-page">
+  <div>
+    <h3 class="mt-2 bg-dark py-5">PRESTO ONLINE!</h3>
+    <h4 class="bg-dark text-light-emphasis px-3 py-3">
+      download the companion app!
+    </h4>
+  </div>
+  <section class="landing-page text-center d-flex">
+    <img
+      src="../components/IMG LOCALI/BOOLEAN 76 PROGETTO FINALE-Recuperato.png"
+      alt=""
+    />
+
+    <img
+      src="../components/IMG LOCALI/BOOLEAN 76 PROGETTO FINALE-Recuperato.png"
+      alt=""
+    />
+    <!-- BOOSTRAP SLIDE -->
+
+    <!-- BOOSTRAP SLIDE -->
+
+    <div></div>
+
     <div>
-      <div>
+      <div class="">
         <img
-          src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.stickersmurali.com%2Fit%2Fadesivi%2Fprodotto%2Fadesivi-nike-1074%2Fnike-logo-18244&psig=AOvVaw1Hf8m_8Ar86NSzORYAJXl0&ust=1676552168115000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCJDztNXJl_0CFQAAAAAdAAAAABAE"
+          class="hero"
+          src="../components/IMG LOCALI/BOOLEAN 76 PROGETTO FINALE-Recuperato.png"
           alt="logo-primary"
         />
-        <h1>PRESTO ONLINE!</h1>
-        <h2>Scarica la app!</h2>
       </div>
     </div>
-    <div>
-      <div class="jumbotron hero CONTAINER-FLUID">
-        <img
-          src="https://fastly.picsum.photos/id/31/3264/4912.jpg?hmac=lfmmWE3h_aXmRwDDZ7pZb6p0Foq6u86k_PpaFMnq0r8"
-          alt="jumbotron"
-        />
-      </div>
-    </div>
+    <div></div>
   </section>
 </template>
 
@@ -35,6 +48,22 @@ export default {};
 <style lang="scss" scoped>
 .landing-page {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  background-image: url("../components/IMG\ LOCALI/child_river_dreams_127495_1920x1080.jpg");
+  background-size: cover;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  scale: 0.7;
 }
 </style>
 
