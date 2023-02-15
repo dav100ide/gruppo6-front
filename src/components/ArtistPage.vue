@@ -1,13 +1,13 @@
 <template>
    <header>header in condivisione</header>
    <!-- artist page -->
-   <div class="artist-page py-2">
-      <div class="container">
+   <div class="artist-page">
+      <div class="container-fluid">
          <div class="row">
             <!-- colonna scritte -->
             <div class="col-12 col-md-6 | text-column">
                <!-- colonna scritte parte superiore -->
-               <div class="text-column__top">
+               <div class="text-column__top mt-3">
                   <h3 class="mb-0 mb-md-3">{{ artist.artist_nickname }}</h3>
                   <!-- desktop nav -->
                   <nav class="d-none d-md-block">
@@ -28,7 +28,6 @@
                   >
                      mobile-burger
                   </button>
-
                   <!-- /hamburger mobile -->
                </div>
                <!-- /colonna scritte parte superiore -->
@@ -64,6 +63,11 @@
                <!-- /offcanvas: hambuger menu -->
             </div>
             <!-- /colonna scritte -->
+            <!-- colonna foto -->
+            <div class="col-12 col-md-6 | img-column">
+               <img src="https://picsum.photos/1000" alt="img" />
+            </div>
+            <!-- /colonna foto -->
          </div>
       </div>
    </div>
@@ -156,6 +160,7 @@ export default {
             font-weight: bold;
          }
          @media (width < 768px) {
+            display: block;
             height: inherit;
          }
       }
@@ -192,6 +197,19 @@ export default {
       }
       ul {
          @include reset-list;
+      }
+   }
+
+   .img-column {
+      padding: 0;
+      img {
+         max-width: 100%;
+         height: 100%;
+         object-position: center;
+         object-fit: cover;
+         @media (width < 768px) {
+            height: auto;
+         }
       }
    }
 }
