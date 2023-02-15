@@ -8,7 +8,11 @@ export default {};
 
 <template>
   <div>
-    <h3 class="mt-2 bg-dark py-5">PRESTO ONLINE!</h3>
+    <h2 class="mt-2 py-5 text-light-emphasis">
+      COMING SOON /
+      <br />
+      CLASSE 76 / TEAM #6
+    </h2>
     <h4 class="bg-dark text-light-emphasis px-3 py-3">
       download the companion app!
     </h4>
@@ -19,13 +23,9 @@ export default {};
       alt=""
     />
 
-    <img
-      src="../components/IMG LOCALI/BOOLEAN 76 PROGETTO FINALE-Recuperato.png"
-      alt=""
-    />
     <!-- BOOSTRAP SLIDE -->
 
-    <!-- BOOSTRAP SLIDE -->
+    <!-- / BOOSTRAP SLIDE -->
 
     <div></div>
 
