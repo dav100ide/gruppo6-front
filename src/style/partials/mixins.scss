@@ -1,3 +1,29 @@
 /*-------------------
     mixins
 -------------------*/
+@mixin flex-center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+@mixin reset-list {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+@mixin horizontal-list($li-spacer: 0) {
+   @include reset-list;
+   display: flex;
+   li {
+      margin-inline: $li-spacer;
+      // reset margin: il primo li e l'ultimo li
+      &:first-child {
+         margin-inline-start: 0;
+      }
+      &:last-child {
+         margin-inline-end: 0;
+      }
+   }
+}
