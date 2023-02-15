@@ -1,23 +1,17 @@
 <script>
-import AppHeader from './components/AppHeader.vue';
-import AppMain from './components/AppMain.vue';
-import AppFooter from './components/AppFooter.vue';
+import LandingPage from "./components/LandingPage.vue";
 
 export default {
-   components: {
-      AppHeader,
-      AppMain,
-      AppFooter,
-   },
+  components: {
+    LandingPage,
+  },
 };
 </script>
 
 <template>
-   <AppHeader />
-   <AppMain />
-   <AppFooter />
+  <LandingPage />
 </template>
 
 <style lang="scss">
-@import './style/global.scss';
+@import "./style/global.scss";
 </style>

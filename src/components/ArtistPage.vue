@@ -1,5 +1,5 @@
 <template>
-   <div>artist page</div>
+  <div>artist page</div>
 </template>
 
 <script>
