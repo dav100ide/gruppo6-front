@@ -50,7 +50,7 @@
                 | a place where you belong
             </div>
             <div class="head-search" :class="(this.activeSearch==1 ? 'appear':'')">
-                <form action=""  >
+                <form action=""  @submit.prevent >
                     <input type="text" placeholder="cerca.." id="search-head" >
                 </form>
                 
@@ -83,8 +83,8 @@
                 <h2 id="inspire">Lasciati Ispirare</h2>
                 <h3 id="discover">Scopri i nostri artisti</h3>
                 <div>
-                    <form action="">
-                        <input type="text" placeholder="cosa stai cercando..">
+                    <form @submit.prevent action="">
+                        <input  type="text" placeholder="cosa stai cercando..">
                     </form>
                     
                 </div>
