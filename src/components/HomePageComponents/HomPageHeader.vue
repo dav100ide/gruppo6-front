@@ -131,7 +131,7 @@
         .head-title{
             display: flex;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             height: 100%;
             margin-right: 5%;
         }
@@ -165,8 +165,8 @@
     }
     .image-carusel{
         margin-top: 50px;
-        height: 78vh;
-        width: 100vw;
+        height: 80vh;
+        width: 100%;
         position: relative;
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         .home-search{
