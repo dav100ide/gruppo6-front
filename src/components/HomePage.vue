@@ -1,6 +1,9 @@
-<script></script>
 <template>
-  <div></div>
+   <div>homepage - jiemar</div>
 </template>
 
-<style></style>
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped></style>

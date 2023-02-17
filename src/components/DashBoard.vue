@@ -1,5 +1,5 @@
 <template>
-  <div>DASH</div>
+   <div>DASH</div>
 </template>
 
 <script>
