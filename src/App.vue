@@ -7,7 +7,7 @@ import Footer from "./components/Footer.vue";
 export default {
   components: {
     ArtistPage,
-    HomePage,
+    // HomePage,
     LandingPage,
     Footer,
   },
@@ -18,7 +18,7 @@ export default {
   <LandingPage />
   <ArtistPage />
   <HomePage />
-  <Footer />
+  <!-- <Footer /> -->
 </template>
 
 <style lang="scss">
