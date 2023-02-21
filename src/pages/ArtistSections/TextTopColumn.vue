@@ -89,7 +89,7 @@ nav.d-none ul {
    left: -70%;
    // min-height: 100vh;
    width: 45%;
-   background-color: var(--primary-color-500);
+   background-color: var(--primary-color);
    box-shadow: rgba(0, 0, 0, 0.8) 5px 5px 15px;
    text-align: center;
    transition: left 0.4s linear;

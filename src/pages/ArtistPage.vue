@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 .artist-page {
-   background-color: var(--primary-color-500);
+   background-color: var(--neutral-color-600);
    .text-column {
       color: var(--neutral-color-200);
       display: flex;
