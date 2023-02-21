@@ -24,7 +24,6 @@ export default {
 <!-- parte grafica -->
 
 <template>
-   <h1>landing page:</h1>
    <div>
       <h2 class="mt-2 py-5 text-light-emphasis">
          COMING SOON /
