@@ -23,24 +23,16 @@ import TextTopColumn from './ArtistSections/TextTopColumn.vue';
 import TextBottomColumn from './ArtistSections/TextBottomColumn.vue';
 import ImgColumn from './ArtistSections/ImgColumn.vue';
 
+import axios from 'axios';
+
 export default {
-   data() {
-      return {
-         // json scritti a mano
-         artist: {
-            first_name: 'Marco',
-            last_name: 'Rossi',
-            email: 'HotMail.com',
-            artist_nickname: 'Bello Figo',
-            tecniques: ['cantante', 'pittore'],
-            //.... etc
-         },
-      };
-   },
    components: {
       ImgColumn,
       TextBottomColumn,
       TextTopColumn,
+   },
+   data() {
+      return {};
    },
 };
 </script>
