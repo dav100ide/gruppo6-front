@@ -1,6 +1,6 @@
 <template>
    <div class="col-12 col-sm-7 col-lg-6 | img-column">
-      <img v-if="img" :src="img" :alt="alt" />
+      <img v-if="img" :src="imgSrc" :alt="alt" />
       <img v-else src="https://via.placeholder.com/1000" alt="immagine di default" />
    </div>
 </template>
@@ -15,6 +15,12 @@ export default {
       alt: {
          type: String,
          default: 'alt di default',
+      },
+   },
+   computed: {
+      imgSrc() {
+         const baseUrl = 'http://127.0.0.1:8000/storage/';
+         return `${baseUrl}${this.img}`;
       },
    },
 };
