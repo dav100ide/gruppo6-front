@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import TextTopColumn from '../components/ArtistSections/TextTopColumn.vue';
-import TextBottomColumn from '../components/ArtistSections/TextBottomColumn.vue';
-import ImgColumn from '../components/ArtistSections/ImgColumn.vue';
+import TextTopColumn from './ArtistSections/TextTopColumn.vue';
+import TextBottomColumn from './ArtistSections/TextBottomColumn.vue';
+import ImgColumn from './ArtistSections/ImgColumn.vue';
 
 export default {
    data() {

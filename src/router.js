@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 //import di tutte le pagine
 import HomePage from './pages/HomePage.vue';
 import SearchResultsPage from './pages/SearchResultsPage.vue';
-import ArtistPage from './pages/ArtistPage';
+import ArtistPage from './pages/ArtistPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
 
 const router = createRouter({
@@ -35,4 +35,4 @@ const router = createRouter({
    ],
 });
 
-export { router };
+export default router;
