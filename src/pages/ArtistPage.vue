@@ -10,7 +10,7 @@
             </div>
             <!-- /colonna scritte -->
             <!-- colonna img -->
-            <ImgColumn />
+            <ImgColumn :img="artist.profile_photo" :alt="artist.artist_nickname" />
             <!-- /colonna img -->
          </div>
       </div>
@@ -22,8 +22,7 @@
 import TextTopColumn from './ArtistSections/TextTopColumn.vue';
 import TextBottomColumn from './ArtistSections/TextBottomColumn.vue';
 import ImgColumn from './ArtistSections/ImgColumn.vue';
-
-import axios from 'axios';
+import { store } from '../store.js';
 
 export default {
    components: {
@@ -32,7 +31,14 @@ export default {
       TextTopColumn,
    },
    data() {
-      return {};
+      return {
+         store,
+      };
+   },
+   computed: {
+      artist() {
+         return this.store.artists.find((a) => a.slug === this.$route.params.slug);
+      },
    },
 };
 </script>

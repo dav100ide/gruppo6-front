@@ -58,14 +58,16 @@ export default {
       artist: {
          type: Object,
          default: {
-            default: {
-               first_name: 'Nome',
-               last_name: 'Cognome',
-               email: 'defaultMail.com',
-               artist_nickname: 'Lil Uzi Vert',
-               tecniques: ['fotografo', 'pittore'],
-               //.... etc
-            },
+            id: 6969,
+            user_id: 6969,
+            artist_nickname: 'defalut',
+            introduction_text: 'esse molestias. Et placeat ducimus dolorem tempore.',
+            address: 'Via Lio 58',
+            phone_number: '338 546 9984',
+            profile_photo: 'https://via.placeholder.com/150',
+            slug: 'defalut',
+            created_at: '2023-02-21T09:19:11.000000Z',
+            updated_at: '2023-02-21T09:19:11.000000Z',
          },
       },
    },
