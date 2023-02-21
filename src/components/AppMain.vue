@@ -6,6 +6,7 @@
          <RouterLink :to="{ name: 'artist-page' }">artista page (PATH NON DINAMICO)</RouterLink>
          <RouterLink :to="{ name: 'search-results-page' }">SearchResultsPage</RouterLink>
       </nav>
+      <hr />
       <RouterView />
    </main>
 </template>
@@ -16,7 +17,6 @@ export default {};
 
 <style lang="scss" scoped>
 main {
-   padding: 1rem;
    border: 2px dashed #111;
 }
 nav {

@@ -1,9 +1,13 @@
 <template>
-   <header>header in condivisione</header>
+   <header>HEADER in condivisione</header>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+   background-color: orange;
+}
+</style>
