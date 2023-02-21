@@ -3,8 +3,8 @@
    <div class="text-column__bottom">
       <div class="artist-text">
          <strong>Ciao, sono</strong>
-         <h1>NOME COGNOME USER</h1>
-         <div class="artist-tecniques">
+         <h1>{{ artist.user.name }}</h1>
+         <div class="artist-techniques">
             <ul>
                <li>Pittore</li>
                <li>Fotografo</li>
@@ -29,10 +29,17 @@ export default {
             phone_number: '338 546 9984',
             profile_photo: 'https://via.placeholder.com/150',
             slug: 'defalut',
-            created_at: '2023-02-21T09:19:11.000000Z',
-            updated_at: '2023-02-21T09:19:11.000000Z',
+            user: {
+               id: 6969,
+               name: 'user Name',
+               surname: 'user Surnam',
+               email: 'default@gmail.com',
+            },
          },
       },
+   },
+   computed: {
+      FullName() {},
    },
 };
 </script>
@@ -65,7 +72,7 @@ export default {
       }
    }
 }
-.artist-tecniques ul {
+.artist-techniques ul {
    @include horizontal-list;
    li:not(:last-child)::after {
       display: inline-block;

@@ -37,8 +37,12 @@ export default {
    },
    computed: {
       artist() {
-         return this.store.artists.find((a) => a.slug === this.$route.params.slug);
+         //trova il primo e l'unico artista che ha lo slug uguale allo slug dell'url
+         return this.store.artists.find((artist) => artist.slug === this.$route.params.slug);
       },
+   },
+   created() {
+      console.log(store.artists[0].profile_photop);
    },
 };
 </script>

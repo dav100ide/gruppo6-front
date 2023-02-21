@@ -23,7 +23,6 @@ export default {
    created() {
       axios.get(this.api_url).then((res) => {
          this.artists = res.data;
-         console.log(this.artists[1]);
       });
    },
 };

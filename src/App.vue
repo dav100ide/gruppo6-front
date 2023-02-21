@@ -21,7 +21,7 @@ export default {
          .get('http://127.0.0.1:8000/api/artists') //
          .then((res) => {
             store.artists = res.data;
-            console.log(store.artists);
+            console.log(store.artists[20].user);
          });
    },
 };
