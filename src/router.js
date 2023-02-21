@@ -22,8 +22,8 @@ const router = createRouter({
          component: SearchResultsPage,
       },
       {
-         // path da rendere dinamico con l'id artista
-         path: '/artist',
+         // path dinamico con lo slug artista
+         path: '/artist/:slug',
          name: 'artist-page',
          component: ArtistPage,
       },

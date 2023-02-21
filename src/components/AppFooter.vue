@@ -24,7 +24,7 @@
 footer {
    color: white;
    background-color: black;
-   height: 100vh;
+   height: 100vh; //davide: perchè 100vh al footer??
 }
 footer li:hover {
    color: white;
