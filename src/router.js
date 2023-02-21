@@ -16,16 +16,21 @@ const router = createRouter({
          component: HomePage,
       },
       {
-         // da rendere dinamico
+         // da rendere dinamico con l'id artista
          path: '/artist',
          name: 'artist-page',
          component: ArtistPage,
       },
       {
-         // da rendere dinamico
+         // da rendere dinamico con la stringa digitata dal visitatore
+         path: '/search',
+         name: 'search-results-page',
+         component: SearchResultsPage,
+      },
+      {
          path: '/:pathMatch(.*)*',
          name: 'not-found-page',
-         component: ArtistPage,
+         component: NotFoundPage,
       },
    ],
 });
