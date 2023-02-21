@@ -1,5 +1,5 @@
 <template>
-   <div>DASH</div>
+   <header>header in condivisione</header>
 </template>
 
 <script>

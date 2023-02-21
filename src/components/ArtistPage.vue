@@ -1,5 +1,4 @@
 <template>
-   <header>header in condivisione</header>
    <!-- artist page -->
    <div class="artist-page | pb-3 pb-lg-0">
       <div class="container-fluid">
@@ -17,7 +16,6 @@
       </div>
    </div>
    <!-- /artist page -->
-   <footer>footer in condivisione</footer>
 </template>
 
 <script>

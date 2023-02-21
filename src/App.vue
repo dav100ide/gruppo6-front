@@ -1,24 +1,21 @@
 <script>
-import LandingPage from './components/LandingPage.vue';
-import ArtistPage from './components/ArtistPage.vue';
-import HomePage from './components/HomePage.vue';
-import Footer from './components/Footer.vue';
+import AppHeader from './components/AppSections/AppHeader.vue';
+import AppFooter from './components/AppSections/AppFooter.vue';
+import AppMain from './components/AppSections/AppMain.vue';
 
 export default {
    components: {
-      ArtistPage,
-      // HomePage,
-      LandingPage,
-      Footer,
+      AppHeader,
+      AppFooter,
+      AppMain,
    },
 };
 </script>
 
 <template>
-   <LandingPage />
-   <ArtistPage />
-   <HomePage />
-   <!-- <Footer /> -->
+   <AppHeader />
+   <AppMain />
+   <AppFooter />
 </template>
 
 <style lang="scss">
