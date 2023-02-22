@@ -1,6 +1,6 @@
 <script>
-    import HomPageHeader from './HomePageComponents/HomPageHeader.vue';
-    import HomePageMain from './HomePageComponents/HomePageMain.vue';
+    import HomPageHeader from '../pages/HomePageSections/HomPageHeader.vue';
+    import HomePageMain from '../pages/HomePageSections/HomePageMain.vue';
     export default{
         components:{
             HomPageHeader,
