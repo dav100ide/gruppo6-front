@@ -26,6 +26,15 @@ const router = createRouter({
          path: '/artist/:slug',
          name: 'artist-page',
          component: ArtistPage,
+         beforeEnter: (to, from, next) => {
+            // qui effettuiamo una query al database per verificare se lo slug è valido
+            const isValidSlug = true; // true se lo slug è valido
+            if (isValidSlug) {
+               next();
+            } else {
+               next({ name: 'not-found-page' }); // indirizziamo l'utente alla pagina 404
+            }
+         },
       },
       {
          path: '/:pathMatch(.*)*',
