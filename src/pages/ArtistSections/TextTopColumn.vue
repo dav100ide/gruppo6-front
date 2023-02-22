@@ -39,17 +39,21 @@ export default {
       return {
          menuOpen: false,
          navLinks: [
+            // {
+            //    href: '#',
+            //    linkName: 'Opere',
+            // },
             {
                href: '#',
                linkName: 'Chi sono',
             },
             {
                href: '#',
-               linkName: 'Opere',
+               linkName: 'Recensioni',
             },
             {
                href: '#',
-               linkName: 'Contatti',
+               linkName: 'Scrivimi un messaggio',
             },
          ],
       };

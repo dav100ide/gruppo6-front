@@ -1,6 +1,7 @@
 <template>
    <!-- artist page -->
-   <div class="artist-page | pb-3 pb-lg-0">
+   <!-- jumbo -->
+   <div class="artist-jumbo | pb-3 pb-lg-0">
       <div class="container-fluid">
          <div class="row">
             <!-- colonna scritte -->
@@ -18,6 +19,8 @@
          </div>
       </div>
    </div>
+   <!-- /jumbo -->
+
    <!-- /artist page -->
 </template>
 
@@ -48,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.artist-page {
+.artist-jumbo {
    background-color: var(--neutral-color-600);
    .text-column {
       color: var(--neutral-color-200);
