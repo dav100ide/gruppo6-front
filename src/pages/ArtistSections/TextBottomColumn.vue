@@ -4,11 +4,25 @@
       <div class="artist-text">
          <strong>Ciao, sono</strong>
          <h1>{{ fullName }}</h1>
-         <div class="artist-techniques">
+         <div class="artist-techniques mb-3">
             <ul>
                <li>Pittore</li>
                <li>Fotografo</li>
             </ul>
+         </div>
+         <div class="artist-infos h5">
+            <div class="artist-info">
+               <i class="fa-regular fa-envelope"></i>
+               <div>{{ artist.user.email }}</div>
+            </div>
+            <div v-if="artist.phone_number" class="artist-info">
+               <i class="fa-solid fa-phone"></i>
+               <div>{{ artist.phone_number }}</div>
+            </div>
+            <div v-if="artist.address" class="artist-info">
+               <i class="fa-solid fa-location-dot"></i>
+               <div>{{ artist.address }}</div>
+            </div>
          </div>
       </div>
    </div>
@@ -72,6 +86,16 @@ export default {
       h1 {
          font-size: 4rem;
       }
+   }
+   .artist-infos {
+      display: flex;
+      flex-wrap: wrap;
+   }
+   .artist-info {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem;
    }
 }
 .artist-techniques ul {

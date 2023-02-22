@@ -61,7 +61,6 @@ export default {
 
       @media (width < 992px) {
          min-height: auto;
-         padding-block: 4rem;
       }
    }
 }
