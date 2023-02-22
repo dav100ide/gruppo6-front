@@ -10,7 +10,7 @@
             </div>
             <!-- /colonna scritte -->
             <!-- colonna img -->
-            <ImgColumn />
+            <ImgColumn :img="artist.profile_photo" :alt="artist.artist_nickname" />
             <!-- /colonna img -->
          </div>
       </div>
@@ -22,25 +22,27 @@
 import TextTopColumn from './ArtistSections/TextTopColumn.vue';
 import TextBottomColumn from './ArtistSections/TextBottomColumn.vue';
 import ImgColumn from './ArtistSections/ImgColumn.vue';
+import { store } from '../store.js';
 
 export default {
-   data() {
-      return {
-         // json scritti a mano
-         artist: {
-            first_name: 'Marco',
-            last_name: 'Rossi',
-            email: 'HotMail.com',
-            artist_nickname: 'Bello Figo',
-            tecniques: ['cantante', 'pittore'],
-            //.... etc
-         },
-      };
-   },
    components: {
       ImgColumn,
       TextBottomColumn,
       TextTopColumn,
+   },
+   data() {
+      return {
+         store,
+      };
+   },
+   computed: {
+      artist() {
+         //trova il primo e l'unico artista che ha lo slug uguale allo slug dell'url
+         return this.store.artists.find((artist) => artist.slug === this.$route.params.slug);
+      },
+   },
+   created() {
+      console.log(store.artists[0].profile_photop);
    },
 };
 </script>

@@ -1,11 +1,29 @@
 <template>
    <div class="col-12 col-sm-7 col-lg-6 | img-column">
-      <img src="https://picsum.photos/1000" alt="img" />
+      <img v-if="img" :src="imgSrc" :alt="alt" />
+      <img v-else src="https://via.placeholder.com/1000" alt="immagine di default" />
    </div>
 </template>
 
 <script>
-export default {};
+export default {
+   props: {
+      img: {
+         type: String,
+         default: 'https://via.placeholder.com/1000',
+      },
+      alt: {
+         type: String,
+         default: 'alt di default',
+      },
+   },
+   computed: {
+      imgSrc() {
+         const baseUrl = 'http://127.0.0.1:8000/storage/';
+         return `${baseUrl}${this.img}`;
+      },
+   },
+};
 </script>
 
 <style lang="scss" scoped>

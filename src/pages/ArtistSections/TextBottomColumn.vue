@@ -3,12 +3,11 @@
    <div class="text-column__bottom">
       <div class="artist-text">
          <strong>Ciao, sono</strong>
-         <h1>{{ artist.first_name }} {{ artist.last_name }}</h1>
-         <div class="artist-tecniques">
+         <h1>{{ artist.user.name }}</h1>
+         <div class="artist-techniques">
             <ul>
-               <li v-for="tecnique in artist.tecniques">
-                  <a href="#">{{ tecnique }}</a>
-               </li>
+               <li>Pittore</li>
+               <li>Fotografo</li>
             </ul>
          </div>
       </div>
@@ -22,14 +21,25 @@ export default {
       artist: {
          type: Object,
          default: {
-            first_name: 'Nome',
-            last_name: 'Cognome',
-            email: 'defaultMail.com',
-            artist_nickname: 'Lil Uzi Vert',
-            tecniques: ['fotografo', 'pittore'],
-            //.... etc
+            id: 6969,
+            user_id: 6969,
+            artist_nickname: 'defalut',
+            introduction_text: 'esse molestias. Et placeat ducimus dolorem tempore.',
+            address: 'Via Lio 58',
+            phone_number: '338 546 9984',
+            profile_photo: 'https://via.placeholder.com/150',
+            slug: 'defalut',
+            user: {
+               id: 6969,
+               name: 'user Name',
+               surname: 'user Surnam',
+               email: 'default@gmail.com',
+            },
          },
       },
+   },
+   computed: {
+      FullName() {},
    },
 };
 </script>
@@ -50,7 +60,7 @@ export default {
       font-weight: normal;
    }
    h1 {
-      font-size: 7.5rem;
+      font-size: 5rem;
       font-weight: bold;
       line-height: 1;
    }
@@ -62,7 +72,7 @@ export default {
       }
    }
 }
-.artist-tecniques ul {
+.artist-techniques ul {
    @include horizontal-list;
    li:not(:last-child)::after {
       display: inline-block;
