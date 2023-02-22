@@ -21,7 +21,7 @@
    </div>
    <!-- /jumbo -->
    <!-- about me section -->
-   <MeSection />
+   <MeSection :techniques="artist.techniques" :intro="artist.introduction_text" />
    <!-- /about me section -->
    <!-- /artist page -->
 </template>

@@ -1,9 +1,31 @@
 <template>
-   <section>about me</section>
+   <section>
+      <h3 v-for="tech in techniques">
+         {{ tech.name }}
+      </h3>
+      <p>{{ intro }}</p>
+   </section>
 </template>
 
 <script>
-export default {};
+export default {
+   props: {
+      techniques: {
+         type: Array,
+         default: [
+            {
+               name: 'Tecnica di default',
+               description: 'Default asjdaj jas ijdasj iod jiojioad sijo',
+               slug: 'tecnica-di-default',
+            },
+         ],
+      },
+      intro: {
+         type: String,
+         default: "Descrizione dell'artista, default blah blah",
+      },
+   },
+};
 </script>
 
 <style lang="scss" scoped>
