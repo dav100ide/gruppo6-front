@@ -28,12 +28,13 @@ export default {
 </script>
 
 <template>
-   <HomePage/>
+   <!-- <HomePage/> -->
+   <AppMain />
 </template>
 
 <style lang="scss">
 @import './style/global.scss';
-*{
+* {
    scroll-behavior: smooth;
 }
 </style>

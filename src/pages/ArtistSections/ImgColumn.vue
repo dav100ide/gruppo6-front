@@ -29,7 +29,7 @@ export default {
 <style lang="scss" scoped>
 .col-12.img-column {
    img {
-      max-width: 100%;
+      width: 100%;
       height: 100%;
       object-position: center;
       object-fit: cover;

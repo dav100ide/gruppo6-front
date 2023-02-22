@@ -10,6 +10,9 @@
             </div>
             <!-- /colonna scritte -->
             <!-- colonna img -->
+            <!-- se profile_photo è null; ci sarà un errore in console,
+                ma non da fastidio alla visualizzazione perchè l'img con src 
+                null viene sostituito un v-else-->
             <ImgColumn :img="artist.profile_photo" :alt="artist.artist_nickname" />
             <!-- /colonna img -->
          </div>
@@ -40,9 +43,6 @@ export default {
          //trova il primo e l'unico artista che ha lo slug uguale allo slug dell'url
          return this.store.artists.find((artist) => artist.slug === this.$route.params.slug);
       },
-   },
-   created() {
-      console.log(store.artists[0].profile_photop);
    },
 };
 </script>

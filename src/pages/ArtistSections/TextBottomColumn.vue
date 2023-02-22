@@ -3,7 +3,7 @@
    <div class="text-column__bottom">
       <div class="artist-text">
          <strong>Ciao, sono</strong>
-         <h1>{{ artist.user.name }}</h1>
+         <h1>{{ fullName }}</h1>
          <div class="artist-techniques">
             <ul>
                <li>Pittore</li>
@@ -39,7 +39,9 @@ export default {
       },
    },
    computed: {
-      FullName() {},
+      fullName() {
+         return `${this.artist.user.name} ${this.artist.user.surname}`;
+      },
    },
 };
 </script>
