@@ -6,4 +6,8 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+section {
+   background-color: var(--neutral-color-900);
+}
+</style>
