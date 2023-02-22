@@ -20,7 +20,9 @@
       </div>
    </div>
    <!-- /jumbo -->
-
+   <!-- about me section -->
+   <MeSection />
+   <!-- /about me section -->
    <!-- /artist page -->
 </template>
 
@@ -28,6 +30,7 @@
 import TextTopColumn from './ArtistSections/TextTopColumn.vue';
 import TextBottomColumn from './ArtistSections/TextBottomColumn.vue';
 import ImgColumn from './ArtistSections/ImgColumn.vue';
+import MeSection from './ArtistSections/MeSection.vue';
 import { store } from '../store.js';
 
 export default {
@@ -35,6 +38,7 @@ export default {
       ImgColumn,
       TextBottomColumn,
       TextTopColumn,
+      MeSection,
    },
    data() {
       return {
