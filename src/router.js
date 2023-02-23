@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage.vue';
 import SearchResultsPage from './pages/SearchResultsPage.vue';
 import ArtistPage from './pages/ArtistPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
-import { store } from './store.js';
+import axios from 'axios';
 
 /*==================================
  le rotte di tutte le pagine importate
@@ -29,6 +29,16 @@ const router = createRouter({
          path: '/artist/:slug',
          name: 'artist-page',
          component: ArtistPage,
+         beforeEnter: (to, from, next) => {
+            axios
+               .get(`http://127.0.0.1:8000/api/artist/${to.params.slug}`)
+               .then(() => {
+                  next();
+               })
+               .catch(() => {
+                  next({ name: 'not-found-page' });
+               });
+         },
       },
       {
          path: '/:pathMatch(.*)*',
