@@ -6,7 +6,13 @@
          <h1>{{ fullName }}</h1>
          <div class="artist-techniques mb-3">
             <ul>
-               <li v-for="tech in "></li>
+               <li class="fs-5" v-for="tech in artist.techniques">
+                  <!--nelle props ho lo slug della technique dunque farò una rotta che porta ad una PAGINA con gli artist con quella specifica tecnica(acting, photo...) -->
+                  <!-- qui sarà un tag routerLink -->
+                  <a href="per-ora-statico">
+                     {{ tech.name }}
+                  </a>
+               </li>
             </ul>
          </div>
          <div class="artist-infos h5">
