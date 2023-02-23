@@ -47,7 +47,7 @@ export default {
                 <ul>
                     <li><RouterLink :to="{ name: 'home-page' }">Home</RouterLink></li>
                     <li>Esplora</li>
-                    <li><RouterLink :to="{ name: 'artist-page', params: { slug: 'test' } }">
+                    <li><RouterLink :to="{ name: 'artist-page', params: { slug: 'mariane-thompson' } }">
                         Artisti
                      </RouterLink></li>
                     <li>profilo</li>
