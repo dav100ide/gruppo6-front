@@ -16,9 +16,9 @@
             <div v-for="tech in techniques" class="col-12 col-md-6 col-lg-4">
                <div class="tech | p-4 rounded-4 h-100">
                   <div class="tech__text">
-                     <div class="tech__title">
-                        <i class="fa-solid" :class="slugToFontawesome(tech.slug)"></i>
+                     <div class="tech__title h2">
                         <h3>{{ tech.name }}</h3>
+                        <i class="fa-solid" :class="slugToFontawesome(tech.slug)"></i>
                      </div>
                      <p>
                         {{ tech.description }}
@@ -87,5 +87,16 @@ section {
 }
 .tech {
    background-color: var(--primary-color-300);
+   &__title {
+      display: flex;
+      justify-content: space-between;
+      transition: color ease-out 0.6s;
+      i {
+         margin-inline-end: 1rem;
+      }
+   }
+   &:hover &__title {
+      color: var(--secondary-color);
+   }
 }
 </style>
