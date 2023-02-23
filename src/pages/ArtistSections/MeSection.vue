@@ -13,8 +13,14 @@
             </div>
             <!-- /intro col -->
             <!-- tech cols -->
-            <div v-for="tech in techniques" class="col-12 col-md-6 col-lg-4">
-               <div class="tech | p-4 rounded-4 h-100">
+            <div v-for="(tech, index) in techniques" class="col-12 col-md-6 col-lg-4">
+               <!-- card tech (quando è l'unica card ha l'id only-tech per stilarlo diversamente)-->
+               <div
+                  :id="techniques.length === 1 ? 'only-tech' : ''"
+                  class="tech | p-4 rounded-4 h-100"
+                  data-aos="flip-up"
+                  data-aos-duration="1700"
+               >
                   <div class="tech__text">
                      <div class="tech__title h2">
                         <h3>{{ tech.name }}</h3>
@@ -25,6 +31,7 @@
                      </p>
                   </div>
                </div>
+               <!-- card tech -->
             </div>
             <!-- /tech cols -->
          </div>
@@ -33,7 +40,13 @@
 </template>
 
 <script>
+// libreria Animation On Scroll
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 export default {
+   mounted() {
+      AOS.init();
+   },
    props: {
       techniques: {
          type: Array,
@@ -77,6 +90,13 @@ section {
    background-color: var(--neutral-color-900);
    p {
       margin: 0;
+   }
+   //quando c'è solo una card tech al breakpoint lg
+   @media (width > 992px) {
+      #only-tech {
+         width: 55%;
+         margin-left: auto;
+      }
    }
 }
 .intro {
