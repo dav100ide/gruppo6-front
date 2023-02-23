@@ -5,7 +5,6 @@ import AppFooter from './components/AppFooter.vue';
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
 import { store } from './store.js';
-
 export default {
    components: {
       HomePage,
@@ -33,7 +32,7 @@ export default {
    <header>
       <div class="head">
             <div class="head-logo">
-                <!--<img src="./HomePageAssets/logowhite.png" alt="">-->
+                <img src="./pages/HomePageSections/HomePageAssets/logowhite.png" alt="">
             </div>
             <div class="head-title">
                 | a place where you belong
@@ -48,20 +47,21 @@ export default {
                 <ul>
                     <li><RouterLink :to="{ name: 'home-page' }">Home</RouterLink></li>
                     <li>Esplora</li>
-                    <li>Categorie</li>
                     <li><RouterLink :to="{ name: 'artist-page', params: { slug: 'test' } }">
                         Artisti
                      </RouterLink></li>
-                    <li>About us</li>
                     <li>profilo</li>
                 </ul>
             </div>
+            <RouterView />
             <div class="hamburger-menu d-md-none">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
    </header>
-   <HomePage/>
+      <router-view>
+      
+      </router-view>
 </template>
 
 <style lang="scss">
@@ -125,7 +125,7 @@ export default {
    }
    }
    .head-nav{
-      width:34%;
+      width:20%;
    }
    .head-logo{
       width: 6%;

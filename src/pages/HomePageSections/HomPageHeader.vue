@@ -58,17 +58,13 @@
                 <div>
                     <form @submit.prevent action="">
                         <input  type="text" placeholder="cosa stai cercando..">
-                    </form>
-                    
+                    </form>        
                 </div>
                 <div class="register">
                     <h5>o entra a far Parte della community</h5>
                     <button class="reg">Registrati</button> <br>
                     <small>se hai gia l'account <a href="" class="already-signed">Accedi ora</a></small>
                 </div>
-                
-                
-
             </div>
         </div>
     </header>
