@@ -32,6 +32,7 @@ import TextBottomColumn from './ArtistSections/TextBottomColumn.vue';
 import ImgColumn from './ArtistSections/ImgColumn.vue';
 import MeSection from './ArtistSections/MeSection.vue';
 import { store } from '../store.js';
+import axios from 'axios';
 
 export default {
    components: {
@@ -42,14 +43,21 @@ export default {
    },
    data() {
       return {
-         store,
+         artistSlug: this.$route.params.slug,
+         artist: {},
       };
    },
-   computed: {
-      artist() {
-         //trova il primo e l'unico artista che ha lo slug uguale allo slug dell'url
-         return this.store.artists.find((artist) => artist.slug === this.$route.params.slug);
-      },
+   created() {
+      axios
+         .get(`http://127.0.0.1:8000/api/artist/${this.artistSlug}`) //
+         .then((res) => {
+            this.artist = res.data;
+         })
+         .catch((err) => {
+            if (err.response.status === 404) {
+               this.$router.push({ name: 'not-found-page' });
+            }
+         });
    },
 };
 </script>
