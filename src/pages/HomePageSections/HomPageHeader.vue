@@ -42,33 +42,6 @@
 
 <template>
     <header>
-        <div class="head">
-            <div class="head-logo">
-                <img src="./HomePageAssets/logowhite.png" alt="">
-            </div>
-            <div class="head-title">
-                | a place where you belong
-            </div>
-            <div class="head-search" :class="(this.activeSearch==1 ? 'appear':'')">
-                <form action=""  @submit.prevent >
-                    <input type="text" placeholder="cerca.." id="search-head" >
-                </form>
-                
-            </div>
-            <div class="head-nav d-none d-md-block">
-                <ul>
-                    <li>Home</li>
-                    <li>Esplora</li>
-                    <li>Categorie</li>
-                    <li>Artisti</li>
-                    <li>About us</li>
-                    <li>profilo</li>
-                </ul>
-            </div>
-            <div class="hamburger-menu d-md-none">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
         <div class="image-carusel">
             <div class="slide active" :class="(this.activeSlide==0 ? 'active':'')">
                 <img src="./HomePageAssets/registazione.jpg" alt="">
