@@ -1,8 +1,8 @@
 <template>
    <section>
-      <h3 v-for="tech in techniques">
+      <h5 v-for="tech in techniques">
          {{ tech.name }}
-      </h3>
+      </h5>
       <p>{{ intro }}</p>
    </section>
 </template>

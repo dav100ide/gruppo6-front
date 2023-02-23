@@ -62,8 +62,6 @@ export default {
       artist: {
          type: Object,
          default: {
-            id: 6969,
-            user_id: 6969,
             artist_nickname: 'defalut',
             introduction_text: 'esse molestias. Et placeat ducimus dolorem tempore.',
             address: 'Via Lio 58',
@@ -71,11 +69,18 @@ export default {
             profile_photo: 'https://via.placeholder.com/150',
             slug: 'defalut',
             user: {
-               id: 6969,
                name: 'user Name',
                surname: 'user Surnam',
                email: 'default@gmail.com',
             },
+            techniques: [
+               {
+                  name: 'default tech',
+                  description:
+                     'descrizione default blah lal alhdl kahld ahdhjaslk hjklahd ajkhwjk a ',
+                  slug: 'default-tech',
+               },
+            ],
          },
       },
    },
