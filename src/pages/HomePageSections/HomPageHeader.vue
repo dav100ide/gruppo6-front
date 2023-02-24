@@ -64,8 +64,8 @@ import { store } from '../../store'
                 </div>
                 <div class="register">
                     <h5>o entra a far Parte della community</h5>
-                    <button class="reg">Registrati</button> <br>
-                    <small>se hai gia l'account <a href="" class="already-signed">Accedi ora</a></small>
+                    <a href="http://127.0.0.1:8000/register"><button class="reg">Registrati</button></a> <br>
+                    <small>se hai gia l'account <a href="http://127.0.0.1:8000/login" class="already-signed">Accedi ora</a></small>
                 </div>
             </div>
         </div>
@@ -169,6 +169,7 @@ import { store } from '../../store'
                 }
                 .already-signed{
                     color: white;
+                    text-decoration: underline;
                 }
             }
         }

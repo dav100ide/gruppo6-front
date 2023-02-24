@@ -57,7 +57,7 @@ import axios from 'axios';
                     <div class="ms-card" v-for="artist in artists">
                         <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                         <div class="card-img">
-                            <img :src="artist.foto" alt="">
+                            <img :src="artist.profile_photo" alt="foto da caricare">
                         </div>
                         <div class="card-data">
                             <h5>{{artist.artist_nickname }}</h5>
@@ -113,11 +113,12 @@ import axios from 'axios';
         width: 100%;
         height: 300px;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         flex-wrap: wrap;
     }
     .ms-card{
         width: calc(100%/5 - 25px);
+        
         height: 100%;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         margin-bottom: 50px;
@@ -207,8 +208,11 @@ import axios from 'axios';
     }
     @media screen and (max-width:768px){
         .ms-card{
-            width: calc(100%/2 - 10px)
+            width: calc(100%/2 - 10px);
+            margin-left: 0px;
+            margin-right:0px;
         }
+    
     }
     @media screen and (max-width:576px){
         .ms-card{
