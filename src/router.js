@@ -5,10 +5,13 @@ import HomePage from './pages/HomePage.vue';
 import SearchResultsPage from './pages/SearchResultsPage.vue';
 import ArtistPage from './pages/ArtistPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
+import axios from 'axios';
 
+/*==================================
+ le rotte di tutte le pagine importate
+ ====================================*/
 const router = createRouter({
    history: createWebHistory(),
-   //le rotte di tutte le pagine importate
    routes: [
       {
          path: '/',
@@ -27,13 +30,14 @@ const router = createRouter({
          name: 'artist-page',
          component: ArtistPage,
          beforeEnter: (to, from, next) => {
-            // qui effettuiamo una query al database per verificare se lo slug è valido
-            const isValidSlug = true; // true se lo slug è valido
-            if (isValidSlug) {
-               next();
-            } else {
-               next({ name: 'not-found-page' }); // indirizziamo l'utente alla pagina 404
-            }
+            axios
+               .get(`http://127.0.0.1:8000/api/artist/${to.params.slug}`)
+               .then(() => {
+                  next();
+               })
+               .catch(() => {
+                  next({ name: 'not-found-page' });
+               });
          },
       },
       {

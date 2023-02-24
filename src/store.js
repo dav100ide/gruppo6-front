@@ -4,5 +4,5 @@
 import { reactive } from 'vue';
 
 export const store = reactive({
-   artists: [],
+   artists: [], // forse artists sarà un array degli artisti che hanno pagato per lo sponsor
 });
