@@ -91,13 +91,6 @@ section {
    p {
       margin: 0;
    }
-   //quando c'è solo una card tech al breakpoint lg
-   @media (width > 992px) {
-      #only-tech {
-         width: 55%;
-         margin-left: auto;
-      }
-   }
 }
 .intro {
    color: var(--accent-color);
@@ -117,6 +110,13 @@ section {
    }
    &:hover &__title {
       color: var(--secondary-color);
+   }
+   //quando c'è solo una card tech al breakpoint lg
+   @media (width > 992px) {
+      &#only-tech {
+         width: 55%;
+         margin-left: auto;
+      }
    }
 }
 </style>

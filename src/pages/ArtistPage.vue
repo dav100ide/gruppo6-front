@@ -23,6 +23,9 @@
    <!-- about me section -->
    <MeSection :techniques="artist.techniques" :intro="artist.introduction_text" />
    <!-- /about me section -->
+   <!-- rating & review section -->
+   <RatingReviews />
+   <!-- /rating & review section -->
    <!-- /artist page -->
 </template>
 
@@ -30,7 +33,10 @@
 import TextTopColumn from './ArtistSections/TextTopColumn.vue';
 import TextBottomColumn from './ArtistSections/TextBottomColumn.vue';
 import ImgColumn from './ArtistSections/ImgColumn.vue';
+
 import MeSection from './ArtistSections/MeSection.vue';
+import RatingReviews from './ArtistSections/RatingReviews.vue';
+
 import { store } from '../store.js';
 import axios from 'axios';
 
@@ -40,6 +46,7 @@ export default {
       TextBottomColumn,
       TextTopColumn,
       MeSection,
+      RatingReviews,
    },
    data() {
       return {
