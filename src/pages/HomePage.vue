@@ -26,6 +26,9 @@ export default {
    <header>
       <HomPageHeader/>
    </header>
+   <main>
+      <HomePageMain/>
+   </main>
    <!--<ul>
       <li v-for="artist in artists">
          <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">

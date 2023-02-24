@@ -19,10 +19,10 @@ export default {
    },
    created() {
       axios
-         .get('http://127.0.0.1:8000/api/artists') //
-         .then((res) => {
-            store.artists = res.data;
-            console.log(store.artists[20].user);
+            .get('http://127.0.0.1:8000/api/artists') //
+            .then((res) => {
+            this.artists = res.data;
+            console.log(this.store.artists);
          });
    },
 };
@@ -47,9 +47,6 @@ export default {
                 <ul>
                     <li><RouterLink :to="{ name: 'home-page' }">Home</RouterLink></li>
                     <li>Esplora</li>
-                    <li><RouterLink :to="{ name: 'artist-page', params: { slug: 'mariane-thompson' } }">
-                        Artisti
-                     </RouterLink></li>
                     <li>profilo</li>
                 </ul>
             </div>
