@@ -47,26 +47,25 @@ import axios from 'axios';
 
 </script>
 
-<template>
-    <li v-for="artist in artists">
-         <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
-            {{ artist.artist_nickname }}
-         </RouterLink>
-    </li>     
+<template>   
     <div class="container">
         <section class="evidenza" :class="(this.activeMain==1 ? 'show':'')">
             <h2 id="discover">Scopri In Evidenza</h2>
             <div class="d-none d-sm-block">
                 <div class="sponsored-carusel ">
+
                     <div class="ms-card" v-for="artist in artists">
+                        <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                         <div class="card-img">
                             <img :src="artist.foto" alt="">
                         </div>
                         <div class="card-data">
                             <h5>{{artist.artist_nickname }}</h5>
                             <small>{{ artist.tecnica }}</small>
-                        </div>                 
-                    </div>             
+                        </div> 
+                        </RouterLink>                
+                    </div>    
+                             
                 </div>
             </div>
             <div class="">
@@ -78,7 +77,7 @@ import axios from 'axios';
                                     <img :src="artist.foto" alt="">
                                 </div>
                                 <div class="mobile-card-description">
-                                    <h4>{{ artist.name }} {{ artist.cognome }}</h4>
+                                    <h4>{{ artist.artist_nickname}}</h4>
                                     <small>{{ artist.tecnica }}</small>
                                 </div>
                                 <button  @click="forward" id="forward"><i class="fa-solid fa-chevron-right"></i></button>
@@ -118,7 +117,7 @@ import axios from 'axios';
         flex-wrap: wrap;
     }
     .ms-card{
-        width: calc(100%/6 - 25px);
+        width: calc(100%/5 - 25px);
         height: 100%;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         margin-bottom: 50px;
@@ -208,7 +207,7 @@ import axios from 'axios';
     }
     @media screen and (max-width:768px){
         .ms-card{
-            width: calc(100%/3 - 10px)
+            width: calc(100%/2 - 10px)
         }
     }
     @media screen and (max-width:576px){

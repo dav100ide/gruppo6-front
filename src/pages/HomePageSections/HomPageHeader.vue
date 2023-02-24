@@ -1,9 +1,11 @@
 <script>
+import { store } from '../../store'
     export default{
         data(){
             return{
                 activeSlide:2,
-                activeSearch:0
+                activeSearch:0,
+                store
 
             }
         },
@@ -23,11 +25,11 @@
             showSearchBar(){
                 let scroll = window.scrollY;
                 if(scroll>600){
-                    this.activeSearch=1;
+                    this.store.activeSearch=1;
                     document.getElementById('search-head').disabled = false;
                 
                 }else{
-                    this.activeSearch=0;
+                    this.store.activeSearch=0;
                     document.getElementById('search-head').disabled = true;
                 }
             }

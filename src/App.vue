@@ -37,7 +37,7 @@ export default {
             <div class="head-title">
                 | a place where you belong
             </div>
-            <div class="head-search" :class="(this.activeSearch==1 ? 'appear':'')">
+            <div class="head-search" :class="(this.store.activeSearch==1 ? 'appear':'')">
                 <form action=""  @submit.prevent >
                     <input type="text" placeholder="cerca.." id="search-head" >
                 </form>
@@ -126,6 +126,14 @@ export default {
    .head-logo{
       width: 6%;
    }
+   .head-search{
+        opacity: 0;
+        transition: 200ms ease-in;
+    }
+    .appear{
+       opacity: 1;
+       transition: 200ms ease-out;
+    }
    @media screen and (max-width:1200px){
       .head{
          padding:0px 10px;
