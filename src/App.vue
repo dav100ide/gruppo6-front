@@ -53,7 +53,6 @@ export default {
                     <li>profilo</li>
                 </ul>
             </div>
-            <RouterView />
             <div class="hamburger-menu d-md-none">
                 <i class="fa-solid fa-bars"></i>
             </div>
