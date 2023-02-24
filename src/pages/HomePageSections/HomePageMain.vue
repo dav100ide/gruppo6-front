@@ -7,7 +7,7 @@ import axios from 'axios';
             .get('http://127.0.0.1:8000/api/artists') //
             .then((res) => {
             this.artists = res.data;
-            console.log(this.artists);
+            console.log('artist main',this.artists);
          });
         },
         methods:{

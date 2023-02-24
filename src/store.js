@@ -4,6 +4,6 @@
 import { reactive } from 'vue';
 
 export const store = reactive({
-   artists: [],
+   artists:{},
    activeSearch:0,
 });
