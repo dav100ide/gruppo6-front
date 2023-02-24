@@ -1,5 +1,9 @@
 <template>
-   <section>Rating & Reviews</section>
+   <section>
+      <div class="container">
+         <h3>Recensioni</h3>
+      </div>
+   </section>
 </template>
 
 <script>
