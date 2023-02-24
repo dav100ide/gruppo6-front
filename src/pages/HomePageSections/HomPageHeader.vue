@@ -1,9 +1,11 @@
 <script>
+import { store } from '../../store'
     export default{
         data(){
             return{
                 activeSlide:2,
-                activeSearch:0
+                activeSearch:0,
+                store
 
             }
         },
@@ -23,11 +25,11 @@
             showSearchBar(){
                 let scroll = window.scrollY;
                 if(scroll>600){
-                    this.activeSearch=1;
+                    this.store.activeSearch=1;
                     document.getElementById('search-head').disabled = false;
                 
                 }else{
-                    this.activeSearch=0;
+                    this.store.activeSearch=0;
                     document.getElementById('search-head').disabled = true;
                 }
             }
@@ -42,33 +44,6 @@
 
 <template>
     <header>
-        <div class="head">
-            <div class="head-logo">
-                <img src="./HomePageAssets/logowhite.png" alt="">
-            </div>
-            <div class="head-title">
-                | a place where you belong
-            </div>
-            <div class="head-search" :class="(this.activeSearch==1 ? 'appear':'')">
-                <form action=""  @submit.prevent >
-                    <input type="text" placeholder="cerca.." id="search-head" >
-                </form>
-                
-            </div>
-            <div class="head-nav d-none d-md-block">
-                <ul>
-                    <li>Home</li>
-                    <li>Esplora</li>
-                    <li>Categorie</li>
-                    <li>Artisti</li>
-                    <li>About us</li>
-                    <li>profilo</li>
-                </ul>
-            </div>
-            <div class="hamburger-menu d-md-none">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
         <div class="image-carusel">
             <div class="slide active" :class="(this.activeSlide==0 ? 'active':'')">
                 <img src="./HomePageAssets/registazione.jpg" alt="">
@@ -85,17 +60,13 @@
                 <div>
                     <form @submit.prevent action="">
                         <input  type="text" placeholder="cosa stai cercando..">
-                    </form>
-                    
+                    </form>        
                 </div>
                 <div class="register">
                     <h5>o entra a far Parte della community</h5>
-                    <button class="reg">Registrati</button> <br>
-                    <small>se hai gia l'account <a href="" class="already-signed">Accedi ora</a></small>
+                    <a href="http://127.0.0.1:8000/register"><button class="reg">Registrati</button></a> <br>
+                    <small>se hai gia l'account <a href="http://127.0.0.1:8000/login" class="already-signed">Accedi ora</a></small>
                 </div>
-                
-                
-
             </div>
         </div>
     </header>
@@ -198,6 +169,7 @@
                 }
                 .already-signed{
                     color: white;
+                    text-decoration: underline;
                 }
             }
         }

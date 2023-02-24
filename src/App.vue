@@ -1,12 +1,13 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
+import HomePage from './pages/HomePage.vue'
 import AppFooter from './components/AppFooter.vue';
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
 import { store } from './store.js';
-
 export default {
    components: {
+      HomePage,
       AppHeader,
       AppFooter,
       AppMain,
@@ -16,17 +17,26 @@ export default {
          store,
       };
    },
+   created() {
+      axios
+            .get('http://127.0.0.1:8000/api/artists') //
+            .then((res) => {
+            this.artists = res.data;
+            console.log('store',store.artists)
+         });
+   },
 };
 </script>
 
 <template>
-   <!-- <HomePage/> -->
-   <AppMain />
+   <AppHeader/>
+   <router-view>
+   </router-view>
 </template>
 
 <style lang="scss">
 @import './style/global.scss';
 * {
    scroll-behavior: smooth;
-}
+} 
 </style>
