@@ -64,12 +64,19 @@ export default {
   },
   methods: {
     sendMessage() {
-      axios.post("http://127.0.0.1:8000/api/send-message", {
-        title: this.formData.title,
-        sender_email: this.formData.sender_email,
-        message_text: this.formData.message_text,
-        artist_id: this.formData.artist_id,
-      });
+      axios
+        .post("http://127.0.0.1:8000/api/send-message", {
+          artist_id: 22,
+          title: this.formData.title,
+          message_text: this.formData.message_text,
+          sender_email: this.formData.sender_email,
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.error(error.response.data);
+        });
     },
   },
 };
