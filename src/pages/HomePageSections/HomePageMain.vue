@@ -72,6 +72,7 @@ import axios from 'axios';
                 <div class="sponsored-mobile d-block d-sm-none">
                     <div class="mobile-carousel">
                         <div class="mobile-card" v-for="(artist, index) in artists" :class="(this.activeMobile==index ? 'show-mobile':'')">
+                            <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                             <div class="positioning">
                                 <div class="mobile-card-img">
                                     <img :src="artist.foto" alt="">
@@ -81,9 +82,9 @@ import axios from 'axios';
                                     <small>{{ artist.tecnica }}</small>
                                 </div>
                                 <button  @click="forward" id="forward"><i class="fa-solid fa-chevron-right"></i></button>
-                                <button @click="back" id="back"><i class="fa-solid fa-chevron-left"></i></button>
-                                
+                                <button @click="back" id="back"><i class="fa-solid fa-chevron-left"></i></button>    
                             </div>
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
@@ -113,12 +114,14 @@ import axios from 'axios';
         width: 100%;
         height: 300px;
         display: flex;
-        justify-content: space-around;
+        
+        justify-content: flex-start;
+        /*justify-content: space-between;*/
         flex-wrap: wrap;
     }
     .ms-card{
         width: calc(100%/5 - 25px);
-        
+        margin: 0px 12.5px;
         height: 100%;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         margin-bottom: 50px;
@@ -202,7 +205,13 @@ import axios from 'axios';
 
 
     @media screen and (max-width:1200px){
+
+        .sponsored-carusel{
+            justify-content: space-between;
+        }
         .ms-card{
+            margin:0px 0px;
+            margin-bottom: 50px;
             width: calc(100%/4 - 10px)
         }
     }
