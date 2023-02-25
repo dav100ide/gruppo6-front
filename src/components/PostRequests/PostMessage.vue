@@ -8,6 +8,7 @@
         type="text"
         maxlength="30"
         placeholder="Inserisci il titolo del Messaggio"
+        required
         v-model="formData.title"
       />
     </div>
@@ -19,6 +20,7 @@
         type="sender_email"
         maxlength="30"
         placeholder="Inserisci la tua email"
+        required
         v-model="formData.sender_email"
       />
     </div>
@@ -31,6 +33,7 @@
         rows="10"
         maxlength="1000"
         placeholder="Inserisci il messaggio"
+        required
         v-model="formData.message_text"
       ></textarea>
     </div>
@@ -66,7 +69,7 @@ export default {
     sendMessage() {
       axios
         .post("http://127.0.0.1:8000/api/send-message", {
-          artist_id: 22,
+          artist_id: this.formData.artist_id,
           title: this.formData.title,
           message_text: this.formData.message_text,
           sender_email: this.formData.sender_email,
