@@ -47,12 +47,6 @@ import { store } from "../../store";
 
 export default {
   name: "PostMessage",
-  props: {
-    artist_id: {
-      type: Number,
-      default: 0,
-    },
-  },
 
   data() {
     return {
@@ -61,10 +55,11 @@ export default {
         title: "",
         sender_email: "",
         message_text: "",
-        artist_id: this.artist_id,
+        artist_id: 0,
       },
     };
   },
+
   methods: {
     sendMessage() {
       axios
@@ -75,15 +70,33 @@ export default {
           sender_email: this.formData.sender_email,
         })
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data, "message sent");
         })
         .catch((error) => {
           console.error(error.response.data);
         });
+      //reset parametri di pagina dopo invio
+      this.formData.artist_id = 0;
+      this.formData.title = "";
+      this.formData.message_text = "";
+      this.formData.sender_email = "";
+      //redirect ad artist page di partenza
+      this.$router.push({ name: "artist-page", params: { slug: this.$route.params.slug } });
+      console.log("redirected from postmessage page");
     },
   },
+
   created() {
-    console.log("artist id: ", this.formData.artist_id);
+    axios
+      .get(`http://127.0.0.1:8000/api/artist-id/${this.$route.params.slug}`) //
+      .then((res) => {
+        this.formData.artist_id = res.data;
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          this.$router.push({ name: "not-found-page" });
+        }
+      });
   },
 };
 </script>

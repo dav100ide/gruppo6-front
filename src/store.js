@@ -8,7 +8,7 @@ export const store = reactive({
   activeSearch: 0,
 
   // dati per invio tramite form
-  rating_id: "", // rating da inviare tramite form
+  rating_id: 0, // rating da inviare tramite form
   review_title: "", // titolo recensione
   review_text: "", // testo recensione
 });

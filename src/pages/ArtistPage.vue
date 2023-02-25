@@ -50,8 +50,7 @@ export default {
   data() {
     return {
       artistSlug: this.$route.params.slug,
-      artist: {},
-      artist_id: "",
+      artist: "",
     };
   },
   created() {

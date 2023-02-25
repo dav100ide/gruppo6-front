@@ -20,19 +20,13 @@ export default {
     PostRating,
     PostReview,
   },
-  props: {
-    artist_id: {
-      type: Number,
-      default: 0,
-    },
-  },
 
   data() {
     return {
       store,
       formData: {
         rating_id: 0,
-        artist_id: this.artist_id,
+        artist_id: 0,
         title: "",
         review_text: "",
       },
@@ -41,15 +35,12 @@ export default {
   methods: {
     changeRating() {
       this.formData.rating_id = this.store.rating_id;
-      console.log(this.formData.rating_id);
     },
     changeTitle() {
       this.formData.title = this.store.review_title;
-      console.log(this.formData.title);
     },
     changeText() {
       this.formData.review_text = this.store.review_text;
-      console.log(this.formData.review_text);
     },
     postAll() {
       console.log(this.formData.artist_id);
@@ -61,14 +52,17 @@ export default {
           review_text: this.formData.review_text,
         })
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data, "review sent");
         })
         .catch((error) => {
           console.error(error.response.data);
         });
-      // resetto variabili utilizzate nello store
+      // resetto variabili utilizzate nello store e formData
       this.store.review_title = "";
+      this.changeTitle();
       this.store.review_text = "";
+      this.changeText();
+
       // se è stato selezionato un rating, lo posto
       if (this.formData.rating_id != "") {
         axios
@@ -77,18 +71,32 @@ export default {
             rating_id: this.formData.rating_id,
           })
           .then((res) => {
-            console.log(res.data);
+            console.log(res.data, "rating sent");
           })
           .catch((error) => {
             console.error(error.response.data);
           });
-        //resetto variabili utilizzate nello store
-        this.store.rating_id = "";
+        //resetto variabili utilizzate nello store e formData
+        this.store.rating_id = 0;
+        this.changeRating();
       }
+      //redirect ad artist page di partenza
+      this.$router.push({ name: "artist-page", params: { slug: this.$route.params.slug } });
+      console.log("redirected from ratingreview page");
     },
   },
   created() {
-    console.log("artist id: ", this.formData.artist_id);
+    axios
+      .get(`http://127.0.0.1:8000/api/artist-id/${this.$route.params.slug}`) //
+      .then((res) => {
+        this.formData.artist_id = res.data;
+        console.log(res.data);
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          this.$router.push({ name: "not-found-page" });
+        }
+      });
   },
 };
 </script>

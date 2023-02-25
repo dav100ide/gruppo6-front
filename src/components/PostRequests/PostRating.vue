@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <select name="rating" id="rating" @change="$emit('change-rating')" v-model="store.rating_id">
-      <option disabled value="">Seleziona Valutazione</option>
+      <option disabled value="0">Seleziona Valutazione</option>
       <option v-for="rating in ratings" :value="rating.id">
         {{ rating.rating }}
       </option>
