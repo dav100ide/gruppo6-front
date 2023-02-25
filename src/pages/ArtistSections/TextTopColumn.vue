@@ -18,6 +18,14 @@
             Mandami un Messaggio
           </router-link>
         </li>
+        <li>
+          <router-link
+            :to="{ name: 'rating-review-page', params: { slug: artist.slug } }"
+            :artist_id="artist.id"
+          >
+            Lascia una Recensione
+          </router-link>
+        </li>
       </ul>
     </nav>
     <!-- /desktop nav -->
@@ -66,6 +74,7 @@ export default {
     artist: {
       type: Object,
       default: {
+        id: "",
         artist_nickname: "defalut",
         introduction_text: "esse molestias. Et placeat ducimus dolorem tempore.",
         address: "Via Lio 58",

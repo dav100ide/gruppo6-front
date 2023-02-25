@@ -82,6 +82,9 @@ export default {
         });
     },
   },
+  created() {
+    console.log("artist id: ", this.formData.artist_id);
+  },
 };
 </script>
 

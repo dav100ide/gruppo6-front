@@ -1,19 +1,25 @@
 <template>
-  <select name="rating" id="rating" @change="$emit('changeRating', rating)" v-model="rating">
-    <option value="0">Seleziona Valutazione</option>
-    <option v-for="rating in ratings" :value="rating.rating_id">{{ rating.rating }} Star</option>
-  </select>
+  <div class="mt-5">
+    <select name="rating" id="rating" @change="$emit('change-rating')" v-model="store.rating_id">
+      <option disabled value="">Seleziona Valutazione</option>
+      <option v-for="rating in ratings" :value="rating.id">
+        {{ rating.rating }}
+      </option>
+    </select>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import { store } from "../../store";
+
 export default {
   name: "PostRating",
 
   data() {
     return {
+      store,
       ratings: [],
-      rating: "0",
     };
   },
 
