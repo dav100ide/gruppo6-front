@@ -8,6 +8,7 @@ import axios from 'axios';
             .then((res) => {
             this.artists = res.data;
             console.log('artist main',this.artists);
+
          });
         },
         methods:{
@@ -40,7 +41,8 @@ import axios from 'axios';
             return{
                 activeMain:0,
                 activeMobile:0,
-                artists:{}
+                artists:[],
+                toShow:[]
             }
         }
     }
