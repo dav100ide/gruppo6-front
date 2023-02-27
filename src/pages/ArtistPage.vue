@@ -13,7 +13,7 @@
             <!-- colonna img -->
             <!-- se profile_photo è null; ci sarà un errore in console,
                 ma non da fastidio alla visualizzazione perchè l'img con src 
-                null viene sostituito un v-else-->
+                null viene sostituito un v-elshttp://127.0.0.1:8000/admin/artists/createe-->
             <ImgColumn :img="artist.profile_photo" :alt="artist.artist_nickname" />
             <!-- /colonna img -->
          </div>
@@ -24,7 +24,7 @@
    <MeSection :techniques="artist.techniques" :intro="artist.introduction_text" />
    <!-- /about me section -->
    <!-- rating & review section -->
-   <RatingReviews :artist="artist" />
+   <RatingReviews :ratings="artist.ratings" :reviews="artist.reviews" />
    <!-- /rating & review section -->
    <!-- /artist page -->
 </template>
