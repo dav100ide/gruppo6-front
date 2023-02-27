@@ -2,14 +2,22 @@
    <section>
       <div class="container py-5">
          <h3>Recensioni (statico + layout di base)</h3>
-         <div class="stars-container">
+         <div class="stars__container">
             <div class="stars">
                <i v-for="i in 3" class="fa-solid fa-star"></i>
                <i v-for="i in 2" class="fa-regular fa-star"></i>
             </div>
          </div>
          <div class="container-fluid">
-            <div class="row"></div>
+            <div class="row">
+               <!-- review col -->
+               <div v-for="review in artist.reviews" class="col-12 col-md-6">
+                  <div class="review">
+                     {{ review.review_text }}
+                  </div>
+               </div>
+               <!-- /review col -->
+            </div>
          </div>
       </div>
    </section>
@@ -65,8 +73,5 @@ export default {
 <style lang="scss" scoped>
 section {
    background-color: var(--neutral-color-800);
-}
-
-.stars-container {
 }
 </style>
