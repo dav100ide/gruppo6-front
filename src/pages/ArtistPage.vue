@@ -1,6 +1,7 @@
 <template>
   <!-- artist page -->
   <!-- jumbo -->
+  <div style="padding-top: 50px;">
   <div class="artist-jumbo | pb-3 pb-lg-0">
     <div class="container-fluid">
       <div class="row">
@@ -27,6 +28,7 @@
   <RatingReviews />
   <!-- /rating & review section -->
   <!-- /artist page -->
+  </div>
 </template>
 
 <script>

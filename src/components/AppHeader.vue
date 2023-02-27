@@ -44,11 +44,12 @@ export default {
    }
 .head{
    color: white;
+
    position: fixed;
    z-index: 20;
-   top: 0;
    left: 0;
    right: 0;
+   top: 0px;
    height: 50px;
    padding: 0px 30px;
    /*background-color:#d9dbecda;*/
