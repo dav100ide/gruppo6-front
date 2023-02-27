@@ -110,7 +110,6 @@ section {
          font-size: 1.01rem;
       }
       p {
-         margin: 0;
          font-size: 1.2rem;
       }
    }
