@@ -8,6 +8,7 @@
         type="text"
         maxlength="30"
         placeholder="Inserisci il titolo del Messaggio"
+        required
         v-model="formData.title"
       />
     </div>
@@ -19,6 +20,7 @@
         type="sender_email"
         maxlength="30"
         placeholder="Inserisci la tua email"
+        required
         v-model="formData.sender_email"
       />
     </div>
@@ -31,6 +33,7 @@
         rows="10"
         maxlength="1000"
         placeholder="Inserisci il messaggio"
+        required
         v-model="formData.message_text"
       ></textarea>
     </div>
@@ -44,12 +47,6 @@ import { store } from "../../store";
 
 export default {
   name: "PostMessage",
-  props: {
-    artist_id: {
-      type: Number,
-      default: 0,
-    },
-  },
 
   data() {
     return {
@@ -58,26 +55,48 @@ export default {
         title: "",
         sender_email: "",
         message_text: "",
-        artist_id: this.artist_id,
+        artist_id: 0,
       },
     };
   },
+
   methods: {
     sendMessage() {
       axios
         .post("http://127.0.0.1:8000/api/send-message", {
-          artist_id: 22,
+          artist_id: this.formData.artist_id,
           title: this.formData.title,
           message_text: this.formData.message_text,
           sender_email: this.formData.sender_email,
         })
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data, "message sent");
         })
         .catch((error) => {
           console.error(error.response.data);
         });
+      //reset parametri di pagina dopo invio
+      this.formData.artist_id = 0;
+      this.formData.title = "";
+      this.formData.message_text = "";
+      this.formData.sender_email = "";
+      //redirect ad artist page di partenza
+      this.$router.push({ name: "artist-page", params: { slug: this.$route.params.slug } });
+      console.log("redirected from postmessage page");
     },
+  },
+
+  created() {
+    axios
+      .get(`http://127.0.0.1:8000/api/artist-id/${this.$route.params.slug}`) //
+      .then((res) => {
+        this.formData.artist_id = res.data;
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          this.$router.push({ name: "not-found-page" });
+        }
+      });
   },
 };
 </script>

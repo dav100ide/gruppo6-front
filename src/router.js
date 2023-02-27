@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage.vue";
 import SearchResultsPage from "./pages/SearchResultsPage.vue";
 import ArtistPage from "./pages/ArtistPage.vue";
 import PostMessage from "./components/PostRequests/PostMessage.vue";
+import RatingReviewPage from "./pages/RatingReviewPage.vue";
 import NotFoundPage from "./pages/NotFoundPage.vue";
 import axios from "axios";
 
@@ -45,6 +46,11 @@ const router = createRouter({
       path: "/artist/:slug/send-message",
       name: "send-message-page",
       component: PostMessage,
+    },
+    {
+      path: "/artist/:slug/rating-review",
+      name: "rating-review-page",
+      component: RatingReviewPage,
     },
     {
       path: "/:pathMatch(.*)*",

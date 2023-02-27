@@ -37,7 +37,6 @@ import ImgColumn from "./ArtistSections/ImgColumn.vue";
 import MeSection from "./ArtistSections/MeSection.vue";
 import RatingReviews from "./ArtistSections/RatingReviews.vue";
 
-import { store } from "../store.js";
 import axios from "axios";
 
 export default {
@@ -51,8 +50,7 @@ export default {
   data() {
     return {
       artistSlug: this.$route.params.slug,
-      artist: {},
-      artist_id: "",
+      artist: "",
     };
   },
   created() {
