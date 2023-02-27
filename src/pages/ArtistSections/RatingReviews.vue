@@ -2,19 +2,24 @@
    <section>
       <div class="ms-container p-5">
          <!-- valutazione stars -->
-         <div v-if="ratings" class="stars mb-3">
+         <div v-if="ratings.length !== 0" class="stars mb-3">
             <div class="stars__text">Valutazione media:</div>
             <div class="stars__icons">
                <i v-for="i in starsNumber" class="fa-solid fa-star"></i>
                <i v-for="i in 5 - starsNumber" class="fa-regular fa-star"></i>
             </div>
          </div>
+         <h3 v-else>Nessuna Valutazione..</h3>
          <!-- /valutazione stars -->
          <!-- ATTENZIONE a seedare il db, altrimenti: negli artisti creati a mano; artist.ratings è un array VUOTO perciò qnd vue ci cicla sopra, non stampa nemmeno il compo  -->
          <div class="container-fluid">
             <div class="row g-4">
                <!-- review col -->
-               <div v-if="reviews" v-for="review in reviews" class="col-12 col-md-6 col-xl-4">
+               <div
+                  v-if="reviews.length !== 0"
+                  v-for="review in reviews"
+                  class="col-12 col-md-6 col-xl-4"
+               >
                   <div class="review">
                      <h4>{{ review.title }}</h4>
                      <p>{{ review.review_text }}</p>
@@ -24,7 +29,7 @@
                   </div>
                </div>
                <!-- /review col -->
-               <div v-else>nessuna review</div>
+               <h3 v-else>nessuna review...</h3>
             </div>
          </div>
       </div>
