@@ -1,9 +1,10 @@
 <template>
    <section>
-      <div class="container py-5">
-         <h3>Recensioni (statico + layout di base)</h3>
-         <div class="stars__container">
-            <div class="stars">
+      <div class="ms-container p-5">
+         <h3 class="mb-3">Recensioni (statico + layout di base)</h3>
+         <div class="stars mb-3">
+            <div class="stars__text">Valutazione media:</div>
+            <div class="stars__icons">
                <i v-for="i in 3" class="fa-solid fa-star"></i>
                <i v-for="i in 2" class="fa-regular fa-star"></i>
             </div>
@@ -11,7 +12,7 @@
          <div class="container-fluid">
             <div class="row">
                <!-- review col -->
-               <div v-for="review in artist.reviews" class="col-12 col-md-6">
+               <div v-for="review in artist.reviews" class="col-12 col-md-6 col-lg-4">
                   <div class="review">
                      {{ review.review_text }}
                   </div>
@@ -73,5 +74,25 @@ export default {
 <style lang="scss" scoped>
 section {
    background-color: var(--neutral-color-800);
+   .ms-container {
+      max-width: 110rem;
+      margin: 0 auto;
+      h3 {
+         color: var(--secondary-color);
+      }
+   }
+
+   .stars {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1.5rem;
+      gap: 0.5rem;
+      &__icons {
+         color: var(--accent-color);
+         & i:not(:last-child) {
+            margin-inline-end: 0.3rem;
+         }
+      }
+   }
 }
 </style>
