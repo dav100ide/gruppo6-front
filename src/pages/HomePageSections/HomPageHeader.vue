@@ -58,8 +58,8 @@ import { store } from '../../store'
                 <h2 id="inspire">Lasciati Ispirare</h2>
                 <h3 id="discover">Scopri i nostri artisti</h3>
                 <div>
-                    <form @submit.prevent action="">
-                        <input  type="text" placeholder="cosa stai cercando..">
+                    <form action="">
+                        <input  type="text" placeholder="cosa stai cercando.." v-bind="this.toSearch">
                     </form>        
                 </div>
                 <div class="register">

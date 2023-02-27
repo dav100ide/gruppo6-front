@@ -16,8 +16,8 @@
             <div class="head-nav d-none d-md-block">
                 <ul>
                     <li><RouterLink :to="{ name: 'home-page' }">Home</RouterLink></li>
-                    <li>Esplora</li>
-                    <li>profilo</li>
+                    <li><RouterLink :to="{ name: 'search-results-page' }">Eslora</RouterLink></li>
+                    <li><a href="http://127.0.0.1:8000/admin/dashboard"> Profilo</a> </li>
                 </ul>
             </div>
             <div class="hamburger-menu d-md-none">
