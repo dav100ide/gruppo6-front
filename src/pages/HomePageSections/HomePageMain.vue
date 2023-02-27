@@ -1,15 +1,27 @@
 <script>
 import axios from 'axios';
+
     export default{
         created(){
+            let temp;
+            let toShow=[];
             window.addEventListener("scroll",this.showMain);
             axios
             .get('http://127.0.0.1:8000/api/artists') //
             .then((res) => {
-            this.artists = res.data;
-            console.log('artist main',this.artists);
-
+            temp=res.data;
+            this.sto
+            for (let index = 0; index < temp.length; index++) {
+                let control=[]
+                control=temp[index].sponsors;
+                if (control[0]!=undefined) {
+                    toShow.push(temp[index])
+                }
+            }
+            this.artists=toShow;
          });
+         
+         
         },
         methods:{
             forward(){
@@ -42,7 +54,6 @@ import axios from 'axios';
                 activeMain:0,
                 activeMobile:0,
                 artists:[],
-                toShow:[]
             }
         }
     }

@@ -1,11 +1,9 @@
 <template>
    <header>
       <div class="head">
-            <RouterLink :to="{ name: 'home-page' } " id="home-logo">
                <div class="head-logo">
                   <img src="../pages/HomePageSections/HomePageAssets/logowhite.png" alt="">
                </div>
-            </RouterLink>
             <div class="head-title">
                 | a place where you belong
             </div>
