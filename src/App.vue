@@ -18,12 +18,12 @@ export default {
       };
    },
    created() {
-      axios
-            .get('http://127.0.0.1:8000/api/artists') //
-            .then((res) => {
-            this.artists = res.data;
-            console.log('store',store.artists)
-         });
+      //axios
+        //    .get('http://127.0.0.1:8000/api/artists') //
+          //  .then((res) => {
+            //this.art = res.data;
+            
+         //});
    },
 };
 </script>
@@ -32,6 +32,7 @@ export default {
    <AppHeader/>
    <router-view>
    </router-view>
+
 </template>
 
 <style lang="scss">

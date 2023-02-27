@@ -1,9 +1,9 @@
 <template>
    <header>
       <div class="head">
-            <div class="head-logo">
-                <img src="../pages/HomePageSections/HomePageAssets/logowhite.png" alt="">
-            </div>
+               <div class="head-logo">
+                  <img src="../pages/HomePageSections/HomePageAssets/logowhite.png" alt="">
+               </div>
             <div class="head-title">
                 | a place where you belong
             </div>
@@ -39,13 +39,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+   #home-logo{
+      width: 6%;
+   }
 .head{
    color: white;
+
    position: fixed;
    z-index: 20;
-   top: 0;
    left: 0;
    right: 0;
+   top: 0px;
    height: 50px;
    padding: 0px 30px;
    /*background-color:#d9dbecda;*/

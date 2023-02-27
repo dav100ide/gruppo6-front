@@ -11,7 +11,7 @@ export default {
    data() {
       return {
          api_url: 'http://127.0.0.1:8000/api/artists',
-         artists: [],
+         artists:[],
       };
    },
    // Chiamata per lista degli artisti, popola this.artists con la risposta dell'api
