@@ -95,6 +95,7 @@ section {
          border-bottom: 1px solid var(--neutral-color-600);
       }
       h5 {
+         margin-bottom: 0;
          margin-left: auto;
          margin-top: auto;
          font-style: italic;
