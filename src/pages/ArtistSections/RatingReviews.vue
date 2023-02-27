@@ -1,7 +1,16 @@
 <template>
    <section>
-      <div class="container">
-         <h3>Recensioni</h3>
+      <div class="container py-5">
+         <h3>Recensioni (statico + layout di base)</h3>
+         <div class="stars-container">
+            <div class="stars">
+               <i v-for="i in 3" class="fa-solid fa-star"></i>
+               <i v-for="i in 2" class="fa-regular fa-star"></i>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row"></div>
+         </div>
       </div>
    </section>
 </template>
@@ -56,5 +65,8 @@ export default {
 <style lang="scss" scoped>
 section {
    background-color: var(--neutral-color-800);
+}
+
+.stars-container {
 }
 </style>
