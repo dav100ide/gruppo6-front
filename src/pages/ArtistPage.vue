@@ -75,7 +75,7 @@ export default {
       color: var(--neutral-color-200);
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      min-height: calc(100vh - var(--header-height));
 
       @media (width < 992px) {
          min-height: auto;
