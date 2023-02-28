@@ -24,6 +24,7 @@
                   maxlength="30"
                   placeholder="Email"
                   required
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   v-model="formData.sender_email"
                />
             </div>

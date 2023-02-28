@@ -1,12 +1,10 @@
 <template>
    <section class="h-100">
       <div class="container-md px-3 py-5">
-         <div class="top-bar">
-            <h3 class="mb-4">
-               Scrivi un messaggio a <strong>{{ nickname }}</strong>
-            </h3>
-            <PostMessage />
-         </div>
+         <h3 class="mb-4">
+            Scrivi un messaggio a <strong>{{ nickname }}</strong>
+         </h3>
+         <PostMessage />
       </div>
    </section>
 </template>
