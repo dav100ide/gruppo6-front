@@ -7,6 +7,7 @@
             artista page (PATH NON DINAMICO) pk l'ho scritto a mano
          </RouterLink>
          <RouterLink :to="{ name: 'search-results-page' }">SearchResultsPage</RouterLink>
+         <a href="http://127.0.0.1:8000/">laravel home-page</a>
       </nav>
       <hr />
       <RouterView />
