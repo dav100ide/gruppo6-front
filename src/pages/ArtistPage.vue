@@ -25,7 +25,7 @@
       <MeSection :techniques="artist.techniques" :intro="artist.introduction_text" />
       <!-- /about me section -->
       <!-- rating & review section -->
-      <RatingReviews />
+      <RatingReviews :ratings="artist.ratings" :reviews="artist.reviews" />
       <!-- /rating & review section -->
       <!-- /artist page -->
    </div>

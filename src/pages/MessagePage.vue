@@ -1,6 +1,6 @@
 <template>
-   <h1>pagina message</h1>
    <PostMessage />
+   <h1>pagina message</h1>
 </template>
 
 <script>
