@@ -30,10 +30,12 @@ export default {
 .col-12.img-column {
    img {
       width: 100%;
-      height: calc(100vh - var(--header-height));
       object-position: center;
       object-fit: cover;
       border-radius: 1rem;
+      @media (width > 992px) {
+         height: calc(100vh - var(--header-height));
+      }
    }
    @media (width > 992px) {
       padding: 0;
