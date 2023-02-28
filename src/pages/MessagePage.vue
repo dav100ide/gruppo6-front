@@ -1,5 +1,5 @@
 <template>
-   <PostMessage />
+   <PostMessage class="p-4" />
    <h1>pagina message</h1>
 </template>
 

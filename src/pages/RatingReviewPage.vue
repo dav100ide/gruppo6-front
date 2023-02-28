@@ -1,5 +1,5 @@
 <template>
-   <div class="bg-light">
+   <div class="bg-light p-4">
       <form @submit.prevent="postAll()">
          <PostRating @change-rating="changeRating()" />
          <PostReview @change-title="changeTitle()" @change-text="changeText()" />
@@ -106,7 +106,6 @@ export default {
 
 <style lang="scss" scoped>
 h5 {
-   padding-bottom: 909vh;
    background-color: green;
 }
 </style>
