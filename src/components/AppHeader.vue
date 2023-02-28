@@ -51,7 +51,7 @@ header.head {
    background-color: rgb(0, 0, 0);
    display: flex;
    align-items: center;
-   box-shadow: var(--secondary-color) 0px -7px 28px;
+   box-shadow: var(--secondary-color) 0px -13px 27px;
 
    .head-logo {
       display: flex;
