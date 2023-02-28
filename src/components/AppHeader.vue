@@ -1,7 +1,9 @@
 <template>
    <header class="head">
       <div class="head-logo">
-         <img src="../pages/HomePageSections/HomePageAssets/logowhite.png" alt="" />
+         <RouterLink :to="{ name: 'home-page' }">
+            <img src="../pages/HomePageSections/HomePageAssets/logowhite.png" alt="logo" />
+         </RouterLink>
       </div>
       <div class="head-title">| a place where you belong</div>
       <div class="head-search" :class="this.store.activeSearch == 1 ? 'appear' : ''">
