@@ -1,46 +1,51 @@
 <template>
    <form @submit.prevent="sendMessage()">
-      <div class="mt-3">
-         <label for="title">Titolo</label>
-         <input
-            class="form-control"
-            id="title"
-            type="text"
-            maxlength="30"
-            placeholder="Inserisci il titolo del Messaggio"
-            required
-            v-model="formData.title"
-         />
-      </div>
+      <div class="container-fluid">
+         <div class="row g-3 mb-3">
+            <div class="col-12 col-md-6">
+               <label for="title">Titolo</label>
+               <input
+                  class="form-control"
+                  id="title"
+                  type="text"
+                  maxlength="30"
+                  placeholder="Titolo"
+                  required
+                  v-model="formData.title"
+               />
+            </div>
 
-      <div class="mt-3">
-         <label for="sender_email">Email</label>
-         <input
-            class="form-control"
-            id="sender_email"
-            type="sender_email"
-            maxlength="30"
-            placeholder="Inserisci la tua email"
-            required
-            v-model="formData.sender_email"
-         />
-      </div>
+            <div class="col-12 col-md-6">
+               <label for="sender_email">Email</label>
+               <input
+                  class="form-control"
+                  id="sender_email"
+                  type="sender_email"
+                  maxlength="30"
+                  placeholder="Email"
+                  required
+                  v-model="formData.sender_email"
+               />
+            </div>
 
-      <div class="mt-3">
-         <label for="message_text">Messaggio</label>
-         <textarea
-            class="form-control"
-            id="message_text"
-            cols="30"
-            rows="10"
-            maxlength="1000"
-            placeholder="Inserisci il messaggio"
-            required
-            v-model="formData.message_text"
-         ></textarea>
+            <div class="col-12">
+               <label for="message_text">Messaggio</label>
+               <textarea
+                  class="form-control h-100"
+                  id="message_text"
+                  cols="30"
+                  rows="10"
+                  maxlength="1000"
+                  placeholder="Messaggio"
+                  required
+                  v-model="formData.message_text"
+               ></textarea>
+            </div>
+         </div>
       </div>
-
-      <button type="submit" class="btn btn-primary mt-3">Invia Messaggio</button>
+      <div class="btn-box">
+         <button type="submit" class="button-28">Invia Messaggio</button>
+      </div>
    </form>
 </template>
 
@@ -104,4 +109,32 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.col-12:has(textarea) {
+   min-height: 25rem;
+}
+
+:is(input, textarea):focus {
+   box-shadow: 2px 2px var(--accent-color);
+}
+
+label {
+   display: none;
+}
+
+.form-control {
+   padding: 1.3rem;
+   border-radius: 1.5625rem;
+   font-size: 1.2rem;
+   color: var(--neutral-color-100);
+   &::placeholder {
+      color: var(--neutral-color-200);
+      font-style: italic;
+   }
+}
+
+.btn-box {
+   display: flex;
+   justify-content: flex-end;
+}
+</style>

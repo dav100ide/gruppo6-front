@@ -22,5 +22,12 @@ form {
    .form-control {
       background-color: var(--neutral-color-800);
       color: var(--neutral-color-200);
+      border: 0;
+      &:focus {
+         background-color: var(--neutral-color-800);
+         color: var(--neutral-color-200);
+         border: 0;
+         outline: 0;
+      }
    }
 }
