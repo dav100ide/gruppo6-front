@@ -14,3 +14,13 @@ a {
       color: inherit;
    }
 }
+
+/*-------------------
+    bs form RESET
+-------------------*/
+form {
+   .form-control {
+      background-color: var(--neutral-color-800);
+      color: var(--neutral-color-200);
+   }
+}

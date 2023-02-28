@@ -38,12 +38,12 @@
                {{ navLink.linkName }}
             </a>
          </li>
-         <li>
+         <li class="py-3">
             <router-link :to="{ name: 'send-message-page', params: { slug: artist.slug } }">
                Mandami un Messaggio
             </router-link>
          </li>
-         <li>
+         <li class="py-3">
             <router-link :to="{ name: 'rating-review-page', params: { slug: artist.slug } }">
                Lascia una Recensione
             </router-link>
@@ -96,7 +96,7 @@ nav.d-none ul {
 
 #hamburger-menu {
    position: fixed;
-   top: 0;
+   top: var(--header-height);
    left: -70%;
    // min-height: 100vh;
    width: 45%;
