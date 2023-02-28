@@ -40,7 +40,7 @@ export default {
 
 <template>
    <section>
-      <div class="image-carusel">
+      <div class="image-carusel h-100">
          <div class="slide active" :class="this.activeSlide == 0 ? 'active' : ''">
             <img src="./HomePageAssets/registazione.jpg" alt="" />
          </div>
@@ -68,6 +68,12 @@ export default {
 </template>
 
 <style scoped lang="scss">
+section {
+   height: 80vh;
+   @media (width > 1200px) {
+      height: calc(100vh - var(--header-height));
+   }
+}
 .head {
    color: white;
    position: fixed;
