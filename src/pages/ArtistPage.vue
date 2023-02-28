@@ -1,34 +1,32 @@
 <template>
    <!-- artist page -->
    <!-- jumbo -->
-   <div style="padding-top: 50px">
-      <div class="artist-jumbo | pb-3 pb-lg-0">
-         <div class="container-fluid">
-            <div class="row">
-               <!-- colonna scritte -->
-               <div class="col-12 col-lg-6 | text-column">
-                  <TextTopColumn :artist="artist" />
-                  <TextBottomColumn :artist="artist" />
-               </div>
-               <!-- /colonna scritte -->
-               <!-- colonna img -->
-               <!-- se profile_photo è null; ci sarà un errore in console,
+   <div class="artist-jumbo | pb-3 pb-lg-0">
+      <div class="container-fluid">
+         <div class="row">
+            <!-- colonna scritte -->
+            <div class="col-12 col-lg-6 | text-column">
+               <TextTopColumn :artist="artist" />
+               <TextBottomColumn :artist="artist" />
+            </div>
+            <!-- /colonna scritte -->
+            <!-- colonna img -->
+            <!-- se profile_photo è null; ci sarà un errore in console,
                 ma non da fastidio alla visualizzazione perchè l'img con src 
                 null viene sostituito un v-else-->
-               <ImgColumn :img="artist.profile_photo" :alt="artist.artist_nickname" />
-               <!-- /colonna img -->
-            </div>
+            <ImgColumn :img="artist.profile_photo" :alt="artist.artist_nickname" />
+            <!-- /colonna img -->
          </div>
       </div>
-      <!-- /jumbo -->
-      <!-- about me section -->
-      <MeSection :techniques="artist.techniques" :intro="artist.introduction_text" />
-      <!-- /about me section -->
-      <!-- rating & review section -->
-      <RatingReviews :ratings="artist.ratings" :reviews="artist.reviews" />
-      <!-- /rating & review section -->
-      <!-- /artist page -->
    </div>
+   <!-- /jumbo -->
+   <!-- about me section -->
+   <MeSection :techniques="artist.techniques" :intro="artist.introduction_text" />
+   <!-- /about me section -->
+   <!-- rating & review section -->
+   <RatingReviews :ratings="artist.ratings" :reviews="artist.reviews" />
+   <!-- /rating & review section -->
+   <!-- /artist page -->
 </template>
 
 <script>
