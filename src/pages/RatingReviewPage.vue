@@ -45,7 +45,7 @@ export default {
     postAll() {
       console.log(this.formData.artist_id);
       // se c'è, posto la review
-      if (this.formData.title != "" && this.formData.review_text != "")
+      if (this.formData.title != "" && this.formData.review_text != "") {
         axios
           .post("http://127.0.0.1:8000/api/send-review", {
             artist_id: this.formData.artist_id,
@@ -58,6 +58,7 @@ export default {
           .catch((error) => {
             console.error(error.response.data);
           });
+      }
       // resetto variabili utilizzate nello store e formData
       this.store.review_title = "";
       this.changeTitle();
