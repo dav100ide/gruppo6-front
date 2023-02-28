@@ -44,19 +44,20 @@ export default {
     },
     postAll() {
       console.log(this.formData.artist_id);
-      // posto la review
-      axios
-        .post("http://127.0.0.1:8000/api/send-review", {
-          artist_id: this.formData.artist_id,
-          title: this.formData.title,
-          review_text: this.formData.review_text,
-        })
-        .then((res) => {
-          console.log(res.data, "review sent");
-        })
-        .catch((error) => {
-          console.error(error.response.data);
-        });
+      // se c'è, posto la review
+      if (this.formData.title != "" && this.formData.review_text != "")
+        axios
+          .post("http://127.0.0.1:8000/api/send-review", {
+            artist_id: this.formData.artist_id,
+            title: this.formData.title,
+            review_text: this.formData.review_text,
+          })
+          .then((res) => {
+            console.log(res.data, "review sent");
+          })
+          .catch((error) => {
+            console.error(error.response.data);
+          });
       // resetto variabili utilizzate nello store e formData
       this.store.review_title = "";
       this.changeTitle();
