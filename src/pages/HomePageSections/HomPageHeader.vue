@@ -57,11 +57,6 @@ import { store } from '../../store'
             <div class="home-search">
                 <h2 id="inspire">Lasciati Ispirare</h2>
                 <h3 id="discover">Scopri i nostri artisti</h3>
-                <div>
-                    <form action="">
-                        <input  type="text" placeholder="cosa stai cercando.." v-bind="this.toSearch">
-                    </form>        
-                </div>
                 <div class="register">
                     <h5>o entra a far Parte della community</h5>
                     <a href="http://127.0.0.1:8000/register"><button class="reg">Registrati</button></a> <br>
@@ -142,7 +137,7 @@ import { store } from '../../store'
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         .home-search{
             border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.347);
+            background-color: rgba(0, 0, 0, 0.194);
             padding: 20px;
             top: calc(30% - 50px);
             
