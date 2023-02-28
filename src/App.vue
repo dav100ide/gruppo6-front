@@ -1,6 +1,6 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-import HomePage from './pages/HomePage.vue'
+import HomePage from './pages/HomePage.vue';
 import AppFooter from './components/AppFooter.vue';
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
@@ -19,25 +19,24 @@ export default {
    },
    created() {
       //axios
-        //    .get('http://127.0.0.1:8000/api/artists') //
-          //  .then((res) => {
-            //this.art = res.data;
-            
-         //});
+      //    .get('http://127.0.0.1:8000/api/artists') //
+      //  .then((res) => {
+      //this.art = res.data;
+      //});
    },
 };
 </script>
 
 <template>
-   <AppHeader/>
-   <router-view>
-   </router-view>
-
+   <AppHeader />
+   <main>
+      <router-view> </router-view>
+   </main>
 </template>
 
 <style lang="scss">
 @import './style/global.scss';
 * {
    scroll-behavior: smooth;
-} 
+}
 </style>
