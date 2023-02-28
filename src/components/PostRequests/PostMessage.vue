@@ -115,7 +115,8 @@ export default {
 }
 
 :is(input, textarea):focus {
-   box-shadow: 2px 2px var(--accent-color);
+   box-shadow: 2px 2px var(--accent-color) !important;
+   //important pk sovrascrivo bootstrap
 }
 
 label {
