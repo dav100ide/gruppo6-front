@@ -1,6 +1,6 @@
 <template>
    <!-- colonna scritte parte superiore -->
-   <div class="text-column__top mt-3">
+   <div class="text-column__top mt-4">
       <h3 class="mb-0 mb-md-3">{{ artist.artist_nickname }}</h3>
       <!-- desktop nav -->
       <nav class="d-none d-lg-block">

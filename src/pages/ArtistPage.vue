@@ -71,11 +71,11 @@ export default {
 <style lang="scss" scoped>
 .artist-jumbo {
    background-color: var(--neutral-color-600);
+   min-height: calc(100vh - var(--header-height));
    .text-column {
       color: var(--neutral-color-200);
       display: flex;
       flex-direction: column;
-      min-height: calc(100vh - var(--header-height));
 
       @media (width < 992px) {
          min-height: auto;

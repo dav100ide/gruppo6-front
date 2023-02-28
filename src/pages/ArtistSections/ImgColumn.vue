@@ -30,7 +30,7 @@ export default {
 .col-12.img-column {
    img {
       width: 100%;
-      height: 100%;
+      height: calc(100vh - var(--header-height));
       object-position: center;
       object-fit: cover;
       border-radius: 1rem;
