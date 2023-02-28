@@ -4,32 +4,30 @@ import HomePageMain from './HomePageSections/HomePageMain.vue';
 import HomPageHeader from './HomePageSections/HomPageHeader.vue';
 
 export default {
-   components:{
+   components: {
       HomePageMain,
-      HomPageHeader
+      HomPageHeader,
    },
    data() {
       return {
          api_url: 'http://127.0.0.1:8000/api/artists',
-         artists:[],
+         artists: [],
       };
    },
    // Chiamata per lista degli artisti, popola this.artists con la risposta dell'api
    created() {
       axios.get(this.api_url).then((res) => {
          this.artists = res.data;
-         console.log('artist homepage',this.artists)
+         console.log('artist homepage', this.artists);
       });
    },
 };
 </script>
 <template>
-   <header>
-      <HomPageHeader/>
-   </header>
-   <main>
-      <HomePageMain/>
-   </main>
+   <HomPageHeader />
+
+   <HomePageMain />
+
    <!--<ul>
       <li v-for="artist in artists">
          <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
@@ -39,15 +37,8 @@ export default {
    </ul>-->
 </template>
 
-
-
-
 <style lang="scss" scoped>
-   header{
-        margin-bottom: 60px;
-   }
-   main{
-    height: 100vh;
-   }
-
+main {
+   height: 100vh;
+}
 </style>
