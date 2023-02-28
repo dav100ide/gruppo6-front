@@ -5,7 +5,8 @@
          <form action="">
             <input type="text" name="" id="search-all" placeholder="cosa stai cercando">
          </form>
-         <div class="all-section">
+         
+         <div class="all-section" v-if="this.toSearch==''">
             <div class="single-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                <div class="ex-card-img">
@@ -35,6 +36,7 @@ export default {
       return{
          sponsored:[],
          all:[],
+         toSearch:''
       }
    },
    created(){
