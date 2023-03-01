@@ -89,6 +89,12 @@ h3 {
 }
 nav.d-none ul {
    @include horizontal-list(1rem);
+   li {
+      transition: color;
+      &:hover {
+         color: var(--accent-color);
+      }
+   }
 }
 #hamburger {
    //stile hamburger che forse sarà un fontawesome anzichè un button
