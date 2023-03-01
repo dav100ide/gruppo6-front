@@ -1,6 +1,11 @@
 <template>
    <section>
       <div class="container-md px-3 py-5">
+         <div class="top-bar mb-3">
+            <h3>
+               Lascia una Recensione a <strong>{{ artistName }}</strong>
+            </h3>
+         </div>
          <form @submit.prevent="postAll()">
             <PostRating @change-rating="changeRating()" />
             <PostReview @change-title="changeTitle()" @change-text="changeText()" />
@@ -102,6 +107,15 @@ export default {
             }
          });
    },
+
+   computed: {
+      artistName() {
+         //prendo il nome artista senza la chiamata axios, prendo lo slug dall'url e lo trasformo
+         const slug = this.$route.params.slug;
+         const words = slug.split('-');
+         return words.join(' ');
+      },
+   },
 };
 </script>
 
@@ -111,6 +125,9 @@ section {
    h3 {
       color: var(--secondary-color);
       margin: 0;
+      strong {
+         text-transform: capitalize;
+      }
    }
 }
 </style>
