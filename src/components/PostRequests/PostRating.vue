@@ -1,35 +1,25 @@
 <template>
-   <div>
-      <select name="rating" id="rating" @change="$emit('change-rating')" v-model="store.rating_id">
-         <option disabled value="0">Seleziona Valutazione</option>
-         <option v-for="rating in ratings" :value="rating.id">
-            {{ rating.rating }}
-         </option>
-      </select>
+   <!-- stelline -->
+   <div class="stars">
+      <label v-for="(rating, i) in ratings" :key="i">
+         <input
+            type="radio"
+            name="rating"
+            :value="rating.id"
+            @change="$emit('change-rating')"
+            v-model="store.rating_id"
+            @click="activeStars = rating.id"
+         />
+         <div
+            class="star"
+            @mouseover="activeStars = rating.id"
+            @mouseleave="activeStars = store.rating_id"
+         >
+            <i class="fa-solid fa-star" :class="{ active: rating.id <= activeStars }"></i>
+         </div>
+      </label>
    </div>
-   <div class="text-right">
-      <!-- stelline -->
-      <div class="stars">
-         <label v-for="(rating, i) in ratings" :key="i">
-            <input
-               type="radio"
-               name="rating"
-               :value="rating.id"
-               @change="$emit('change-rating')"
-               v-model="store.rating_id"
-               @click="activeStars = rating.id"
-            />
-            <div
-               class="star"
-               @mouseover="activeStars = rating.id"
-               @mouseleave="activeStars = store.rating_id"
-            >
-               <i class="fa-solid fa-star" :class="{ active: rating.id <= activeStars }"></i>
-            </div>
-         </label>
-      </div>
-      <!-- /stelline -->
-   </div>
+   <!-- /stelline -->
 </template>
 
 <script>
