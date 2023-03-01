@@ -9,7 +9,6 @@
                type="text"
                maxlength="30"
                placeholder="Inserisci il titolo della Recensione"
-               required
                v-model="store.review_title"
                @keyup="$emit('change-title')"
             />
@@ -24,7 +23,6 @@
                rows="10"
                maxlength="1000"
                placeholder="Inserisci Recensione"
-               required
                v-model="store.review_text"
                @keyup="$emit('change-text')"
             >
