@@ -15,10 +15,13 @@
             </select>
             <button id="filter" @click="Filter">filtra</button>
          
+         <ExploreSculp v-if="this.searchOption=='sculp'"/>   
          <ExploreMusician v-if="this.searchOption=='music'"/>   
          <ExploreDirector v-if="this.searchOption=='movie'"/>   
          <ExplorePhoto v-if="this.searchOption=='photo'"/>
          <ExplorePainter v-if="this.searchOption=='paint'"/>
+         <ExploreVideoMake v-if="this.searchOption=='video'"/>
+         <ExploreActor v-if="this.searchOption=='actor'"/>
          <div class="all-section" v-if="this.toSearch==''&&this.searchOption=='all'">
             <div class="single-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
@@ -48,14 +51,20 @@ import ExploreDirector from './ExploreSection/ExploreDirector.vue'
 import ExplorePhoto from './ExploreSection/ExplorePhoto.vue';
 import ExplorePainter from './ExploreSection/ExplorePainter.vue';
 import ExploreMusician from './ExploreSection/ExploreMusician.vue';
+import ExploreSculp from './ExploreSection/ExploreSculp.vue';
+import ExploreVideoMake from './ExploreSection/ExploreVideoMake.vue';
+import ExploreActor from './ExploreSection/ExploreActor.vue';
 import axios from 'axios';
 export default {
    components:{
-      ExploreMusician,
-      ExploreDirector,
-      ExplorePhoto,
-      ExplorePainter,
-   },
+    ExploreSculp,
+    ExploreMusician,
+    ExploreDirector,
+    ExplorePhoto,
+    ExplorePainter,
+    ExploreVideoMake,
+    ExploreActor
+},
    methods:{
       Filter(){
          let what=document.getElementById('search-option').value;
