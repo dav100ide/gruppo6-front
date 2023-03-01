@@ -119,4 +119,22 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+section {
+   background-color: var(--neutral-color-600);
+   h3 {
+      color: var(--secondary-color);
+      margin: 0;
+      strong {
+         text-transform: capitalize;
+      }
+   }
+
+   .top-bar {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+   }
+}
+</style>
