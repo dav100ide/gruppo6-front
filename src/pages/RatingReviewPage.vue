@@ -1,12 +1,13 @@
 <template>
-   <div class="bg-light p-4">
-      <form @submit.prevent="postAll()">
-         <PostRating @change-rating="changeRating()" />
-         <PostReview @change-title="changeTitle()" @change-text="changeText()" />
-         <button type="submit" class="btn btn-primary mt-3">Invia</button>
-      </form>
-   </div>
-   <h5>prova</h5>
+   <section>
+      <div class="container-md px-3 py-5">
+         <form @submit.prevent="postAll()">
+            <PostRating @change-rating="changeRating()" />
+            <PostReview @change-title="changeTitle()" @change-text="changeText()" />
+            <button type="submit" class="button-28">Invia</button>
+         </form>
+      </div>
+   </section>
 </template>
 
 <script>
@@ -105,7 +106,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h5 {
-   background-color: green;
+section {
+   background-color: var(--neutral-color-600);
+   h3 {
+      color: var(--secondary-color);
+      margin: 0;
+   }
 }
 </style>
