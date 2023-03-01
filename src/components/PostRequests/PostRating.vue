@@ -7,6 +7,29 @@
          </option>
       </select>
    </div>
+   <div class="text-right">
+      <!-- stelline -->
+      <div class="stars">
+         <label v-for="(rating, i) in ratings" :key="i">
+            <input
+               type="radio"
+               name="rating"
+               :value="rating.id"
+               @change="$emit('change-rating')"
+               v-model="store.rating_id"
+               @click="activeStars = rating.id"
+            />
+            <div
+               class="star"
+               @mouseover="activeStars = rating.id"
+               @mouseleave="activeStars = store.rating_id"
+            >
+               <i class="fa-solid fa-star" :class="{ active: rating.id <= activeStars }"></i>
+            </div>
+         </label>
+      </div>
+      <!-- /stelline -->
+   </div>
 </template>
 
 <script>
@@ -20,6 +43,7 @@ export default {
       return {
          store,
          ratings: [],
+         activeStars: 0,
       };
    },
 
@@ -32,6 +56,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.stars {
+   font-size: 2.5rem;
+   label {
+      display: inline;
+   }
+   input[type='radio'] {
+      display: none;
+   }
+   .star {
+      display: inline-block;
+      margin-inline-end: 0.5rem;
+      &:hover {
+         color: var(--accent-color);
+      }
+      .active {
+         color: var(--accent-color);
+      }
+   }
+}
+
 :is(input, textarea):focus {
    box-shadow: 2px 2px var(--accent-color) !important;
    //important pk sovrascrivo bootstrap

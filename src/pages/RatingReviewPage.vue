@@ -5,9 +5,9 @@
             <h3>
                Lascia una Recensione a <strong>{{ artistName }}</strong>
             </h3>
+            <PostRating @change-rating="changeRating()" />
          </div>
          <form @submit.prevent="postAll()">
-            <PostRating @change-rating="changeRating()" />
             <PostReview @change-title="changeTitle()" @change-text="changeText()" />
             <button type="submit" class="button-28">Invia</button>
          </form>
@@ -128,6 +128,13 @@ section {
       strong {
          text-transform: capitalize;
       }
+   }
+
+   .top-bar {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      align-items: center;
    }
 }
 </style>
