@@ -2,11 +2,21 @@
    <div style="padding-top: 50px;">
       <div class="container">
          <h2>Esplora</h2>
-         <form action="">
             <input type="text" name="" id="search-all" placeholder="cosa stai cercando">
-         </form>
+            <select name="" id="search-option">
+               <option value="all">Tutti</option>
+               <option value="photo">Fotografo</option>
+               <option value="paint">Pittore</option>
+               <option value="movie">Regista</option>
+               <option value="music">Musicista</option>
+               <option value="sculp">Scultore</option>
+               <option value="video">VideoMaker</option>
+               <option value="actor">Attore</option>
+            </select>
+            <button id="filter" @click="Filter">filtra</button>
          
-         <div class="all-section" v-if="this.toSearch==''">
+         <ExplorePhoto v-if="this.searchOption=='photo'"/>
+         <div class="all-section" v-if="this.toSearch==''&&this.searchOption=='all'">
             <div class="single-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                <div class="ex-card-img">
@@ -30,13 +40,26 @@
 </template>
 
 <script>
+import ExplorePhoto from './ExploreSection/ExplorePhoto.vue';
 import axios from 'axios';
 export default {
+   components:{
+      ExplorePhoto,
+   },
+   methods:{
+      Filter(){
+         let what=document.getElementById('search-option').value;
+         this.searchOption=what;
+         console.log(this.searchOption)
+      }
+   },
    data(){
       return{
+         
          sponsored:[],
          all:[],
-         toSearch:''
+         toSearch:'',
+         searchOption:'all',
       }
    },
    created(){
@@ -44,33 +67,37 @@ export default {
       let temp=[];
       axios.get('http://127.0.0.1:8000/api/artists') //
       .then((res) => {
-      
-      temp=res.data;
-      for (let index = 0; index < temp.length; index++) {
-            let control=[]
-            control=temp[index].sponsors;
-            if (control[0]!=undefined) {
-               temp2.push(temp[index]);
-            }
-      }
-      console.log('temp2',temp2)
-      
-   });
-   this.sponsored=temp2;
-    console.log('temp',this.sponsored)
-    
-    axios.get('http://127.0.0.1:8000/api/artists') //
-      .then((res) => {
-         this.all=res.data;
-         console.log('all',this.all)
+         temp=res.data;
+         for (let index = 0; index < temp.length; index++) {
+               let control=[]
+               control=temp[index].sponsors;
+               if (control[0]!=undefined) {
+                  temp2.push(temp[index]);
+               }
+         }
+         console.log('temp2',temp2)
       });
-   }
-};
+      this.sponsored=temp2;
+      console.log('temp',this.sponsored)
+      axios.get('http://127.0.0.1:8000/api/artists') //
+         .then((res) => {
+            this.all=res.data;
+            console.log('all',this.all)
+         });
+      },};
+
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+   #search-option{
+      margin-right: 5px;
+   }
+   #filter{
+      padding: 2px 5px;
+   }
    #search-all{
       margin-bottom: 30px;
+      margin-right: 20px;
       width: 300px;
       border-radius: 5px;
       padding:0px 5px;
