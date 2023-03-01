@@ -104,8 +104,10 @@ nav.d-none ul {
    box-shadow: rgba(0, 0, 0, 0.8) 5px 5px 15px;
    text-align: center;
    transition: left 0.4s linear;
+   font-size: 1.2rem;
    li:hover {
-      background-color: var(--secondary-color);
+      background-color: var(--primary-color-300);
+      color: var(--secondary-color);
    }
    &.active {
       @media (width < 992px) {
