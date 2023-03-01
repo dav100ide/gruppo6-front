@@ -15,12 +15,16 @@
             </select>
             <button id="filter" @click="Filter">filtra</button>
          
+         <ExploreMusician v-if="this.searchOption=='music'"/>   
+         <ExploreDirector v-if="this.searchOption=='movie'"/>   
          <ExplorePhoto v-if="this.searchOption=='photo'"/>
+         <ExplorePainter v-if="this.searchOption=='paint'"/>
          <div class="all-section" v-if="this.toSearch==''&&this.searchOption=='all'">
             <div class="single-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                <div class="ex-card-img">
                   <img :src="artist.profile_photo" alt=" foto da caricare">
+                  <!--<img src="https://source.unsplash.com/random?sig=1" alt="" v-if="artist.profile_photo==null">-->
                </div>
                <div class="card-data">
                   <h5 class="ex-card-name">
@@ -40,11 +44,17 @@
 </template>
 
 <script>
+import ExploreDirector from './ExploreSection/ExploreDirector.vue'
 import ExplorePhoto from './ExploreSection/ExplorePhoto.vue';
+import ExplorePainter from './ExploreSection/ExplorePainter.vue';
+import ExploreMusician from './ExploreSection/ExploreMusician.vue';
 import axios from 'axios';
 export default {
    components:{
+      ExploreMusician,
+      ExploreDirector,
       ExplorePhoto,
+      ExplorePainter,
    },
    methods:{
       Filter(){
