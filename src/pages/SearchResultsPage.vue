@@ -3,6 +3,7 @@
       <div class="container">
          <h2>Esplora</h2>
             <input type="text" name="" id="search-all" placeholder="cosa stai cercando">
+            <button id="search" @click="Search">cerca</button>
             <select name="" id="search-option">
                <option value="all">Tutti</option>
                <option value="photo">Fotografo</option>
@@ -69,7 +70,30 @@ export default {
       Filter(){
          let what=document.getElementById('search-option').value;
          this.searchOption=what;
-         console.log(this.searchOption)
+         this.toSearch='';
+      },
+      Search(){
+         this.searchOption='all'
+         let results=[];
+         document.getElementById('search-option').value='all';
+         let what=document.getElementById('search-all').value;
+         this.toSearch=what;
+         console.log('to search',what)
+         document.getElementById('search-all').value='';
+         axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
+            let look=res.data;
+            console.log('tolok',look)
+            for (let index = 0; index < look.length; index++) {
+               const nickname = look[index].artist_nickname;
+               const name= look[index].user.name;
+               const surname = look[index].user.surname;
+               if(nickname==this.toSearch || name==this.toSearch || surname==this.toSearch){
+                  results.push(look[index]);
+               }
+            
+            }
+            console.log('look',results);
+         });
       }
    },
    data(){
@@ -79,6 +103,7 @@ export default {
          all:[],
          toSearch:'',
          searchOption:'all',
+         toLook:{}
       }
    },
    created(){
@@ -108,6 +133,10 @@ export default {
 </script>
 
 <style lang="scss">
+   #search{
+      margin-right: 20px;
+      padding: 2px 5px;
+   }
    #search-option{
       margin-right: 5px;
    }
@@ -116,7 +145,7 @@ export default {
    }
    #search-all{
       margin-bottom: 30px;
-      margin-right: 20px;
+      margin-right: 5px;
       width: 300px;
       border-radius: 5px;
       padding:0px 5px;
