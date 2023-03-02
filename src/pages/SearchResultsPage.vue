@@ -2,20 +2,26 @@
    <div style="padding-top: 50px;">
       <div class="container">
          <h2>Esplora</h2>
-            <input type="text" name="" id="search-all" placeholder="cosa stai cercando">
-            <button id="search" @click="Search">cerca</button>
-            <select name="" id="search-option">
-               <option value="all">Tutti</option>
-               <option value="photo">Fotografo</option>
-               <option value="paint">Pittore</option>
-               <option value="movie">Regista</option>
-               <option value="music">Musicista</option>
-               <option value="sculp">Scultore</option>
-               <option value="video">VideoMaker</option>
-               <option value="actor">Attore</option>
-            </select>
-            <button id="filter" @click="Filter">filtra</button>
-         
+            <div class="searching-row">
+               <div class="left-search">
+                  <input type="text" name="" id="search-all" placeholder="cosa stai cercando">
+                  <button id="search" @click="Search">cerca</button>
+               </div>
+               <div class="right-search">
+                  <select name="" id="search-option">
+                     <option value="all">Tutti</option>
+                     <option value="photo">Fotografo</option>
+                     <option value="paint">Pittore</option>
+                     <option value="movie">Regista</option>
+                     <option value="music">Musicista</option>
+                     <option value="sculp">Scultore</option>
+                     <option value="video">VideoMaker</option>
+                     <option value="actor">Attore</option>
+                  </select>
+                  <button id="filter" @click="Filter">filtra</button>
+               </div>
+            </div>
+            
          <ExploreSculp v-if="this.searchOption=='sculp'"/>   
          <ExploreMusician v-if="this.searchOption=='music'"/>   
          <ExploreDirector v-if="this.searchOption=='movie'"/>   
@@ -23,6 +29,25 @@
          <ExplorePainter v-if="this.searchOption=='paint'"/>
          <ExploreVideoMake v-if="this.searchOption=='video'"/>
          <ExploreActor v-if="this.searchOption=='actor'"/>
+         <section class="search-result" v-if="toLook.length!=0">
+            <div class="result-card" v-for="result in toLook">
+               <div class="result-img">
+                  <img :src="result.profile_photo" alt="foto da caricare">
+               </div>
+               <div class="result-data">
+                  <h2>{{ result.artist_nickname }}</h2>
+                  <div>{{ result.user.name }} {{ result.user.surname }}</div>
+               </div>
+               <div class="link-page">
+                  <RouterLink :to="{ name: 'artist-page', params: { slug: result.slug } }">
+                     <div id="link-text">Visita il profilo</div>
+                  </RouterLink>
+               </div>
+            </div>
+         </section>
+         <div class="failed-search" v-if="failed===true">
+            <h1>Non ho trovato l'artista che cercavi ,riprova</h1>
+         </div>
          <div class="all-section" v-if="this.toSearch==''&&this.searchOption=='all'">
             <div class="single-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
@@ -73,16 +98,14 @@ export default {
          this.toSearch='';
       },
       Search(){
+         this.failed=false;
          this.searchOption='all'
          let results=[];
          document.getElementById('search-option').value='all';
          let what=document.getElementById('search-all').value;
          this.toSearch=what;
-         console.log('to search',what)
-         document.getElementById('search-all').value='';
          axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
             let look=res.data;
-            console.log('tolok',look)
             for (let index = 0; index < look.length; index++) {
                const nickname = look[index].artist_nickname;
                const name= look[index].user.name;
@@ -90,9 +113,16 @@ export default {
                if(nickname==this.toSearch || name==this.toSearch || surname==this.toSearch){
                   results.push(look[index]);
                }
-            
             }
-            console.log('look',results);
+            if(results.length==0 && document.getElementById('search-all').value!=''){
+               this.failed=true;
+               this.toSearch='';
+            }else{
+               this.toSearch='';
+               document.getElementById('search-all').value='';
+            }
+            this.toLook=results;
+            console.log('tolok',this.toLook)
          });
       }
    },
@@ -103,7 +133,8 @@ export default {
          all:[],
          toSearch:'',
          searchOption:'all',
-         toLook:{}
+         toLook:[],
+         failed:false
       }
    },
    created(){
@@ -133,6 +164,34 @@ export default {
 </script>
 
 <style lang="scss">
+   .failed-search{
+      margin-bottom: 50px;
+   }
+   #link-test{
+      text-decoration: underline;
+   }
+   .result-card{
+      height: 300px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+   }
+   .result-img{
+      width: 20%;
+      height: 100%;
+      background-color: red;
+      margin-right: 30px;
+      img{
+         width: 100%;
+         height: 100%;
+      }
+   }
+   .result-data{
+      margin-right: 50px;
+      h2{
+         font-size: 3rem;
+      }
+   }
    #search{
       margin-right: 20px;
       padding: 2px 5px;
@@ -181,6 +240,13 @@ export default {
          height: 100%;
          object-fit: cover;
       }
+   }
+   .searching-row{
+      display: flex;
+      
+   }
+   .left-search{
+      flex-grow: 1;
    }
 
 </style>
