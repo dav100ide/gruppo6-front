@@ -29,7 +29,7 @@
          <ExplorePainter v-if="this.searchOption=='paint'"/>
          <ExploreVideoMake v-if="this.searchOption=='video'"/>
          <ExploreActor v-if="this.searchOption=='actor'"/>
-         <section class="search-result" v-if="toLook.length!=0">
+         <section class="search-result" v-if="toLook.length!=0 && searchOptionActive==false">
             <div class="result-card" v-for="result in toLook">
                <div class="result-img">
                   <img :src="result.profile_photo" alt="foto da caricare">
@@ -95,6 +95,9 @@ export default {
       Filter(){
          let what=document.getElementById('search-option').value;
          this.searchOption=what;
+         if(this.searchOption!='all'){
+            this.searchOptionActive=true;
+         }
          this.toSearch='';
       },
       Search(){
@@ -103,13 +106,14 @@ export default {
          let results=[];
          document.getElementById('search-option').value='all';
          let what=document.getElementById('search-all').value;
-         this.toSearch=what;
+         this.toSearch=what.toUpperCase();
+         console.log(this.toSearch)
          axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
             let look=res.data;
             for (let index = 0; index < look.length; index++) {
-               const nickname = look[index].artist_nickname;
-               const name= look[index].user.name;
-               const surname = look[index].user.surname;
+               const nickname = look[index].artist_nickname.toUpperCase();
+               const name= look[index].user.name.toUpperCase();
+               const surname = look[index].user.surname.toUpperCase();
                if(nickname==this.toSearch || name==this.toSearch || surname==this.toSearch){
                   results.push(look[index]);
                }
@@ -134,7 +138,8 @@ export default {
          toSearch:'',
          searchOption:'all',
          toLook:[],
-         failed:false
+         failed:false,
+         searchOptionActive:false
       }
    },
    created(){
