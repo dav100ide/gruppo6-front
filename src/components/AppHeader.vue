@@ -14,7 +14,7 @@
       <div class="head-nav d-none d-md-block">
          <ul>
             <li><RouterLink :to="{ name: 'home-page' }">Home</RouterLink></li>
-            <li><RouterLink :to="{ name: 'search-results-page' }">Eslora</RouterLink></li>
+            <li><RouterLink :to="{ name: 'search-results-page' }">Esplora</RouterLink></li>
             <li><a href="http://127.0.0.1:8000/admin/dashboard"> Profilo</a></li>
          </ul>
       </div>
@@ -89,6 +89,9 @@ header.head {
          li {
             list-style: none;
             cursor: pointer;
+            &:hover {
+               color: var(--accent-color);
+            }
          }
       }
    }
