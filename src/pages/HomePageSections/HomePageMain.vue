@@ -59,8 +59,9 @@ export default {
    <div class="container py-4">
       <section class="evidenza" :class="this.activeMain == 1 ? 'show' : ''">
          <h2 id="discover">Scopri In Evidenza</h2>
+         <!-- griglia cards desktop -->
          <div class="d-none d-sm-block">
-            <div class="sponsored-carusel">
+            <div class="ms-grid">
                <!-- card desktop -->
                <div class="ms-card" v-for="artist in artists">
                   <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
@@ -105,6 +106,8 @@ export default {
                <!-- /card desktop -->
             </div>
          </div>
+         <!-- /griglia cards desktop -->
+
          <div class="">
             <div class="sponsored-mobile d-block d-sm-none">
                <!-- carosello mobile  -->
@@ -154,7 +157,7 @@ h2 {
    font-size: 2.2rem;
    margin-bottom: 30px;
 }
-.sponsored-carusel {
+.ms-grid {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
    grid-auto-rows: 410px;
@@ -165,33 +168,33 @@ h2 {
    @media (width < 768px) {
       grid-auto-rows: 310px;
    }
-}
-.ms-card {
-   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-   h5 {
-      margin-bottom: 0;
-   }
-   .card-img {
-      width: 100%;
-      height: 75%;
-      img {
+   .ms-card {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      h5 {
+         margin-bottom: 0;
+      }
+      .card-img {
          width: 100%;
-         height: 100%;
-         object-fit: cover;
-         @media (width > 567px) {
-            object-position: 50% 6%;
+         height: 75%;
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            @media (width > 567px) {
+               object-position: 50% 6%;
+            }
          }
       }
-   }
-   .card-data {
-      height: 25%;
-      padding: 0px 10px;
-      &__techniques {
-         ul {
-            @include horizontal-list;
-            flex-wrap: wrap;
-            li {
-               padding: 0.2rem;
+      .card-data {
+         height: 25%;
+         padding: 0px 10px;
+         &__techniques {
+            ul {
+               @include horizontal-list;
+               flex-wrap: wrap;
+               li {
+                  padding: 0.2rem;
+               }
             }
          }
       }
@@ -259,11 +262,6 @@ h2 {
    }
 }
 
-@media screen and (max-width: 1200px) {
-   .sponsored-carusel {
-      justify-content: space-between;
-   }
-}
 @media screen and (max-width: 576px) {
    #discover {
       font-size: 1.7rem;
