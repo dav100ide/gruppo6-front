@@ -114,6 +114,7 @@ header.head {
    width: 30%;
    li {
       font-size: 1.3rem;
+      z-index: 2;
    }
 }
 .head-logo {
