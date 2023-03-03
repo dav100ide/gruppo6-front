@@ -13,9 +13,56 @@
         methods:{
             Filter(){
                 let review=document.getElementById('reviews-num').value;
+                if(review==''){
+                    review=0;
+                }
                 let rating=document.getElementById('rating').value;
+                if(rating==''){
+                    rating=0;
+                }
                 this.minRating=rating;
+                console.log('minratain',this.minRating)
                 this.minReviews=review;
+                let temp=[];
+                let filtrati=[];
+                let controllati=[];
+                axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
+                    temp=res.data;
+                    console.log('temp hprto',temp);
+                    for (let index = 0; index < temp.length; index++) {
+                        let ItIS=false;
+                        const element = temp[index].techniques;
+                        for (let index = 0; index < element.length; index++) {
+                            let tech =element[index].name
+                            if(tech=='Attore'){
+                                ItIS=true;
+                            }
+                        }
+                        if (ItIS) {
+                            filtrati.push(temp[index])
+                        }
+                    }
+                    console.log(filtrati);
+                    
+                    for (let index = 0; index < filtrati.length; index++) {
+                        let na=filtrati[index].ratings;
+                        console.log('naa',na)
+                        let rate=0;
+                        for (let index = 0; index < na.length; index++) {
+                            rate+= na[index].rating;
+                        }
+                        rate= Math.round(rate / na.length);
+                        console.log('rate avarage di personaggio numero',index,'  ',rate)
+                        console.log('filtrati reviews',filtrati[index].reviews.length)
+                        if(rate>=this.minRating && filtrati[index].reviews.length>=this.minReviews){
+                            controllati.push(filtrati[index]);
+                        }
+                    
+                    }
+                    console.log('veri filtrati',controllati)
+                    this.Actors=controllati;
+                });
+                
             }
         },
         created(){
@@ -59,7 +106,7 @@
     
     <div class="all-section">
         <div class="single-card" v-for="(artist ,index) in Actors" >
-            <div  class="seen-card" v-if="artist.reviews.length>=this.minReviews">
+            <div  class="seen-card" >
                 <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                     <div class="ex-card-img">
                         <img src="" alt="foto da caricare">
@@ -107,6 +154,7 @@
         border: none;
         margin:0px 15px;
         border-bottom: 1px solid white;
+        color: white;
     }
     #filter{
         background-color: transparent;
