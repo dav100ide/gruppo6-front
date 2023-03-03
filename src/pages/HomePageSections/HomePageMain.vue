@@ -243,6 +243,7 @@ h2 {
 }
 #back,
 #forward {
+   z-index: 5;
    transition: color ease-in 0.35s;
    &:hover {
       color: var(--accent-color);
@@ -271,6 +272,7 @@ h2 {
 .show-mobile {
    opacity: 1;
    transition: 300ms ease-out;
+   z-index: 3;
 }
 .mobile-card-description {
    padding: 10px 20px;
