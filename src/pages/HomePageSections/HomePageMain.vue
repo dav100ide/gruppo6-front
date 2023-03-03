@@ -143,7 +143,6 @@ export default {
                         </div>
                         <div class="mobile-card-description">
                            <h4>{{ artist.artist_nickname }}</h4>
-                           <small>{{ artist.tecnica }}</small>
                         </div>
                      </div>
                   </RouterLink>
