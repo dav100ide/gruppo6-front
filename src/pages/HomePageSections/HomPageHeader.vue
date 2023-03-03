@@ -138,7 +138,7 @@ section {
    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
    .home-search {
       border-radius: 5px;
-      background-color: rgba(0, 0, 0, 0.194);
+      background-color: rgba(0, 0, 0, 0.63);
       padding: 20px;
       top: calc(30% - 50px);
 
