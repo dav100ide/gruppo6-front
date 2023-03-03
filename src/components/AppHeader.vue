@@ -1,5 +1,5 @@
 <template>
-   <header class="head">
+   <header class="head" id="header">
       <div class="head-logo">
          <RouterLink :to="{ name: 'home-page' }">
             <img src="../pages/HomePageSections/HomePageAssets/logowhite.png" alt="logo" />

@@ -31,7 +31,7 @@ footer {
       position: absolute;
       right: 0;
       top: 0;
-      translate: -110% 15px;
+      translate: -50% 15px;
    }
 }
 </style>
