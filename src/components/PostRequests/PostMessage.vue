@@ -48,6 +48,11 @@
          <button type="submit" class="button-28">Invia Messaggio</button>
       </div>
    </form>
+   <!-- offcanvas: pop up message -->
+   <div v-if="popUpVisible" id="pop-up" class="rounded-5">
+      <h1>{{ popUpMessage }}</h1>
+   </div>
+   <!-- /offcanvas: pop up message -->
 </template>
 
 <script>
@@ -66,6 +71,8 @@ export default {
             message_text: '',
             artist_id: 0,
          },
+         popUpMessage: 'default message should not be visible to final users',
+         popUpVisible: false,
       };
    },
 
@@ -79,19 +86,31 @@ export default {
                sender_email: this.formData.sender_email,
             })
             .then((res) => {
-               console.log(res.data, 'message sent');
+               //assegno il contenuto del popUpMessaggio e la visibiltà
+               this.popUpMessage = 'Messaggio inviato con successo!';
+               this.popUpVisible = true;
+               // reset form data and redirect after 1.5 seconds
+               setTimeout(() => {
+                  this.resetFormData();
+                  this.redirectToArtistPage();
+               }, 1500);
             })
             .catch((error) => {
-               console.error(error.response.data);
+               // set error message and show pop-up on error
+               this.message = error.response.data;
+               this.showMessage = true;
             });
+      },
+      resetFormData() {
          //reset parametri di pagina dopo invio
          this.formData.artist_id = 0;
          this.formData.title = '';
          this.formData.message_text = '';
          this.formData.sender_email = '';
+      },
+      redirectToArtistPage() {
          //redirect ad artist page di partenza
          this.$router.push({ name: 'artist-page', params: { slug: this.$route.params.slug } });
-         console.log('redirected from postmessage page');
       },
    },
 
@@ -138,5 +157,18 @@ label {
 .btn-box {
    display: flex;
    justify-content: flex-end;
+}
+
+#pop-up {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: var(--primary-color);
+   color: var(--accent-color);
+   z-index: 100;
+   box-shadow: 0 0 20px 10px var(--primary-color);
+   padding: 8rem 5rem;
+   width: 80%;
 }
 </style>
