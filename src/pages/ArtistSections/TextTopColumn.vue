@@ -5,10 +5,11 @@
       <!-- desktop nav -->
       <nav class="d-none d-lg-block">
          <ul>
-            <li v-for="navLink in navLinks">
-               <a :href="navLink.href">
-                  {{ navLink.linkName }}
-               </a>
+            <li>
+               <a href="#me-section">Chi Sono</a>
+            </li>
+            <li>
+               <a href="#rating-reviews">Recensione</a>
             </li>
             <li>
                <router-link :to="{ name: 'send-message-page', params: { slug: artist.slug } }">
@@ -33,11 +34,13 @@
    <!-- offcanvas: hambuger menu -->
    <nav id="hamburger-menu" :class="{ active: menuOpen }">
       <ul>
-         <li class="py-3" v-for="navLink in navLinks">
-            <a :href="navLink.href">
-               {{ navLink.linkName }}
-            </a>
+         <li class="py-3" @click="menuOpen = !menuOpen">
+            <a href="#me-section">Chi Sono</a>
          </li>
+         <li class="py-3" @click="menuOpen = !menuOpen">
+            <a href="#rating-reviews">Recensione</a>
+         </li>
+
          <li class="py-3">
             <router-link :to="{ name: 'send-message-page', params: { slug: artist.slug } }">
                Mandami un Messaggio
@@ -63,16 +66,6 @@ export default {
    data() {
       return {
          menuOpen: false,
-         navLinks: [
-            {
-               href: '#',
-               linkName: 'Chi sono',
-            },
-            {
-               href: '#',
-               linkName: 'Recensioni',
-            },
-         ],
       };
    },
    created() {},
@@ -97,6 +90,7 @@ nav.d-none ul {
 }
 
 #hamburger-menu {
+   z-index: 99;
    position: fixed;
    top: var(--header-height);
    left: -70%;

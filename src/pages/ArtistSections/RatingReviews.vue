@@ -1,5 +1,5 @@
 <template>
-   <section>
+   <section id="rating-reviews">
       <div class="ms-container p-5">
          <!-- valutazione stars -->
          <div v-if="ratings.length !== 0" class="stars mb-3">
@@ -64,6 +64,7 @@ export default {
 <style lang="scss" scoped>
 section {
    background-color: var(--neutral-color-800);
+   scroll-padding-top: 50px;
    .ms-container {
       max-width: 110rem;
       margin: 0 auto;
