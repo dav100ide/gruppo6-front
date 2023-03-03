@@ -172,5 +172,6 @@ label {
    text-align: center;
    text-transform: uppercase;
    line-height: 1.1;
+   box-shadow: 0 0 15px 10px var(--neutral-color-200);
 }
 </style>

@@ -69,7 +69,19 @@ export default {
                   review_text: this.formData.review_text,
                })
                .then((res) => {
-                  console.log(res.data, 'review sent');
+                  //assegno il contenuto del popUpMessaggio e la visibiltà
+                  this.popUpMessage = 'Recensione Inviata con successo!';
+                  this.popUpVisible = true;
+                  //redirect ad artist page di partenza dopo 1.5sec
+                  setTimeout(() => {
+                     //resetto variabili utilizzate nello store e formData
+                     this.store.rating_id = 0;
+                     this.changeRating();
+                     this.$router.push({
+                        name: 'artist-page',
+                        params: { slug: this.$route.params.slug },
+                     });
+                  }, 1500);
                })
                .catch((error) => {
                   console.error(error.response.data);
@@ -103,7 +115,6 @@ export default {
                      //resetto variabili utilizzate nello store e formData
                      this.store.rating_id = 0;
                      this.changeRating();
-
                      this.$router.push({
                         name: 'artist-page',
                         params: { slug: this.$route.params.slug },
@@ -176,5 +187,6 @@ section {
    text-align: center;
    text-transform: uppercase;
    line-height: 1.1;
+   box-shadow: 0 0 15px 10px var(--neutral-color-200);
 }
 </style>
