@@ -11,6 +11,7 @@
         },
       
         methods:{
+            //chiamata per il filtro
             Filter(){
                 let review=document.getElementById('reviews-num').value;
                 if(review==''){
@@ -21,14 +22,12 @@
                     rating=0;
                 }
                 this.minRating=rating;
-                console.log('minratain',this.minRating)
                 this.minReviews=review;
                 let temp=[];
                 let filtrati=[];
                 let controllati=[];
                 axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
                     temp=res.data;
-                    console.log('temp hprto',temp);
                     for (let index = 0; index < temp.length; index++) {
                         let ItIS=false;
                         const element = temp[index].techniques;
@@ -42,38 +41,30 @@
                             filtrati.push(temp[index])
                         }
                     }
-                    console.log(filtrati);
-                    
                     for (let index = 0; index < filtrati.length; index++) {
                         let na=filtrati[index].ratings;
-                        console.log('naa di ',index ,'',na)
                         let rate=0;
                         for (let index = 0; index < na.length; index++) {
                             rate+= na[index].rating;
                         }
                         rate= Math.round(rate / na.length);
-                        console.log('rate avarage di personaggio numero',index,'  ',rate)
-                        console.log('filtrati reviews',filtrati[index].reviews.length)
                         if(na.length==0){
                             rate=0;
                         }
                         if(rate>=this.minRating && filtrati[index].reviews.length>=this.minReviews){
                             controllati.push(filtrati[index]);
                         }
-                    
                     }
-                    console.log('veri filtrati',controllati)
                     this.Actors=controllati;
-                });
-                
+                });         
             }
         },
+        //chiamata generazione pagina
         created(){
             let temp=[];
             let FilteredArtist=[]
             axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
                 temp=res.data;
-                console.log('temp hprto',temp);
                 for (let index = 0; index < temp.length; index++) {
                     let ItIS=false;
                     const element = temp[index].techniques;
@@ -87,12 +78,9 @@
                         FilteredArtist.push(temp[index])
                     }
                 }
-                console.log(FilteredArtist);
                 this.Actors=FilteredArtist;
-                console.log('filterin painters',this.Actors)
             });
         }
-
     }
 </script>
 <template>
@@ -106,7 +94,7 @@
             <button id="filter" @click="Filter">filtra</button>
         </div>
     </div>
-    
+
     <div class="all-section">
         <h2 v-if="Actors.length==0">non ci sono artisti che soddisfano i parametri !!</h2>
         <div class="single-card" v-for="(artist ,index) in Actors" >
@@ -124,12 +112,9 @@
                         </div>
                     </div>
                 </RouterLink>
-            </div>
-            
+            </div>         
         </div>
     </div>
-    
-
 </template>
 
 <style lang="scss" scoped>

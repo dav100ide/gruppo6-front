@@ -8,13 +8,14 @@
                   <button id="search" @click="Search">cerca</button>
                </div>
             </div>
-         <ExploreSculp v-if="this.toSearch=='SCULTORE'"/>   
-         <ExploreMusician v-if="this.toSearch=='MUSICISTA'"/>   
-         <ExploreDirector v-if="this.toSearch=='REGISTA'"/>   
-         <ExplorePhoto v-if="this.toSearch=='FOTOGRAFO'"/>
-         <ExplorePainter v-if="this.toSearch=='PITTORE'"/>
-         <ExploreVideoMake v-if="this.toSearch=='VIDEOMAKER'"/>
-         <ExploreActor v-if="this.toSearch=='ATTORE'"/>
+         <h2 v-if="this.toSearch!='SCULTORE'&&this.toSearch!='MUSICISTA'&&this.toSearch!='REGISTA'&&this.toSearch!='FOTOGRAFO'&&this.toSearch!='PITTORE'&&this.toSearch!='VIDEOMAKER'&&this.toSearch!='ATTORE'&&this.toSearch!=''&&this.toSearch!='SCULTORI'&&this.toSearch!='MUSICISTI'&&this.toSearch!='REGISTI'&&this.toSearch!='FOTOGRAFI'&&this.toSearch!='PITTORI'&&this.toSearch!='VIDEOMAKERS'&&this.toSearch!='ATTORI'">Non ci sono artisti di questo genere !!</h2>
+         <ExploreSculp v-if="this.toSearch=='SCULTORE'||this.toSearch=='SCULTORI'"/>   
+         <ExploreMusician v-if="this.toSearch=='MUSICISTA'||this.toSearch=='MUSICISTI'"/>   
+         <ExploreDirector v-if="this.toSearch=='REGISTA'||this.toSearch=='REGISTI'"/>   
+         <ExplorePhoto v-if="this.toSearch=='FOTOGRAFO'||this.toSearch=='FOTOGRAFI'"/>
+         <ExplorePainter v-if="this.toSearch=='PITTORE'||this.toSearch=='PITTORI'"/>
+         <ExploreVideoMake v-if="this.toSearch=='VIDEOMAKER'||this.toSearch=='VIDEOMAKERS'"/>
+         <ExploreActor v-if="this.toSearch=='ATTORE'||this.toSearch=='ATTORI'"/>
          <section class="search-result" v-if="toLook.length!=0 && searchOptionActive==false">
             <div class="result-card" v-for="result in toLook">
                <div class="result-img">
