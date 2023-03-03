@@ -46,9 +46,9 @@
                     <h5 class="ex-card-name">
                         {{artist.artist_nickname }}
                     </h5>
-                    <small class="tecnique" v-for="tecnique in artist.techniques">
-                        {{ tecnique.name }}  /
-                    </small>
+                    <div class="tecnique" v-for="tecnique in artist.techniques">
+                        <small v-if="tecnique.name=='VideoMaker'">{{ tecnique.name }}</small>
+                    </div>
                 </div>
             </RouterLink>
         </div>

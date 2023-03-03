@@ -22,13 +22,20 @@
                </div>
             </div>
             
-         <ExploreSculp v-if="this.searchOption=='sculp'"/>   
+         <!--<ExploreSculp v-if="this.searchOption=='sculp'"/>   
          <ExploreMusician v-if="this.searchOption=='music'"/>   
          <ExploreDirector v-if="this.searchOption=='movie'"/>   
          <ExplorePhoto v-if="this.searchOption=='photo'"/>
          <ExplorePainter v-if="this.searchOption=='paint'"/>
          <ExploreVideoMake v-if="this.searchOption=='video'"/>
-         <ExploreActor v-if="this.searchOption=='actor'"/>
+         <ExploreActor v-if="this.searchOption=='actor'"/>-->
+         <ExploreSculp v-if="this.toSearch=='SCULTORE'"/>   
+         <ExploreMusician v-if="this.toSearch=='MUSICISTA'"/>   
+         <ExploreDirector v-if="this.toSearch=='REGISTA'"/>   
+         <ExplorePhoto v-if="this.toSearch=='FOTOGRAFO'"/>
+         <ExplorePainter v-if="this.toSearch=='PITTORE'"/>
+         <ExploreVideoMake v-if="this.toSearch=='VIDEOMAKER'"/>
+         <ExploreActor v-if="this.toSearch=='ATTORE'"/>
          <section class="search-result" v-if="toLook.length!=0 && searchOptionActive==false">
             <div class="result-card" v-for="result in toLook">
                <div class="result-img">
@@ -108,7 +115,7 @@ export default {
          let what=document.getElementById('search-all').value;
          this.toSearch=what.toUpperCase();
          console.log(this.toSearch)
-         axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
+         /*axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
             let look=res.data;
             for (let index = 0; index < look.length; index++) {
                const nickname = look[index].artist_nickname.toUpperCase();
@@ -127,7 +134,7 @@ export default {
             }
             this.toLook=results;
             console.log('tolok',this.toLook)
-         });
+         });*/
       }
    },
    data(){
@@ -138,7 +145,7 @@ export default {
          toSearch:'',
          searchOption:'all',
          toLook:[],
-         failed:false,
+         //failed:false,
          searchOptionActive:false
       }
    },
