@@ -68,7 +68,6 @@ export default {
          menuOpen: false,
       };
    },
-   created() {},
 };
 </script>
 
