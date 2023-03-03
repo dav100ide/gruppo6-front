@@ -1,5 +1,5 @@
 <template>
-   <header class="head" id="header">
+   <header class="head">
       <div class="head-logo">
          <RouterLink :to="{ name: 'home-page' }">
             <img src="../pages/HomePageSections/HomePageAssets/logowhite.png" alt="logo" />
@@ -11,6 +11,7 @@
             <input type="text" placeholder="cerca.." id="search-head" />
          </form>
       </div>
+      <!-- header nav -->
       <div class="head-nav">
          <ul>
             <li>
@@ -33,6 +34,7 @@
             </li>
          </ul>
       </div>
+      <!-- /header nav -->
    </header>
 </template>
 
