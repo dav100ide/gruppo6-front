@@ -25,7 +25,7 @@
       </nav>
       <!-- /desktop nav -->
       <!-- hamburger mobile -->
-      <button @click="menuOpen = !menuOpen" class="btn" id="hamburger">
+      <button @click="menuOpen = !menuOpen" class="d-lg-none btn" id="hamburger">
          <i class="fa-solid" :class="{ 'fa-x': menuOpen, 'fa-bars': !menuOpen }"></i>
       </button>
       <!-- /hamburger mobile -->
