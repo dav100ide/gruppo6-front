@@ -56,6 +56,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+.footer-top {
+   padding-bottom: 1.5rem;
+}
 p {
    margin: 0;
    font-style: italic;
@@ -77,6 +80,7 @@ p {
 
 .privacy {
    text-align: center;
+
    ul {
       @include reset-list;
       li {

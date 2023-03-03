@@ -2,7 +2,6 @@
    <footer class="d-none d-sm-block py-2 py-md-3 py-lg-4">
       <div class="container">
          <FooterTop />
-         <hr />
          <FooterBottom />
       </div>
    </footer>
