@@ -1,5 +1,5 @@
 <template>
-   <footer class="d-none d-sm-block py-2 py-md-3 py-lg-4">
+   <footer class="py-2 py-md-3 py-lg-4">
       <div class="container">
          <FooterTop />
          <FooterBottom />

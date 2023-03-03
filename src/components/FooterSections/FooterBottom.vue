@@ -18,5 +18,9 @@ export default {};
    display: flex;
    justify-content: space-evenly;
    border-top: 2px solid var(--primary-color-300);
+   @media (width < 768px) {
+      flex-direction: column;
+      gap: 0.5rem;
+   }
 }
 </style>

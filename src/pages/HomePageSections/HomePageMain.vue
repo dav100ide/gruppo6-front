@@ -108,39 +108,36 @@ export default {
          </div>
          <!-- /griglia cards desktop -->
 
-         <div class="">
-            <div class="sponsored-mobile d-block d-sm-none">
-               <!-- carosello mobile  -->
-               <div class="mobile-carousel">
-                  <div
-                     class="mobile-card"
-                     v-for="(artist, index) in artists"
-                     :class="this.activeMobile == index ? 'show-mobile' : ''"
-                  >
-                     <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
-                        <div class="positioning">
-                           <div class="mobile-card-img">
-                              <img :src="artist.foto" alt="" />
-                           </div>
-                           <div class="mobile-card-description">
-                              <h4>{{ artist.artist_nickname }}</h4>
-                              <small>{{ artist.tecnica }}</small>
-                           </div>
-                           <button @click="forward" id="forward">
-                              <i class="fa-solid fa-chevron-right"></i>
-                           </button>
-                           <button @click="back" id="back">
-                              <i class="fa-solid fa-chevron-left"></i>
-                           </button>
+         <div class="sponsored-mobile d-block d-sm-none">
+            <!-- carosello mobile  -->
+            <div class="mobile-carousel">
+               <div
+                  class="mobile-card"
+                  v-for="(artist, index) in artists"
+                  :class="this.activeMobile == index ? 'show-mobile' : ''"
+               >
+                  <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
+                     <div class="positioning">
+                        <div class="mobile-card-img">
+                           <img :src="artist.foto" alt="" />
                         </div>
-                     </RouterLink>
-                  </div>
+                        <div class="mobile-card-description">
+                           <h4>{{ artist.artist_nickname }}</h4>
+                           <small>{{ artist.tecnica }}</small>
+                        </div>
+                        <button @click="forward" id="forward">
+                           <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button @click="back" id="back">
+                           <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                     </div>
+                  </RouterLink>
                </div>
-               <!-- carosello mobile -->
             </div>
+            <!-- carosello mobile -->
          </div>
       </section>
-      <section class="about"></section>
    </div>
 </template>
 
