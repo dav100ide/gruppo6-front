@@ -5,6 +5,57 @@
         data(){
             return{
                 Sculptors:[],
+                minRating:0,
+                minReviews:0
+            }
+        },
+        methods:{
+            //chiamata per il filtro
+            Filter(){
+                let review=document.getElementById('reviews-num').value;
+                if(review==''){
+                    review=0;
+                }
+                let rating=document.getElementById('rating').value;
+                if(rating==''){
+                    rating=0;
+                }
+                this.minRating=rating;
+                this.minReviews=review;
+                let temp=[];
+                let filtrati=[];
+                let controllati=[];
+                axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
+                    temp=res.data;
+                    for (let index = 0; index < temp.length; index++) {
+                        let ItIS=false;
+                        const element = temp[index].techniques;
+                        for (let index = 0; index < element.length; index++) {
+                            let tech =element[index].name
+                            if(tech=='Scultore'){
+                                ItIS=true;
+                            }
+                        }
+                        if (ItIS) {
+                            filtrati.push(temp[index])
+                        }
+                    }
+                    for (let index = 0; index < filtrati.length; index++) {
+                        let na=filtrati[index].ratings;
+                        let rate=0;
+                        for (let index = 0; index < na.length; index++) {
+                            rate+= na[index].rating;
+                        }
+                        rate= Math.round(rate / na.length);
+                        if(na.length==0){
+                            rate=0;
+                        }
+                        if(rate>=this.minRating && filtrati[index].reviews.length>=this.minReviews){
+                            controllati.push(filtrati[index]);
+                        }
+                    }
+                    this.Sculptors=controllati;
+                });         
             }
         },
         created(){
@@ -26,9 +77,7 @@
                         FilteredArtist.push(temp[index])
                     }
                 }
-                console.log(FilteredArtist);
                 this.Sculptors=FilteredArtist;
-                console.log('filterin painters',this.Sculptors)
             });
         }
 
@@ -42,10 +91,11 @@
             <input type="number" min="0" id="reviews-num">
             <small>valutazione: </small>   
             <input type="number" min="0" max="5" id="rating">
-            <button id="filter">filtra</button>
+            <button id="filter" @click="Filter">filtra</button>
         </div>
     </div>
     <div class="all-section">
+        <h2 v-if="Sculptors.length==0">non ci sono artisti che soddisfano i parametri !!</h2>
         <div class="single-card" v-for="(artist , index) in Sculptors">
             <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                 <div class="ex-card-img">
@@ -85,6 +135,7 @@
     #rating{
         background-color: transparent;
         border: none;
+        color: white;
         margin:0px 15px;
         border-bottom: 1px solid white;
     }
