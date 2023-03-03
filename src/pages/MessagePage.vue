@@ -7,7 +7,7 @@
             </h3>
             <RouterLink :to="{ name: 'artist-page', params: { slug: artistSlug } }">
                <div class="photo">
-                  <img v-if="photo" :src="imgSrc" :alt="nickname" />
+                  <img v-if="photo || seeded_photo" :src="imgSrc" :alt="nickname" />
                   <img
                      v-else
                      src="https://sgmh.org/wp-content/uploads/2017/07/placeholder-user.png"
@@ -33,6 +33,7 @@ export default {
          artistSlug: this.$route.params.slug,
          nickname: '',
          photo: '',
+         seeded_photo: null,
       };
    },
 
@@ -42,6 +43,7 @@ export default {
          .then((res) => {
             this.nickname = res.data.artist_nickname;
             this.photo = res.data.profile_photo;
+            this.seeded_photo = res.data.seeded_pic;
          })
          .catch((err) => {
             if (err.response.status === 404) {
@@ -52,7 +54,10 @@ export default {
 
    computed: {
       imgSrc() {
-         return `http://127.0.0.1:8000/storage/${this.photo}`;
+         if (this.photo) {
+            return `http://127.0.0.1:8000/storage/${this.photo}`;
+         }
+         return this.seeded_photo;
       },
    },
 };
