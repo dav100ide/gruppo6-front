@@ -243,7 +243,7 @@ export default {
       justify-content: flex-start;
    }
    .single-card{
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      
       width: calc(100%/5 - 25px);
       height: 300px;
       margin: 0px 12.5px;

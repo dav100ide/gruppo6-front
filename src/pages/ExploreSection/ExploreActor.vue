@@ -5,6 +5,24 @@
         data(){
             return{
                 Actors:[],
+                minRating:0,
+                minReviews:0
+            }
+        },
+      
+        methods:{
+            FilterArray(arr,ind){
+                let temp=arr[0];
+                temp=temp.reviews;
+                console.log('temp11',temp)
+                return arr;
+            },
+
+            Filter(){
+                let review=document.getElementById('reviews-num').value;
+                let rating=document.getElementById('rating').value;
+                this.minRating=rating;
+                this.minReviews=review;
             }
         },
         created(){
@@ -42,25 +60,28 @@
             <input type="number" min="0" id="reviews-num">
             <small>valutazione: </small>   
             <input type="number" min="0" max="5" id="rating">
-            <button id="filter">filtra</button>
+            <button id="filter" @click="Filter">filtra</button>
         </div>
     </div>
     
     <div class="all-section">
-        <div class="single-card" v-for="(artist , index) in Actors">
-            <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
-                <div class="ex-card-img">
-                    <img :src="artist.profile_photo" alt=" foto da caricare">
-                </div>
-                <div class="card-data">
-                    <h5 class="ex-card-name">
-                        {{artist.artist_nickname }}
-                    </h5>
-                    <div class="tecnique" v-for="tecnique in artist.techniques">
-                        <small v-if="tecnique.name=='Attore'">{{ tecnique.name }}</small>
+        <div class="single-card" v-for="(artist ,index) in FilterArray(this.Actors,index)" >
+            <div  class="seen-card">
+                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
+                    <div class="ex-card-img">
+                        <img :src="artist.profile_photo" alt=" foto da caricare">
                     </div>
-                </div>
-            </RouterLink>
+                    <div class="card-data">
+                        <h5 class="ex-card-name">
+                            {{artist.artist_nickname }}
+                        </h5>
+                        <div class="tecnique" v-for="tecnique in artist.techniques">
+                            <small v-if="tecnique.name=='Attore'">{{ tecnique.name }}</small>
+                        </div>
+                    </div>
+                </RouterLink>
+            </div>
+            
         </div>
     </div>
     
@@ -68,6 +89,11 @@
 </template>
 
 <style lang="scss" scoped>
+    .seen-card{
+        width: 100%;
+        height: 100%;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
     .filters-row{
         display: flex;
         align-items: center;
