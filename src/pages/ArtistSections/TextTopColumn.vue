@@ -86,10 +86,10 @@ nav.d-none ul {
 }
 #hamburger {
    font-size: 1.5rem;
-   color: var(--neutral-color-200);
+   color: var(--neutral-color-100);
    border: none;
    &:hover {
-      color: var(--neutral-color-100);
+      color: var(--accent-color);
    }
    &:active {
       border: none;

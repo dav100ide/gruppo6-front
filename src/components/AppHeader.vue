@@ -11,15 +11,27 @@
             <input type="text" placeholder="cerca.." id="search-head" />
          </form>
       </div>
-      <div class="head-nav d-none d-md-block">
+      <div class="head-nav">
          <ul>
-            <li><RouterLink :to="{ name: 'home-page' }">Home</RouterLink></li>
-            <li><RouterLink :to="{ name: 'search-results-page' }">Esplora</RouterLink></li>
-            <li><a href="http://127.0.0.1:8000/admin/dashboard"> Profilo</a></li>
+            <li>
+               <RouterLink :to="{ name: 'home-page' }">
+                  <i class="fa-solid fa-house me-md-2 me-lg-3"></i>
+                  <span class="d-none d-md-inline">Home</span>
+               </RouterLink>
+            </li>
+            <li>
+               <RouterLink :to="{ name: 'search-results-page' }">
+                  <i class="fa-solid fa-magnifying-glass me-md-2 me-lg-3"></i>
+                  <span class="d-none d-md-inline">Esplora</span>
+               </RouterLink>
+            </li>
+            <li>
+               <a href="http://127.0.0.1:8000/admin/dashboard">
+                  <i class="fa-solid fa-user me-md-2 me-lg-3"></i>
+                  <span class="d-none d-md-inline">User</span>
+               </a>
+            </li>
          </ul>
-      </div>
-      <div class="hamburger-menu d-md-none">
-         <i class="fa-solid fa-bars"></i>
       </div>
    </header>
 </template>
@@ -97,7 +109,10 @@ header.head {
    }
 }
 .head-nav {
-   width: 20%;
+   width: 30%;
+   li {
+      font-size: 1.3rem;
+   }
 }
 .head-logo {
    width: 6%;
