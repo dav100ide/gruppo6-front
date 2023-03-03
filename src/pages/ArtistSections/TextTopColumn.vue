@@ -25,8 +25,8 @@
       </nav>
       <!-- /desktop nav -->
       <!-- hamburger mobile -->
-      <button @click="menuOpen = !menuOpen" class="btn btn-primary d-lg-none" id="hamburger">
-         mobile-burger
+      <button @click="menuOpen = !menuOpen" class="btn" id="hamburger">
+         <i class="fa-solid" :class="{ 'fa-x': menuOpen, 'fa-bars': !menuOpen }"></i>
       </button>
       <!-- /hamburger mobile -->
    </div>
@@ -86,7 +86,16 @@ nav.d-none ul {
    }
 }
 #hamburger {
-   //stile hamburger che forse sarà un fontawesome anzichè un button
+   font-size: 1.5rem;
+   color: var(--neutral-color-200);
+   border: none;
+   &:hover {
+      color: var(--neutral-color-100);
+   }
+   &:active {
+      border: none;
+      box-shadow: 0 0 2px 2px var(--accent-color);
+   }
 }
 
 #hamburger-menu {
@@ -95,7 +104,7 @@ nav.d-none ul {
    top: var(--header-height);
    left: -70%;
    // min-height: 100vh;
-   width: 45%;
+   width: 55%;
    background-color: var(--primary-color);
    box-shadow: rgba(0, 0, 0, 0.8) 5px 5px 15px;
    text-align: center;
