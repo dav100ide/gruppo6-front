@@ -16,30 +16,31 @@
          <ExplorePainter v-if="this.toSearch=='PITTORE'||this.toSearch=='PITTORI'"/>
          <ExploreVideoMake v-if="this.toSearch=='VIDEOMAKER'||this.toSearch=='VIDEOMAKERS'"/>
          <ExploreActor v-if="this.toSearch=='ATTORE'||this.toSearch=='ATTORI'"/>
-         <section class="search-result" v-if="toLook.length!=0 && searchOptionActive==false">
-            <div class="result-card" v-for="result in toLook">
-               <div class="result-img">
-                  <img :src="result.profile_photo" alt="foto da caricare">
-               </div>
-               <div class="result-data">
-                  <h2>{{ result.artist_nickname }}</h2>
-                  <div>{{ result.user.name }} {{ result.user.surname }}</div>
-               </div>
-               <div class="link-page">
-                  <RouterLink :to="{ name: 'artist-page', params: { slug: result.slug } }">
-                     <div id="link-text">Visita il profilo</div>
-                  </RouterLink>
-               </div>
-            </div>
-         </section>
-         <div class="failed-search" v-if="failed===true">
-            <h1>Non ho trovato l'artista che cercavi ,riprova</h1>
-         </div>
          <div class="all-section" v-if="this.toSearch==''">
             <div class="single-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                <div class="ex-card-img">
-                  <img :src="artist.profile_photo" alt=" foto da caricare">
+                  <!-- foto caricata dall'utente -->
+                  <img
+                           v-if="artist.profile_photo"
+                           :src="artist.profile_photo"
+                           :alt="artist.artist_nickname"
+                        />
+                        <!-- /foto caricata dall'utente -->
+                        <!-- foto seedata -->
+                        <img
+                           v-else-if="artist.seeded_pic"
+                           :src="artist.seeded_pic"
+                           :alt="artist.artist_nickname"
+                        />
+                        <!-- /foto seedata -->
+                        <!-- fallback foto se l'utente non carica -->
+                        <img
+                           v-else
+                           src="https://www.sanitascare.it/wp-content/uploads/2017/04/default-user-image.png"
+                           alt="placeholder"
+                        />
+                        <!-- /fallback foto se l'utente non carica -->
                </div>
                <div class="card-data">
                   <h5 class="ex-card-name">
@@ -199,7 +200,7 @@ export default {
       justify-content: flex-start;
    }
    .single-card{
-      
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       width: calc(100%/5 - 25px);
       height: 300px;
       margin: 0px 12.5px;
