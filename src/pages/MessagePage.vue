@@ -1,5 +1,5 @@
 <template>
-   <section class="h-100">
+   <section>
       <div class="container-md px-3 py-5">
          <div class="top-bar mb-3">
             <h3 class="pe-4">
@@ -70,6 +70,7 @@ h3 {
 }
 section {
    background-color: var(--neutral-color-600);
+   height: calc(100vh - var(--header-height));
 }
 
 .top-bar {

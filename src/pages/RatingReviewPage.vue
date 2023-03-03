@@ -158,6 +158,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
+   height: calc(100vh - var(--header-height));
    background-color: var(--neutral-color-600);
    h3 {
       color: var(--secondary-color);
