@@ -101,7 +101,27 @@
             <div  class="seen-card" >
                 <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                     <div class="ex-card-img">
-                        <img src="" alt="foto da caricare">
+                        <!-- foto caricata dall'utente -->
+                        <img
+                           v-if="artist.profile_photo"
+                           :src="artist.profile_photo"
+                           :alt="artist.artist_nickname"
+                        />
+                        <!-- /foto caricata dall'utente -->
+                        <!-- foto seedata -->
+                        <img
+                           v-else-if="artist.seeded_pic"
+                           :src="artist.seeded_pic"
+                           :alt="artist.artist_nickname"
+                        />
+                        <!-- /foto seedata -->
+                        <!-- fallback foto se l'utente non carica -->
+                        <img
+                           v-else
+                           src="https://www.sanitascare.it/wp-content/uploads/2017/04/default-user-image.png"
+                           alt="placeholder"
+                        />
+                        <!-- /fallback foto se l'utente non carica -->
                     </div>
                     <div class="card-data">
                         <h5 class="ex-card-name">
