@@ -14,7 +14,11 @@
             <!-- se profile_photo è null; ci sarà un errore in console,
                 ma non da fastidio alla visualizzazione perchè l'img con src 
                 null viene sostituito un v-else-->
-            <ImgColumn :img="artist.profile_photo" :alt="artist.artist_nickname" />
+            <ImgColumn
+               :seededImg="artist.seeded_pic"
+               :img="artist.profile_photo"
+               :alt="artist.artist_nickname"
+            />
             <!-- /colonna img -->
          </div>
       </div>

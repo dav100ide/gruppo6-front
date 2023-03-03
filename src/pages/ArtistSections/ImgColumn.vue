@@ -1,6 +1,6 @@
 <template>
    <div class="col-12 col-sm-7 col-lg-6 | img-column">
-      <img v-if="img" :src="imgSrc" :alt="alt" />
+      <img v-if="img || seededImg" :src="imgSrc" :alt="alt" />
       <img v-else src="https://via.placeholder.com/1000" alt="immagine di default" />
    </div>
 </template>
@@ -12,6 +12,10 @@ export default {
          type: String,
          default: 'https://via.placeholder.com/1000',
       },
+      seededImg: {
+         type: String,
+         default: 'seeded-img-path-default',
+      },
       alt: {
          type: String,
          default: 'alt di default',
@@ -19,8 +23,11 @@ export default {
    },
    computed: {
       imgSrc() {
-         const baseUrl = 'http://127.0.0.1:8000/storage/';
-         return `${baseUrl}${this.img}`;
+         if (this.img) {
+            const baseUrl = 'http://127.0.0.1:8000/storage/';
+            return `${baseUrl}${this.img}`;
+         }
+         return this.seededImg;
       },
    },
 };

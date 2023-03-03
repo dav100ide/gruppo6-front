@@ -64,10 +64,6 @@ export default {
       return {
          menuOpen: false,
          navLinks: [
-            // {
-            //    href: '#',
-            //    linkName: 'Opere',
-            // },
             {
                href: '#',
                linkName: 'Chi sono',

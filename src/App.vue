@@ -1,13 +1,11 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-import HomePage from './pages/HomePage.vue';
 import AppFooter from './components/AppFooter.vue';
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
 import { store } from './store.js';
 export default {
    components: {
-      HomePage,
       AppHeader,
       AppFooter,
       AppMain,
