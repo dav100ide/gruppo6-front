@@ -167,9 +167,10 @@ label {
    background-color: var(--primary-color);
    color: var(--accent-color);
    z-index: 100;
-   box-shadow: 0 0 75px 50px var(--primary-color-200);
    padding: 8rem 5rem;
    width: 80%;
    text-align: center;
+   text-transform: uppercase;
+   line-height: 1.1;
 }
 </style>
