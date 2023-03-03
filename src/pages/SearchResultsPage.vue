@@ -1,13 +1,13 @@
 <template>
    <div style="padding-top: 50px;">
       <div class="container">
-         <h2>Esplora</h2>
+         <h2 style="margin-bottom: 20px;">Esplora</h2>
             <div class="searching-row">
                <div class="left-search">
                   <input type="text" name="" id="search-all" placeholder="cosa stai cercando">
                   <button id="search" @click="Search">cerca</button>
                </div>
-               <div class="right-search">
+               <!--<div class="right-search">
                   <select name="" id="search-option">
                      <option value="all">Tutti</option>
                      <option value="photo">Fotografo</option>
@@ -19,7 +19,7 @@
                      <option value="actor">Attore</option>
                   </select>
                   <button id="filter" @click="Filter">filtra</button>
-               </div>
+               </div>-->
             </div>
             
          <!--<ExploreSculp v-if="this.searchOption=='sculp'"/>   
@@ -55,7 +55,7 @@
          <div class="failed-search" v-if="failed===true">
             <h1>Non ho trovato l'artista che cercavi ,riprova</h1>
          </div>
-         <div class="all-section" v-if="this.toSearch==''&&this.searchOption=='all'">
+         <div class="all-section" v-if="this.toSearch==''">
             <div class="single-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                <div class="ex-card-img">
@@ -108,10 +108,9 @@ export default {
          this.toSearch='';
       },
       Search(){
-         this.failed=false;
-         this.searchOption='all'
+         //this.searchOption='all'
          let results=[];
-         document.getElementById('search-option').value='all';
+         //document.getElementById('search-option').value='all';
          let what=document.getElementById('search-all').value;
          this.toSearch=what.toUpperCase();
          console.log(this.toSearch)
@@ -207,6 +206,11 @@ export default {
    #search{
       margin-right: 20px;
       padding: 2px 5px;
+      background-color: transparent;
+      border: 1px solid white;
+      border-radius: 5px;
+      color: white;
+
    }
    #search-option{
       margin-right: 5px;
@@ -215,12 +219,14 @@ export default {
       padding: 2px 5px;
    }
    #search-all{
-      margin-bottom: 30px;
+      margin-bottom: 50px;
+      background-color: transparent;
       margin-right: 5px;
       width: 300px;
-      border-radius: 5px;
+      color:white;
       padding:0px 5px;
       border: none;
+      border-bottom: 1px solid white;
       &:focus{
          outline: none;
       }
