@@ -192,8 +192,10 @@ h2 {
             ul {
                @include horizontal-list;
                flex-wrap: wrap;
-               li {
-                  padding: 0.2rem;
+               li:not(:last-child)::after {
+                  display: inline;
+                  content: '/';
+                  margin-inline: 0.5rem;
                }
             }
          }
