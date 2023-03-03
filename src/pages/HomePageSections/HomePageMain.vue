@@ -119,21 +119,21 @@ export default {
                   <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                      <div class="positioning">
                         <div class="mobile-card-img">
-                           <img :src="artist.foto" alt="" />
+                           <img :src="artist.seeded_pic" alt="" />
                         </div>
                         <div class="mobile-card-description">
                            <h4>{{ artist.artist_nickname }}</h4>
                            <small>{{ artist.tecnica }}</small>
                         </div>
-                        <button @click="forward" id="forward">
-                           <i class="fa-solid fa-chevron-right"></i>
-                        </button>
-                        <button @click="back" id="back">
-                           <i class="fa-solid fa-chevron-left"></i>
-                        </button>
                      </div>
                   </RouterLink>
                </div>
+               <button @click="forward" id="forward">
+                  <i class="fa-solid fa-chevron-right"></i>
+               </button>
+               <button @click="back" id="back">
+                  <i class="fa-solid fa-chevron-left"></i>
+               </button>
             </div>
             <!-- carosello mobile -->
          </div>
@@ -204,6 +204,7 @@ h2 {
    position: absolute;
    height: 50px;
    background: rgba(0, 0, 0, 0.4);
+   color: var(--neutral-color-100);
    border: none;
    border-radius: 5px;
    right: 0;
@@ -217,11 +218,22 @@ h2 {
    border-radius: 5px;
    height: 50px;
    background-color: rgba(0, 0, 0, 0.4);
+   color: var(--neutral-color-100);
    left: 0;
 }
-
+#back,
+#forward {
+   transition: color ease-in 0.35s;
+   &:hover {
+      color: var(--accent-color);
+   }
+   &:active {
+      background-color: rgba(black, 0.75);
+   }
+}
 .mobile-carousel {
    position: relative;
+   height: 350px;
 }
 .positioning {
    width: 100%;
