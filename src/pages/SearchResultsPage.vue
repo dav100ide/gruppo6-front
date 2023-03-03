@@ -7,28 +7,7 @@
                   <input type="text" name="" id="search-all" placeholder="cosa stai cercando">
                   <button id="search" @click="Search">cerca</button>
                </div>
-               <!--<div class="right-search">
-                  <select name="" id="search-option">
-                     <option value="all">Tutti</option>
-                     <option value="photo">Fotografo</option>
-                     <option value="paint">Pittore</option>
-                     <option value="movie">Regista</option>
-                     <option value="music">Musicista</option>
-                     <option value="sculp">Scultore</option>
-                     <option value="video">VideoMaker</option>
-                     <option value="actor">Attore</option>
-                  </select>
-                  <button id="filter" @click="Filter">filtra</button>
-               </div>-->
             </div>
-            
-         <!--<ExploreSculp v-if="this.searchOption=='sculp'"/>   
-         <ExploreMusician v-if="this.searchOption=='music'"/>   
-         <ExploreDirector v-if="this.searchOption=='movie'"/>   
-         <ExplorePhoto v-if="this.searchOption=='photo'"/>
-         <ExplorePainter v-if="this.searchOption=='paint'"/>
-         <ExploreVideoMake v-if="this.searchOption=='video'"/>
-         <ExploreActor v-if="this.searchOption=='actor'"/>-->
          <ExploreSculp v-if="this.toSearch=='SCULTORE'"/>   
          <ExploreMusician v-if="this.toSearch=='MUSICISTA'"/>   
          <ExploreDirector v-if="this.toSearch=='REGISTA'"/>   
@@ -60,7 +39,6 @@
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                <div class="ex-card-img">
                   <img :src="artist.profile_photo" alt=" foto da caricare">
-                  <!--<img src="https://source.unsplash.com/random?sig=1" alt="" v-if="artist.profile_photo==null">-->
                </div>
                <div class="card-data">
                   <h5 class="ex-card-name">
@@ -108,32 +86,10 @@ export default {
          this.toSearch='';
       },
       Search(){
-         //this.searchOption='all'
          let results=[];
-         //document.getElementById('search-option').value='all';
          let what=document.getElementById('search-all').value;
          this.toSearch=what.toUpperCase();
          console.log(this.toSearch)
-         /*axios.get('http://127.0.0.1:8000/api/artists').then((res)=>{
-            let look=res.data;
-            for (let index = 0; index < look.length; index++) {
-               const nickname = look[index].artist_nickname.toUpperCase();
-               const name= look[index].user.name.toUpperCase();
-               const surname = look[index].user.surname.toUpperCase();
-               if(nickname==this.toSearch || name==this.toSearch || surname==this.toSearch){
-                  results.push(look[index]);
-               }
-            }
-            if(results.length==0 && document.getElementById('search-all').value!=''){
-               this.failed=true;
-               this.toSearch='';
-            }else{
-               this.toSearch='';
-               document.getElementById('search-all').value='';
-            }
-            this.toLook=results;
-            console.log('tolok',this.toLook)
-         });*/
       }
    },
    data(){
@@ -144,7 +100,6 @@ export default {
          toSearch:'',
          searchOption:'all',
          toLook:[],
-         //failed:false,
          searchOptionActive:false
       }
    },

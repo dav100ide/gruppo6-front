@@ -46,7 +46,7 @@
                     
                     for (let index = 0; index < filtrati.length; index++) {
                         let na=filtrati[index].ratings;
-                        console.log('naa',na)
+                        console.log('naa di ',index ,'',na)
                         let rate=0;
                         for (let index = 0; index < na.length; index++) {
                             rate+= na[index].rating;
@@ -54,6 +54,9 @@
                         rate= Math.round(rate / na.length);
                         console.log('rate avarage di personaggio numero',index,'  ',rate)
                         console.log('filtrati reviews',filtrati[index].reviews.length)
+                        if(na.length==0){
+                            rate=0;
+                        }
                         if(rate>=this.minRating && filtrati[index].reviews.length>=this.minReviews){
                             controllati.push(filtrati[index]);
                         }
@@ -105,6 +108,7 @@
     </div>
     
     <div class="all-section">
+        <h2 v-if="Actors.length==0">non ci sono artisti che soddisfano i parametri !!</h2>
         <div class="single-card" v-for="(artist ,index) in Actors" >
             <div  class="seen-card" >
                 <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
