@@ -11,13 +11,6 @@
         },
       
         methods:{
-            FilterArray(arr,ind){
-                let temp=arr[0];
-                temp=temp.reviews;
-                console.log('temp11',temp)
-                return arr;
-            },
-
             Filter(){
                 let review=document.getElementById('reviews-num').value;
                 let rating=document.getElementById('rating').value;
@@ -65,11 +58,11 @@
     </div>
     
     <div class="all-section">
-        <div class="single-card" v-for="(artist ,index) in FilterArray(this.Actors,index)" >
-            <div  class="seen-card">
+        <div class="single-card" v-for="(artist ,index) in Actors" >
+            <div  class="seen-card" v-if="artist.reviews.length>=this.minReviews">
                 <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
                     <div class="ex-card-img">
-                        <img :src="artist.profile_photo" alt=" foto da caricare">
+                        <img src="" alt="foto da caricare">
                     </div>
                     <div class="card-data">
                         <h5 class="ex-card-name">
