@@ -88,8 +88,17 @@ export default {
                         <!-- /fallback foto se l'utente non carica -->
                      </div>
                      <div class="card-data">
-                        <h5>{{ artist.artist_nickname }}</h5>
-                        <small>{{ artist.techniques[0].name }}</small>
+                        <h5 class="py-2 fw-bold">{{ artist.artist_nickname }}</h5>
+                        <!-- tecniche artista -->
+                        <div class="card-data__techniques">
+                           <ul>
+                              <!-- faccio vedere solo le prime 3 tech -->
+                              <li v-for="tech in artist.techniques">
+                                 {{ tech.name }}
+                              </li>
+                           </ul>
+                        </div>
+                        <!-- /tecniche artista -->
                      </div>
                   </RouterLink>
                </div>
@@ -146,22 +155,46 @@ h2 {
    margin-bottom: 30px;
 }
 .sponsored-carusel {
-   width: 100%;
-   height: 300px;
-   display: flex;
-
-   justify-content: flex-start;
-   /*justify-content: space-between;*/
-   flex-wrap: wrap;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   grid-auto-rows: 410px;
+   grid-gap: 20px;
+   @media (width < 992px) {
+      grid-auto-rows: 360px;
+   }
+   @media (width < 768px) {
+      grid-auto-rows: 310px;
+   }
 }
 .ms-card {
-   width: calc(100% / 5 - 25px);
-   margin: 0px 12.5px;
-   height: 100%;
    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-   margin-bottom: 50px;
    h5 {
       margin-bottom: 0;
+   }
+   .card-img {
+      width: 100%;
+      height: 75%;
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         @media (width > 567px) {
+            object-position: 50% 6%;
+         }
+      }
+   }
+   .card-data {
+      height: 25%;
+      padding: 0px 10px;
+      &__techniques {
+         ul {
+            @include horizontal-list;
+            flex-wrap: wrap;
+            li {
+               padding: 0.2rem;
+            }
+         }
+      }
    }
 }
 #forward {
@@ -184,19 +217,7 @@ h2 {
    background-color: rgba(0, 0, 0, 0.4);
    left: 0;
 }
-.card-data {
-   padding: 0px 10px;
-}
-.card-img {
-   width: 100%;
-   height: 75%;
-   margin-bottom: 10px;
-   img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-   }
-}
+
 .mobile-carousel {
    position: relative;
 }
@@ -242,24 +263,8 @@ h2 {
    .sponsored-carusel {
       justify-content: space-between;
    }
-   .ms-card {
-      margin: 0px 0px;
-      margin-bottom: 50px;
-      width: calc(100% / 4 - 10px);
-   }
-}
-@media screen and (max-width: 768px) {
-   .ms-card {
-      width: calc(100% / 2 - 10px);
-      margin-left: 0px;
-      margin-right: 0px;
-   }
 }
 @media screen and (max-width: 576px) {
-   .ms-card {
-      width: 70%;
-      margin: auto;
-   }
    #discover {
       font-size: 1.7rem;
    }
