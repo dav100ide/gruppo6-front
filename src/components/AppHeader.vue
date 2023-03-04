@@ -6,11 +6,6 @@
          </RouterLink>
       </div>
       <div class="head-title">| a place where you belong</div>
-      <div class="head-search" :class="this.store.activeSearch == 1 ? 'appear' : ''">
-         <form action="" @submit.prevent>
-            <input type="text" placeholder="cerca.." id="search-head" />
-         </form>
-      </div>
       <!-- header nav -->
       <div class="head-nav">
          <ul>
@@ -77,21 +72,10 @@ header.head {
    }
    .head-title {
       display: flex;
+      flex-grow: 1;
       align-items: center;
       font-size: 0.9rem;
       margin-right: 5%;
-   }
-   .head-search {
-      width: 18%;
-      flex-grow: 1;
-      input {
-         border: none;
-         border-radius: 5px;
-         padding: 0px 20px;
-         &:focus {
-            outline: none;
-         }
-      }
    }
    .head-nav {
       font-size: 0.9rem;
