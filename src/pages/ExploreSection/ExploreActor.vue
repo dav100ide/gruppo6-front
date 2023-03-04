@@ -162,7 +162,7 @@ export default {
                      <!-- foto caricata dall'utente -->
                      <img
                         v-if="artist.profile_photo"
-                        :src="artist.profile_photo"
+                        :src="`http://127.0.0.1:8000/storage/${artist.profile_photo}`"
                         :alt="artist.artist_nickname"
                      />
                      <!-- /foto caricata dall'utente -->
