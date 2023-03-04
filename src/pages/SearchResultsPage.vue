@@ -64,6 +64,11 @@
                            alt="placeholder"
                         />
                         <!-- /fallback foto se l'utente non carica -->
+                        <!-- numero rencensioni -->
+                        <div class="reviews">
+                           {{ artist.reviews.length }}
+                        </div>
+                        <!-- /numero recensioni -->
                      </div>
                      <div class="card-data">
                         <h5 class="py-2 fw-bold">
@@ -285,12 +290,32 @@ export default {
    .card-img {
       width: 100%;
       height: 75%;
+      position: relative;
       img {
          width: 100%;
          height: 100%;
          object-fit: cover;
          @media (width > 567px) {
             object-position: 50% 6%;
+         }
+      }
+      .reviews {
+         position: absolute;
+         top: 0;
+         right: 0;
+         padding: 0.5rem 0.6rem;
+         font-size: 17.5px;
+         background-color: rgba(0, 0, 0, 0.52);
+         font-weight: bold;
+         border-bottom-left-radius: 1.2rem;
+         color: rgba(white, 0.77);
+         @include flex-center;
+         &::after {
+            content: '\f086';
+            font-family: 'Font Awesome 5 Free';
+            display: inline;
+            font-weight: light;
+            margin-inline-start: 0.2rem;
          }
       }
    }
