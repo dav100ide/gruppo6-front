@@ -16,37 +16,38 @@
          <ExplorePainter v-if="this.toSearch=='PITTORE'||this.toSearch=='PITTORI'"/>
          <ExploreVideoMake v-if="this.toSearch=='VIDEOMAKER'||this.toSearch=='VIDEOMAKERS'"/>
          <ExploreActor v-if="this.toSearch=='ATTORE'||this.toSearch=='ATTORI'"/>
-         <div class="ms-grid" v-if="this.toSearch==''">
-            <div class="ms-card" v-for="artist in all">
-               <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
-               <div class="card-img">
-                  <!-- foto caricata dall'utente -->
-                  <img
+         <div class="d-none d-sm-block">
+            <div class="ms-grid " v-if="this.toSearch==''">
+               <div class="ms-card" v-for="artist in all">
+                  <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
+                     <div class="card-img">
+                     <!-- foto caricata dall'utente -->
+                        <img
                            v-if="artist.profile_photo"
                            :src="artist.profile_photo"
                            :alt="artist.artist_nickname"
                         />
-                        <!-- /foto caricata dall'utente -->
-                        <!-- foto seedata -->
+                           <!-- /foto caricata dall'utente -->
+                           <!-- foto seedata -->
                         <img
                            v-else-if="artist.seeded_pic"
                            :src="artist.seeded_pic"
                            :alt="artist.artist_nickname"
-                        />
-                        <!-- /foto seedata -->
-                        <!-- fallback foto se l'utente non carica -->
+                           />
+                           <!-- /foto seedata -->
+                           <!-- fallback foto se l'utente non carica -->
                         <img
                            v-else
                            src="https://www.sanitascare.it/wp-content/uploads/2017/04/default-user-image.png"
                            alt="placeholder"
                         />
-                        <!-- /fallback foto se l'utente non carica -->
-               </div>
-               <div class="card-data">
-                  <h5 class="py-2 fw-bold">
-                     {{artist.artist_nickname }}
-                  </h5>
-                  <div class="card-data__techniques">
+                           <!-- /fallback foto se l'utente non carica -->
+                     </div>
+                     <div class="card-data">
+                        <h5 class="py-2 fw-bold">
+                           {{artist.artist_nickname }}
+                        </h5>
+                        <div class="card-data__techniques">
                            <ul>
                               <!-- faccio vedere solo le prime 3 tech -->
                               <li v-for="tech in artist.techniques">
@@ -54,13 +55,61 @@
                               </li>
                            </ul>
                         </div>
-                  </div>
-               </RouterLink>
+                     </div>
+                  </RouterLink>
+               </div>
             </div>
+         </div>   
+         <div class="sponsored-mobile d-block d-sm-none">
+            <!-- carosello mobile  -->
+            <div class="mobile-carousel">
+               <div
+                  class="mobile-card"
+                  v-for="(artist, index) in all"
+                  :class="this.activeMobile == index ? 'show-mobile' : ''"
+               >
+                  <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
+                     <div class="positioning">
+                        <div class="mobile-card-img">
+                           <!-- foto caricata dall'utente -->
+                           <img
+                              v-if="artist.profile_photo"
+                              :src="artist.profile_photo"
+                              :alt="artist.artist_nickname"
+                           />
+                           <!-- /foto caricata dall'utente -->
+                           <!-- foto seedata -->
+                           <img
+                              v-else-if="artist.seeded_pic"
+                              :src="artist.seeded_pic"
+                              :alt="artist.artist_nickname"
+                           />
+                           <!-- /foto seedata -->
+                           <!-- fallback foto se l'utente non carica -->
+                           <img
+                              v-else
+                              src="https://www.sanitascare.it/wp-content/uploads/2017/04/default-user-image.png"
+                              alt="placeholder"
+                           />
+                           <!-- /fallback foto se l'utente non carica -->
+                        </div>
+                        <div class="mobile-card-description">
+                           <h4>{{ artist.artist_nickname }}</h4>
+                        </div>
+                     </div>
+                  </RouterLink>
+               </div>
+               <button @click="forward" id="forward">
+                  <i class="fa-solid fa-chevron-right"></i>
+               </button>
+               <button @click="back" id="back">
+                  <i class="fa-solid fa-chevron-left"></i>
+               </button>
+            </div>
+            <!-- carosello mobile -->
          </div>
       </div>
    </div>
-   
 </template>
 
 <script>
@@ -96,11 +145,25 @@ export default {
          let what=document.getElementById('search-all').value;
          this.toSearch=what.toUpperCase();
          console.log(this.toSearch)
-      }
+      },
+      forward() {
+         if (this.activeMobile == this.all.length - 1) {
+            this.activeMobile = 0;
+         } else {
+            this.activeMobile += 1;
+         }
+      },
+      back() {
+         if (this.activeMobile == 0) {
+            this.activeMobile = this.all.length - 1;
+         } else {
+            this.activeMobile -= 1;
+         }
+      },
    },
    data(){
       return{
-         
+         activeMobile: 0,
          sponsored:[],
          all:[],
          toSearch:'',
@@ -234,8 +297,88 @@ export default {
       
    }
    .left-search{
-      flex-grow: 1;
-      
+      flex-grow: 1;  
    }
+   #forward {
+   width: 40px;
+   position: absolute;
+   height: 50px;
+   background: rgba(0, 0, 0, 0.4);
+   color: var(--neutral-color-100);
+   border: none;
+   border-radius: 5px;
+   right: 0;
+   top: calc(50% - 25px);
+}
+#back {
+   top: calc(50% - 25px);
+   width: 40px;
+   position: absolute;
+   border: none;
+   border-radius: 5px;
+   height: 50px;
+   background-color: rgba(0, 0, 0, 0.4);
+   color: var(--neutral-color-100);
+   left: 0;
+}
+#back,
+#forward {
+   z-index: 5;
+   transition: color ease-in 0.35s;
+   &:hover {
+      color: var(--accent-color);
+   }
+   &:active {
+      background-color: rgba(black, 0.75);
+   }
+}
+.mobile-carousel {
+   position: relative;
+   height: 350px;
+}
+.positioning {
+   width: 100%;
+   height: 100%;
+   position: relative;
+}
+.mobile-card {
+   width: 100%;
+   opacity: 0;
+   transition: 300ms ease-in;
+   height: 350px;
+   position: absolute;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.show-mobile {
+   opacity: 1;
+   transition: 300ms ease-out;
+   z-index: 3;
+}
+.mobile-card-description {
+   padding: 10px 20px;
+   color: white;
+   background-color: rgba(0, 0, 0, 0.662);
+   position: absolute;
+   bottom: 10px;
+   left: 10px;
+   h4 {
+      margin-bottom: 0;
+   }
+}
+.mobile-card-img {
+   width: 100%;
+   height: 100%;
+   img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+   }
+}
+
+@media screen and (max-width: 576px) {
+   #discover {
+      font-size: 1.7rem;
+   }
+}
 
 </style>
