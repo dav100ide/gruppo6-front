@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-    <div class="sponsored-mobile d-block d-sm-none">
+    <div class="sponsored-mobile d-block d-sm-none" v-if="Actors.length!=0">
             <!-- carosello mobile  -->
             <div class="mobile-carousel">
                <div
@@ -201,11 +201,6 @@
 </template>
 
 <style lang="scss" scoped>
-    .seen-card{
-        width: 100%;
-        height: 100%;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
     .filters-row{
         display: flex;
         align-items: center;
