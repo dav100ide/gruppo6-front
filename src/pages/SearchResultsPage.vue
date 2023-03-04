@@ -60,7 +60,7 @@
                </div>
             </div>
          </div>   
-         <div class="sponsored-mobile d-block d-sm-none">
+         <div class="sponsored-mobile d-block d-sm-none" v-if="this.toSearch==''">
             <!-- carosello mobile  -->
             <div class="mobile-carousel">
                <div
