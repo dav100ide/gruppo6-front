@@ -22,7 +22,7 @@
                </RouterLink>
             </li>
             <li>
-               <a href="http://127.0.0.1:8000/admin/dashboard">
+               <a href="http://127.0.0.1:8000">
                   <i class="fa-solid fa-user me-md-2 me-lg-3"></i>
                   <span class="d-none d-md-inline">User</span>
                </a>
