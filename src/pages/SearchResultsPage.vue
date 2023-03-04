@@ -16,10 +16,10 @@
          <ExplorePainter v-if="this.toSearch=='PITTORE'||this.toSearch=='PITTORI'"/>
          <ExploreVideoMake v-if="this.toSearch=='VIDEOMAKER'||this.toSearch=='VIDEOMAKERS'"/>
          <ExploreActor v-if="this.toSearch=='ATTORE'||this.toSearch=='ATTORI'"/>
-         <div class="all-section" v-if="this.toSearch==''">
-            <div class="single-card" v-for="artist in all">
+         <div class="ms-grid" v-if="this.toSearch==''">
+            <div class="ms-card" v-for="artist in all">
                <RouterLink :to="{ name: 'artist-page', params: { slug: artist.slug } }">
-               <div class="ex-card-img">
+               <div class="card-img">
                   <!-- foto caricata dall'utente -->
                   <img
                            v-if="artist.profile_photo"
@@ -43,14 +43,18 @@
                         <!-- /fallback foto se l'utente non carica -->
                </div>
                <div class="card-data">
-                  <h5 class="ex-card-name">
+                  <h5 class="py-2 fw-bold">
                      {{artist.artist_nickname }}
                   </h5>
-                  <small class="tecnique">
-                     {{ artist.techniques[0].name }}
-                  </small>
-               </div>
-               
+                  <div class="card-data__techniques">
+                           <ul>
+                              <!-- faccio vedere solo le prime 3 tech -->
+                              <li v-for="tech in artist.techniques">
+                                 {{ tech.name }}
+                              </li>
+                           </ul>
+                        </div>
+                  </div>
                </RouterLink>
             </div>
          </div>
@@ -138,28 +142,6 @@ export default {
    #link-test{
       text-decoration: underline;
    }
-   .result-card{
-      height: 300px;
-      display: flex;
-      align-items: center;
-      margin-bottom: 50px;
-   }
-   .result-img{
-      width: 20%;
-      height: 100%;
-      background-color: red;
-      margin-right: 30px;
-      img{
-         width: 100%;
-         height: 100%;
-      }
-   }
-   .result-data{
-      margin-right: 50px;
-      h2{
-         font-size: 3rem;
-      }
-   }
    #search{
       margin-right: 20px;
       padding: 2px 5px;
@@ -167,7 +149,7 @@ export default {
       border: 1px solid white;
       border-radius: 5px;
       color: white;
-
+      
    }
    #search-option{
       margin-right: 5px;
@@ -187,6 +169,9 @@ export default {
       &:focus{
          outline: none;
       }
+      @media (width < 768px) {
+      width: 230px;
+      }
    }
    .card-data{
       padding: 0px 15px;
@@ -194,34 +179,63 @@ export default {
          font-size: 1rem;
       }
    }
-   .all-section{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+   .ms-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   grid-auto-rows: 350px;
+   grid-gap: 50px;
+   @media (width < 992px) {
+      grid-auto-rows: 360px;
    }
-   .single-card{
+   @media (width < 768px) {
+      grid-auto-rows: 310px;
+   }
+   }
+   .ms-card {
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      width: calc(100%/5 - 25px);
-      height: 300px;
-      margin: 0px 12.5px;
-      margin-bottom: 30px;
-   }
-   .ex-card-img{
-      width: 100%;
-      height: 75%;
-      margin-bottom: 10px;
-      img{
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
+      h5 {
+         margin-bottom: 0;
       }
+      .card-img {
+         width: 100%;
+         height: 75%;
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            @media (width > 567px) {
+               object-position: 50% 6%;
+            }
+         }
+      }
+      .card-data {
+         height: 25%;
+         padding: 0px 10px;
+         &__techniques {
+            ul {
+               @include horizontal-list;
+               flex-wrap: wrap;
+               li{
+                  font-size: 0.8rem;
+               }
+               li:not(:last-child)::after {
+                  display: inline;
+                  content: '/';
+                  margin-inline: 0.5rem;  
+               }
+            }
+         }
+      }
+
    }
+
    .searching-row{
       display: flex;
       
    }
    .left-search{
       flex-grow: 1;
+      
    }
 
 </style>
