@@ -402,7 +402,7 @@ export default {
    }
 }
 section {
-   height: calc(100vh - var(--header-height));
+   min-height: calc(100vh - var(--header-height));
    padding: 3rem;
    #missing-genre-message {
       a {
