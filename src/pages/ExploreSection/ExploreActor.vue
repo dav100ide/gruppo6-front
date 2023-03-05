@@ -19,9 +19,9 @@
                     review=0;
                 }
                 let rating=document.getElementById('rating').value;
-                if(rating==''){
-                    rating=0;
-                }
+                //if(rating==''){
+                  //  rating=0;
+                //}
                 this.minRating=rating;
                 this.minReviews=review;
                 let temp=[];
@@ -105,7 +105,15 @@
             <small>n. recensioni: </small>  
             <input type="number" min="0" id="reviews-num">
             <small>voto: </small>   
-            <input type="number" min="0" max="5" id="rating">
+            <!--<input type="number" min="0" max="5" id="rating">-->
+            <select name="" id="rating">
+                <option value="0">tutti</option>
+                <option value="1">1 stella</option>
+                <option value="2">2 stelle</option>
+                <option value="3">3 stelle</option>
+                <option value="4">4 stelle</option>
+                <option value="5">5 stelle</option>
+            </select>
             <button id="filter" @click="Filter">filtra</button>
         </div>
     </div>
@@ -227,6 +235,9 @@
         margin:0px 15px;
         border-bottom: 1px solid white;
         color: white;
+        option{
+            background-color: black;
+        }
     }
     #filter{
         background-color: transparent;
