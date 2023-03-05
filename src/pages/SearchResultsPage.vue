@@ -289,9 +289,6 @@ export default {
          width: 100%;
          height: 100%;
          object-fit: cover;
-         @media (width > 567px) {
-            object-position: 50% 6%;
-         }
       }
    }
    .card-data {
