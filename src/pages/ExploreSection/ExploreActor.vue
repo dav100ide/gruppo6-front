@@ -209,17 +209,17 @@
 </template>
 
 <style lang="scss" scoped>
-    .filters-row{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        @media (width < 567px) {
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: start;
-        }
-    }
+.filters-row {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 20px;
+   @media (width < 567px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+   }
+}
 
     #reviews-num{
         width: 40px;

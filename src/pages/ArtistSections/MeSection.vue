@@ -1,42 +1,40 @@
 <template>
-   <section id="me-section">
-      <div class="container py-5">
-         <div class="row g-4">
-            <!-- intro col -->
-            <div class="col-12">
-               <div class="intro | fw-bold h-100">
-                  <h3>Scopri Chi Sono:</h3>
-                  <p class="intro__text">
-                     {{ intro }}
+   <div class="container py-5" id="me-section">
+      <div class="row g-4">
+         <!-- intro col -->
+         <div class="col-12">
+            <div class="intro | fw-bold h-100">
+               <h3>Scopri Chi Sono:</h3>
+               <p class="intro__text">
+                  {{ intro }}
+               </p>
+            </div>
+         </div>
+         <!-- /intro col -->
+         <!-- tech cols -->
+         <div v-for="(tech, index) in techniques" class="col-12 col-md-6 col-lg-4">
+            <!-- card tech (quando è l'unica card ha l'id only-tech per stilarlo diversamente)-->
+            <div
+               :id="techniques.length === 1 ? 'only-tech' : ''"
+               class="tech | p-4 rounded-4 h-100"
+               data-aos="flip-up"
+               data-aos-duration="1700"
+            >
+               <div class="tech__text">
+                  <div class="tech__title h2">
+                     <h3>{{ tech.name }}</h3>
+                     <i class="fa-solid" :class="slugToFontawesome(tech.slug)"></i>
+                  </div>
+                  <p>
+                     {{ tech.description }}
                   </p>
                </div>
             </div>
-            <!-- /intro col -->
-            <!-- tech cols -->
-            <div v-for="(tech, index) in techniques" class="col-12 col-md-6 col-lg-4">
-               <!-- card tech (quando è l'unica card ha l'id only-tech per stilarlo diversamente)-->
-               <div
-                  :id="techniques.length === 1 ? 'only-tech' : ''"
-                  class="tech | p-4 rounded-4 h-100"
-                  data-aos="flip-up"
-                  data-aos-duration="1700"
-               >
-                  <div class="tech__text">
-                     <div class="tech__title h2">
-                        <h3>{{ tech.name }}</h3>
-                        <i class="fa-solid" :class="slugToFontawesome(tech.slug)"></i>
-                     </div>
-                     <p>
-                        {{ tech.description }}
-                     </p>
-                  </div>
-               </div>
-               <!-- card tech -->
-            </div>
-            <!-- /tech cols -->
+            <!-- card tech -->
          </div>
+         <!-- /tech cols -->
       </div>
-   </section>
+   </div>
 </template>
 
 <script>

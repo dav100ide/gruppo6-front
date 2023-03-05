@@ -51,8 +51,8 @@ export default {
             <img src="./HomePageAssets/man-playing-guitar-1.jpg" alt="" />
          </div>
          <div class="home-search">
-            <h2 id="inspire">Lasciati Ispirare</h2>
-            <h3 id="discover">Scopri i nostri artisti</h3>
+            <h2 id="inspire" class="text-center">Lasciati Ispirare</h2>
+            <h3 id="discover" class="text-center">Scopri i nostri artisti</h3>
             <div class="register">
                <h5>o entra a far Parte della community</h5>
                <a href="http://127.0.0.1:8000/register"><button class="reg">Registrati</button></a>

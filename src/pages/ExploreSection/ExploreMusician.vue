@@ -18,9 +18,9 @@
                     review=0;
                 }
                 let rating=document.getElementById('rating').value;
-                //if(rating==''){
-                  //  rating=0;
-                //}
+                if(rating==''){
+                    rating=0;
+                }
                 this.minRating=rating;
                 this.minReviews=review;
                 let temp=[];
@@ -235,9 +235,6 @@
         color:white;
         margin:0px 15px;
         border-bottom: 1px solid white;
-        option{
-            background-color: black;
-        }
     }
     #filter{
         background-color: transparent;
